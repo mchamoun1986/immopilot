@@ -1,0 +1,145 @@
+<h2>ImmoPilot - Dashboard Parcours</h2>
+<p class="subtitle">Une fois que l'utilisateur a clique sur sa situation, il arrive sur le dashboard de son projet. Quel layout ?</p>
+
+<div class="cards">
+  <!-- Option A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 11px;">
+        <!-- Nav -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0;">
+          <div style="font-weight: 800; color: #1a365d; font-size: 14px;">ImmoPilot</div>
+          <div style="color: #64748b; font-size: 10px;">Mon projet | Dossiers | Outils</div>
+        </div>
+        <!-- Progress bar -->
+        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+          <div style="flex:1; height: 5px; background: #22c55e; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #22c55e; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #2563eb; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #cbd5e1; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #cbd5e1; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #cbd5e1; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #cbd5e1; border-radius: 3px;"></div>
+          <div style="flex:1; height: 5px; background: #cbd5e1; border-radius: 3px;"></div>
+        </div>
+        <div style="color: #64748b; font-size: 9px; margin-bottom: 10px;">Etape 3 sur 8 - Recherche d'un bien</div>
+        <!-- Main content -->
+        <div style="display: flex; gap: 10px;">
+          <!-- Left: current step -->
+          <div style="flex: 2;">
+            <div style="background: white; border: 2px solid #2563eb; border-radius: 6px; padding: 10px; margin-bottom: 8px;">
+              <div style="font-weight: 700; color: #1a365d; margin-bottom: 4px;">3. Recherche d'un bien</div>
+              <div style="color: #64748b; font-size: 10px; margin-bottom: 6px;">Trouvez le bien ideal et verifiez les points cles</div>
+              <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                <span style="background: #eff6ff; color: #2563eb; padding: 2px 6px; border-radius: 3px; font-size: 9px;">Checklist visite</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 2px 6px; border-radius: 3px; font-size: 9px;">Guide DPE</span>
+                <span style="background: #eff6ff; color: #2563eb; padding: 2px 6px; border-radius: 3px; font-size: 9px;">Points copro</span>
+              </div>
+            </div>
+            <!-- Tip -->
+            <div style="background: #fefce8; border-left: 3px solid #eab308; padding: 6px 8px; border-radius: 0 4px 4px 0; font-size: 10px;">
+              <span style="font-weight: 600;">Conseil :</span> Demandez les 3 derniers PV d'AG avant de visiter
+            </div>
+          </div>
+          <!-- Right: summary -->
+          <div style="flex: 1;">
+            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px;">
+              <div style="font-weight: 600; color: #1a365d; margin-bottom: 6px; font-size: 10px;">Mon projet</div>
+              <div style="font-size: 9px; color: #475569; line-height: 1.6;">
+                Budget: <strong>250 000 EUR</strong><br>
+                Capacite: <strong>230 000 EUR</strong><br>
+                Zone: <strong>Lyon</strong><br>
+                Type: <strong>T3 appart</strong><br>
+                PTZ: <span style="color: #22c55e; font-weight: 600;">Eligible</span>
+              </div>
+            </div>
+            <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; margin-top: 6px;">
+              <div style="font-weight: 600; color: #1a365d; margin-bottom: 4px; font-size: 10px;">Dossiers (2)</div>
+              <div style="font-size: 9px; color: #475569;">
+                Rue Garibaldi - 235k<br>
+                Av. Berthelot - 248k
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A - Dashboard lateral</h3>
+      <p>Etape courante a gauche, resume du projet + dossiers a droite. Vue complete en un coup d'oeil.</p>
+    </div>
+  </div>
+
+  <!-- Option B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 11px;">
+        <!-- Nav -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0;">
+          <div style="font-weight: 800; color: #1a365d; font-size: 14px;">ImmoPilot</div>
+          <div style="color: #64748b; font-size: 10px;">Mon projet | Dossiers | Outils</div>
+        </div>
+        <!-- KPI cards top -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px;">
+          <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; text-align: center;">
+            <div style="font-size: 9px; color: #64748b;">Budget</div>
+            <div style="font-weight: 700; color: #1a365d; font-size: 12px;">250k</div>
+          </div>
+          <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; text-align: center;">
+            <div style="font-size: 9px; color: #64748b;">Capacite</div>
+            <div style="font-weight: 700; color: #1a365d; font-size: 12px;">230k</div>
+          </div>
+          <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; text-align: center;">
+            <div style="font-size: 9px; color: #64748b;">Dossiers</div>
+            <div style="font-weight: 700; color: #2563eb; font-size: 12px;">2</div>
+          </div>
+          <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; text-align: center;">
+            <div style="font-size: 9px; color: #64748b;">Etape</div>
+            <div style="font-weight: 700; color: #22c55e; font-size: 12px;">3/8</div>
+          </div>
+        </div>
+        <!-- Vertical steps -->
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; opacity: 0.5;">
+            <div style="width: 18px; height: 18px; background: #22c55e; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+            <div style="font-size: 10px; color: #475569;">1. Definir son projet</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; opacity: 0.5;">
+            <div style="width: 18px; height: 18px; background: #22c55e; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+            <div style="font-size: 10px; color: #475569;">2. Evaluer sa capacite</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <div style="width: 18px; height: 18px; background: #2563eb; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">3</div>
+            <div style="font-size: 10px; font-weight: 700; color: #1a365d;">Recherche d'un bien &#8592; Vous etes ici</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; opacity: 0.4;">
+            <div style="width: 18px; height: 18px; background: #cbd5e1; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">4</div>
+            <div style="font-size: 10px; color: #94a3b8;">Faire une offre</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; opacity: 0.4;">
+            <div style="width: 18px; height: 18px; background: #cbd5e1; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">5</div>
+            <div style="font-size: 10px; color: #94a3b8;">Compromis de vente ...</div>
+          </div>
+        </div>
+        <!-- Alert -->
+        <div style="background: #fef2f2; border-left: 3px solid #ef4444; padding: 6px 8px; border-radius: 0 4px 4px 0; font-size: 10px; margin-top: 8px;">
+          <span style="font-weight: 600; color: #dc2626;">Alerte :</span> <span style="color: #475569;">Le bien Rue Garibaldi a un DPE F - interdit a la location en 2028</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B - Dashboard vertical timeline</h3>
+      <p>KPIs en haut, puis timeline verticale des etapes avec l'etat d'avancement. Alertes en bas. Scroll naturel.</p>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top: 20px;">
+  <div class="pros">
+    <h4>Comparaison</h4>
+    <ul>
+      <li><strong>A (lateral)</strong> - Meilleur pour les ecrans larges, resume toujours visible. Plus "app pro".</li>
+      <li><strong>B (vertical)</strong> - Meilleur en mobile, progression claire comme un tunnel. Plus "guidage".</li>
+    </ul>
+  </div>
+</div>

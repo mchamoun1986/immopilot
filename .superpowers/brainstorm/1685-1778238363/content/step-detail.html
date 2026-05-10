@@ -1,0 +1,145 @@
+<h2>ImmoPilot - Vue detail d'une etape</h2>
+<p class="subtitle">Quand l'utilisateur clique sur l'etape 2 "Capacite d'emprunt" — voici ce qu'il voit</p>
+
+<div class="mockup">
+  <div class="mockup-header">Etape 2 - Evaluer sa capacite d'emprunt</div>
+  <div class="mockup-body" style="font-size: 12px;">
+    <!-- Progress -->
+    <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+      <div style="flex:1; height: 4px; background: #22c55e; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #2563eb; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+      <div style="flex:1; height: 4px; background: #cbd5e1; border-radius: 2px;"></div>
+    </div>
+    <div style="font-size: 10px; color: #64748b; margin-bottom: 16px;">Etape 2 sur 8 &bull; Donnees de l'etape 1 pre-remplies automatiquement</div>
+
+    <!-- Section: Guide -->
+    <div style="background: #f0f9ff; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+      <div style="font-weight: 700; color: #1a365d; margin-bottom: 6px; font-size: 13px;">📖 Ce qu'il faut savoir</div>
+      <div style="color: #475569; font-size: 11px; line-height: 1.6;">
+        La capacite d'emprunt depend de vos <strong>revenus nets</strong>, votre <strong>apport personnel</strong>, et le <strong>taux d'endettement max de 35%</strong> (regle HCSF). Les banques regardent aussi votre <strong>reste a vivre</strong> et votre <strong>stabilite professionnelle</strong>.
+      </div>
+      <div style="margin-top: 6px; font-size: 10px; color: #2563eb; cursor: pointer;">Lire le guide complet →</div>
+    </div>
+
+    <!-- Section: Tools -->
+    <div style="margin-bottom: 12px;">
+      <div style="font-weight: 700; color: #1a365d; margin-bottom: 8px; font-size: 13px;">🛠️ Outils</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div style="background: white; border: 2px solid #2563eb; border-radius: 8px; padding: 10px; cursor: pointer;">
+          <div style="font-weight: 600; color: #1a365d; margin-bottom: 2px;">Simulateur credit</div>
+          <div style="font-size: 10px; color: #64748b;">Mensualites, duree, taux</div>
+        </div>
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; cursor: pointer;">
+          <div style="font-weight: 600; color: #1a365d; margin-bottom: 2px;">Eligibilite PTZ</div>
+          <div style="font-size: 10px; color: #64748b;">Pret a Taux Zero</div>
+        </div>
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; cursor: pointer;">
+          <div style="font-weight: 600; color: #1a365d; margin-bottom: 2px;">Taux endettement</div>
+          <div style="font-size: 10px; color: #64748b;">Calcul regle 35%</div>
+        </div>
+        <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; cursor: pointer;">
+          <div style="font-weight: 600; color: #1a365d; margin-bottom: 2px;">Budget total reel</div>
+          <div style="font-size: 10px; color: #64748b;">Prix + frais + travaux</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Tips -->
+    <div style="margin-bottom: 12px;">
+      <div style="font-weight: 700; color: #1a365d; margin-bottom: 8px; font-size: 13px;">💡 Conseils d'expert</div>
+      <div style="background: #f0fdf4; border-left: 3px solid #22c55e; padding: 8px 10px; border-radius: 0 6px 6px 0; margin-bottom: 6px;">
+        <div style="font-weight: 600; color: #166534; font-size: 11px;">Economie : Negociez le taux d'assurance</div>
+        <div style="font-size: 10px; color: #475569;">La delegation d'assurance (loi Lemoine) peut vous faire economiser 10 000 a 15 000 EUR sur la duree du pret.</div>
+      </div>
+      <div style="background: #fefce8; border-left: 3px solid #eab308; padding: 8px 10px; border-radius: 0 6px 6px 0; margin-bottom: 6px;">
+        <div style="font-weight: 600; color: #854d0e; font-size: 11px;">Attention : Taux endettement 35% = plafond legal</div>
+        <div style="font-size: 10px; color: #475569;">Depuis 2022, les banques ne peuvent plus depasser 35% sauf cas exceptionnels. Integrez tous vos credits en cours.</div>
+      </div>
+      <div style="background: #eff6ff; border-left: 3px solid #2563eb; padding: 8px 10px; border-radius: 0 6px 6px 0;">
+        <div style="font-weight: 600; color: #1e40af; font-size: 11px;">Astuce : Le Pret Action Logement</div>
+        <div style="font-size: 10px; color: #475569;">Salarie du prive ? Vous avez peut-etre droit a 40 000 EUR a 0.5%. Souvent oublie, cumulable avec le PTZ.</div>
+      </div>
+    </div>
+
+    <!-- Section: Checklist -->
+    <div style="margin-bottom: 12px;">
+      <div style="font-weight: 700; color: #1a365d; margin-bottom: 8px; font-size: 13px;">✅ Checklist avant de passer a l'etape suivante</div>
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <div style="width: 16px; height: 16px; border: 2px solid #22c55e; border-radius: 3px; background: #22c55e; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+          <span style="font-size: 11px; color: #475569;">J'ai calcule ma capacite d'emprunt</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <div style="width: 16px; height: 16px; border: 2px solid #22c55e; border-radius: 3px; background: #22c55e; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+          <span style="font-size: 11px; color: #475569;">J'ai verifie mon eligibilite PTZ</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
+          <div style="width: 16px; height: 16px; border: 2px solid #cbd5e1; border-radius: 3px;"></div>
+          <span style="font-size: 11px; color: #475569;">J'ai defini mon budget total (prix + frais + travaux)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <div style="width: 16px; height: 16px; border: 2px solid #cbd5e1; border-radius: 3px;"></div>
+          <span style="font-size: 11px; color: #475569;">J'ai pris contact avec un courtier</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Pros -->
+    <div style="background: linear-gradient(135deg, #1a365d, #2563eb); border-radius: 8px; padding: 12px; color: white;">
+      <div style="font-weight: 700; margin-bottom: 6px; font-size: 13px;">🤝 Besoin d'un expert ?</div>
+      <div style="font-size: 11px; opacity: 0.9; margin-bottom: 8px;">Un courtier compare les banques pour vous et negocie le meilleur taux. Gratuit pour l'emprunteur.</div>
+      <div style="background: white; color: #1a365d; padding: 8px 16px; border-radius: 6px; text-align: center; font-weight: 600; font-size: 12px; cursor: pointer;">
+        Etre mis en relation avec un courtier →
+      </div>
+      <div style="font-size: 9px; opacity: 0.6; text-align: center; margin-top: 4px;">Gratuit et sans engagement</div>
+    </div>
+
+    <!-- Navigation -->
+    <div style="display: flex; justify-content: space-between; margin-top: 12px;">
+      <div style="color: #64748b; font-size: 11px; cursor: pointer;">← Etape 1 : Mon projet</div>
+      <div style="background: #2563eb; color: white; padding: 6px 16px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">Etape 3 : Recherche →</div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <h3>Structure de chaque etape</h3>
+  <p class="subtitle">Toutes les etapes suivent ce meme pattern :</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 12px; margin-top: 12px;">
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">📖</div>
+      <div style="font-weight: 600;">Guide</div>
+      <div style="font-size: 10px; color: #64748b;">Ce qu'il faut savoir</div>
+    </div>
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">🛠️</div>
+      <div style="font-weight: 600;">Outils</div>
+      <div style="font-size: 10px; color: #64748b;">Simulateurs, calculateurs</div>
+    </div>
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">💡</div>
+      <div style="font-weight: 600;">Tips expert</div>
+      <div style="font-size: 10px; color: #64748b;">Conseils contextuels</div>
+    </div>
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">✅</div>
+      <div style="font-weight: 600;">Checklist</div>
+      <div style="font-size: 10px; color: #64748b;">Valider avant de passer</div>
+    </div>
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">🤝</div>
+      <div style="font-weight: 600;">Pros</div>
+      <div style="font-size: 10px; color: #64748b;">Mise en relation</div>
+    </div>
+    <div style="background: #f0f9ff; padding: 10px; border-radius: 6px; text-align: center;">
+      <div style="font-size: 18px; margin-bottom: 4px;">⚠️</div>
+      <div style="font-weight: 600;">Alertes</div>
+      <div style="font-size: 10px; color: #64748b;">Risques et reglementation</div>
+    </div>
+  </div>
+</div>

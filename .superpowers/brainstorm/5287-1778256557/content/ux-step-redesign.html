@@ -1,0 +1,191 @@
+<h2>ImmoPilot 2.0 — Redesign des etapes</h2>
+<p class="subtitle">Etape 2 (Capacite d'emprunt) — avant vs apres</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">AVANT — Scroll infini</div>
+    <div class="mockup-body" style="font-size: 10px; background: #f8fafc; max-height: 500px; overflow: hidden;">
+      <div style="background: #eff6ff; padding: 6px; border-radius: 4px; margin-bottom: 6px; font-size: 9px; color: #475569;">
+        La regle HCSF impose un taux d'endettement maximum de 35%...
+      </div>
+      <!-- Simulateur -->
+      <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; margin-bottom: 6px;">
+        <div style="font-weight: 600; font-size: 11px; margin-bottom: 4px;">Simulateur de credit</div>
+        <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+          <input style="flex:1; border: 1px solid #e2e8f0; padding: 3px; font-size: 9px; border-radius: 3px;" value="200000">
+          <input style="flex:1; border: 1px solid #e2e8f0; padding: 3px; font-size: 9px; border-radius: 3px;" value="3.5">
+          <input style="flex:1; border: 1px solid #e2e8f0; padding: 3px; font-size: 9px; border-radius: 3px;" value="20">
+        </div>
+        <div style="display: flex; gap: 3px; font-size: 9px;">
+          <div style="flex:1; background: #1a365d; color: white; padding: 4px; border-radius: 4px; text-align: center;">1 160 EUR</div>
+          <div style="flex:1; border: 1px solid #e2e8f0; padding: 4px; border-radius: 4px; text-align: center;">278 381 EUR</div>
+          <div style="flex:1; border: 1px solid #e2e8f0; padding: 4px; border-radius: 4px; text-align: center; color: #c1272d;">78 381 EUR</div>
+        </div>
+      </div>
+      <!-- Endettement -->
+      <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; margin-bottom: 6px;">
+        <div style="font-weight: 600; font-size: 11px;">Taux d'endettement</div>
+        <div style="font-size: 9px; color: #64748b;">Inputs + resultats...</div>
+      </div>
+      <!-- PTZ -->
+      <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; margin-bottom: 6px;">
+        <div style="font-weight: 600; font-size: 11px;">Eligibilite PTZ</div>
+        <div style="font-size: 9px; color: #64748b;">Zone + inputs + resultats...</div>
+      </div>
+      <!-- Budget -->
+      <div style="border: 1px solid #e2e8f0; padding: 6px; border-radius: 6px; margin-bottom: 6px;">
+        <div style="font-weight: 600; font-size: 11px;">Budget total reel</div>
+        <div style="font-size: 9px; color: #64748b;">Tableau + verdict...</div>
+      </div>
+      <!-- Gate lead -->
+      <div style="background: #1a365d; color: white; padding: 6px; border-radius: 6px; margin-bottom: 6px; font-size: 9px;">
+        Recevez votre simulation par email...
+      </div>
+      <!-- Tips -->
+      <div style="font-size: 9px; color: #64748b; margin-bottom: 4px;">CONSEILS & ALERTES</div>
+      <div style="background: #f0fdf4; padding: 4px; border-radius: 4px; margin-bottom: 3px; font-size: 8px;">Tip economie...</div>
+      <div style="background: #fefce8; padding: 4px; border-radius: 4px; margin-bottom: 3px; font-size: 8px;">Tip attention...</div>
+      <div style="background: #eff6ff; padding: 4px; border-radius: 4px; margin-bottom: 3px; font-size: 8px;">Tip astuce...</div>
+      <!-- Checklist -->
+      <div style="font-size: 9px; color: #64748b; margin-bottom: 4px;">CHECKLIST</div>
+      <div style="font-size: 8px; color: #94a3b8;">4 items...</div>
+      <div style="text-align: center; color: #94a3b8; font-size: 14px; margin-top: 6px;">⬇ scroll ⬇</div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">APRES — Tabs + sidebar + sliders</div>
+    <div class="mockup-body" style="font-size: 10px; background: #f8fafc;">
+      <!-- Stepper horizontal -->
+      <div style="display: flex; align-items: center; gap: 2px; margin-bottom: 8px; font-size: 8px;">
+        <div style="width: 18px; height: 18px; background: #22c55e; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 8px;">&#10003;</div>
+        <div style="flex: 1; height: 2px; background: #22c55e;"></div>
+        <div style="width: 18px; height: 18px; background: #2563eb; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700;">2</div>
+        <div style="flex: 1; height: 2px; background: #e2e8f0;"></div>
+        <div style="width: 18px; height: 18px; background: #e2e8f0; border-radius: 50%; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 8px;">3</div>
+        <div style="flex: 1; height: 2px; background: #e2e8f0;"></div>
+        <div style="color: #94a3b8;">...8</div>
+      </div>
+
+      <div style="font-weight: 700; color: #1a365d; font-size: 14px; margin-bottom: 2px;">Capacite d'emprunt</div>
+      <div style="color: #64748b; font-size: 9px; margin-bottom: 8px;">Simulez et comparez vos options de financement</div>
+
+      <!-- Tabs -->
+      <div style="display: flex; gap: 0; margin-bottom: 10px; border-bottom: 2px solid #e2e8f0;">
+        <div style="padding: 5px 10px; font-size: 10px; font-weight: 600; color: #2563eb; border-bottom: 2px solid #2563eb; margin-bottom: -2px;">Simulateur</div>
+        <div style="padding: 5px 10px; font-size: 10px; color: #64748b;">Endettement</div>
+        <div style="padding: 5px 10px; font-size: 10px; color: #64748b;">PTZ</div>
+        <div style="padding: 5px 10px; font-size: 10px; color: #64748b;">Budget</div>
+      </div>
+
+      <!-- Active tab: Simulateur with slider -->
+      <div style="display: flex; gap: 10px;">
+        <!-- Main content -->
+        <div style="flex: 2;">
+          <div style="background: white; border-radius: 10px; padding: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);">
+            <!-- Slider montant -->
+            <div style="margin-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 9px; margin-bottom: 3px;">
+                <span style="color: #64748b;">Montant emprunte</span>
+                <span style="font-weight: 700; color: #1a365d;">200 000 EUR</span>
+              </div>
+              <div style="height: 6px; background: #e2e8f0; border-radius: 3px; position: relative;">
+                <div style="width: 60%; height: 100%; background: linear-gradient(90deg, #2563eb, #1a365d); border-radius: 3px;"></div>
+                <div style="width: 12px; height: 12px; background: white; border: 2px solid #2563eb; border-radius: 50%; position: absolute; top: -3px; left: 58%;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8px; color: #94a3b8; margin-top: 2px;">
+                <span>50k</span><span>500k</span>
+              </div>
+            </div>
+            <!-- Slider duree -->
+            <div style="margin-bottom: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 9px; margin-bottom: 3px;">
+                <span style="color: #64748b;">Duree</span>
+                <span style="font-weight: 700; color: #1a365d;">20 ans</span>
+              </div>
+              <div style="height: 6px; background: #e2e8f0; border-radius: 3px; position: relative;">
+                <div style="width: 75%; height: 100%; background: linear-gradient(90deg, #2563eb, #1a365d); border-radius: 3px;"></div>
+                <div style="width: 12px; height: 12px; background: white; border: 2px solid #2563eb; border-radius: 50%; position: absolute; top: -3px; left: 73%;"></div>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 8px; color: #94a3b8; margin-top: 2px;">
+                <span>5 ans</span><span>25 ans</span>
+              </div>
+            </div>
+            <!-- Taux input -->
+            <div style="margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 9px; margin-bottom: 3px;">
+                <span style="color: #64748b;">Taux annuel</span>
+                <span style="font-weight: 700; color: #1a365d;">3,5 %</span>
+              </div>
+            </div>
+            <!-- Results -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;">
+              <div style="background: linear-gradient(135deg, #1a365d, #2563eb); color: white; padding: 8px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 8px; opacity: 0.8;">Mensualite</div>
+                <div style="font-size: 16px; font-weight: 800;">1 160 EUR</div>
+                <div style="font-size: 8px; opacity: 0.7;">/ mois</div>
+              </div>
+              <div style="background: white; border: 1px solid #e2e8f0; padding: 8px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 8px; color: #64748b;">Cout total</div>
+                <div style="font-size: 13px; font-weight: 700; color: #1a365d;">278 381</div>
+                <div style="font-size: 8px; color: #64748b;">EUR</div>
+              </div>
+              <div style="background: white; border: 1px solid #e2e8f0; padding: 8px; border-radius: 8px; text-align: center;">
+                <div style="font-size: 8px; color: #64748b;">Interets</div>
+                <div style="font-size: 13px; font-weight: 700; color: #c1272d;">78 381</div>
+                <div style="font-size: 8px; color: #64748b;">EUR</div>
+              </div>
+            </div>
+          </div>
+          <!-- Contextual tip -->
+          <div style="background: #f0fdf4; border-radius: 8px; padding: 6px 8px; margin-top: 8px; display: flex; gap: 6px; align-items: start; font-size: 9px;">
+            <span style="font-size: 14px;">💡</span>
+            <div>
+              <span style="font-weight: 600; color: #166534;">Astuce :</span>
+              <span style="color: #475569;"> En passant a 25 ans, votre mensualite baisse a 1 003 EUR (-14%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar resume -->
+        <div style="flex: 1; background: white; border-radius: 10px; padding: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); font-size: 9px;">
+          <div style="font-weight: 600; color: #1a365d; margin-bottom: 6px; font-size: 10px;">Mon projet</div>
+          <div style="display: flex; flex-direction: column; gap: 4px; color: #475569; line-height: 1.5;">
+            <div style="display: flex; justify-content: space-between;"><span>Budget</span><strong style="color: #1a365d;">250 000 EUR</strong></div>
+            <div style="display: flex; justify-content: space-between;"><span>Apport</span><strong style="color: #1a365d;">30 000 EUR</strong></div>
+            <div style="display: flex; justify-content: space-between;"><span>Revenus</span><strong style="color: #1a365d;">3 500 EUR</strong></div>
+            <div style="display: flex; justify-content: space-between;"><span>Charges</span><strong style="color: #1a365d;">200 EUR</strong></div>
+            <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 2px 0;">
+            <div style="display: flex; justify-content: space-between;"><span>Endettement</span><strong style="color: #22c55e;">12,5%</strong></div>
+            <div style="display: flex; justify-content: space-between;"><span>PTZ</span><strong style="color: #22c55e;">Eligible</strong></div>
+          </div>
+          <div style="margin-top: 6px; padding: 4px; background: #f0fdf4; border-radius: 4px; text-align: center; font-size: 8px; color: #166534; font-weight: 600;">
+            ✅ Projet financable
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist progress mini -->
+      <div style="margin-top: 10px; display: flex; align-items: center; gap: 6px;">
+        <div style="flex: 1; height: 4px; background: #e2e8f0; border-radius: 2px;">
+          <div style="width: 50%; height: 100%; background: #22c55e; border-radius: 2px;"></div>
+        </div>
+        <span style="font-size: 9px; color: #64748b;">2/4 checklist</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top: 16px;">
+  <div class="pros">
+    <h4>Changements cles</h4>
+    <ul>
+      <li><strong>Tabs</strong> au lieu du scroll — l'utilisateur choisit son outil</li>
+      <li><strong>Sliders</strong> pour les montants — plus intuitif et visuel</li>
+      <li><strong>Sidebar resume</strong> — les donnees du projet toujours visibles</li>
+      <li><strong>Tips contextuels</strong> — apparaissent a cote de l'outil concerne</li>
+      <li><strong>Resultats en gros</strong> avec gradient — la mensualite est le hero</li>
+      <li><strong>Mini checklist</strong> en bas — progression sans encombrer</li>
+    </ul>
+  </div>
+</div>

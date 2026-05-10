@@ -1,0 +1,116 @@
+<h2>ImmoPilot 2.0 — Dashboard redesign</h2>
+<p class="subtitle">Nouveau dashboard intelligent vs l'ancien</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">AVANT — Liste basique</div>
+    <div class="mockup-body" style="font-size: 11px; background: #f8fafc;">
+      <div style="font-weight: 700; color: #1a365d; margin-bottom: 8px;">Mon projet immobilier</div>
+      <div style="color: #64748b; margin-bottom: 12px; font-size: 10px;">Suivez votre avancement</div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="border: 1px solid #e2e8f0; padding: 8px; border-radius: 6px; display: flex; align-items: center; gap: 8px;">
+          <div style="width: 20px; height: 20px; background: #e2e8f0; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center;">1</div>
+          <span>Definir son projet</span>
+        </div>
+        <div style="border: 1px solid #e2e8f0; padding: 8px; border-radius: 6px; display: flex; align-items: center; gap: 8px;">
+          <div style="width: 20px; height: 20px; background: #e2e8f0; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center;">2</div>
+          <span>Capacite d'emprunt</span>
+        </div>
+        <div style="border: 1px solid #e2e8f0; padding: 8px; border-radius: 6px; display: flex; align-items: center; gap: 8px;">
+          <div style="width: 20px; height: 20px; background: #e2e8f0; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center;">3</div>
+          <span>Rechercher un bien</span>
+        </div>
+        <div style="color: #94a3b8; font-size: 10px; text-align: center;">... 5 autres liens identiques ...</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">APRES — Dashboard intelligent</div>
+    <div class="mockup-body" style="font-size: 11px; background: #f8fafc;">
+      <!-- Greeting -->
+      <div style="margin-bottom: 10px;">
+        <div style="font-weight: 700; color: #1a365d; font-size: 13px;">Bonjour Jean !</div>
+        <div style="color: #64748b; font-size: 10px;">Votre projet avance bien — etape 3 sur 8</div>
+      </div>
+      <!-- KPI Cards -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px;">
+        <div style="background: white; border-radius: 8px; padding: 6px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-size: 9px; color: #64748b;">Budget</div>
+          <div style="font-weight: 800; color: #1a365d; font-size: 13px;">250k</div>
+        </div>
+        <div style="background: white; border-radius: 8px; padding: 6px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-size: 9px; color: #64748b;">Capacite</div>
+          <div style="font-weight: 800; color: #2563eb; font-size: 13px;">230k</div>
+        </div>
+        <div style="background: white; border-radius: 8px; padding: 6px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-size: 9px; color: #64748b;">PTZ</div>
+          <div style="font-weight: 800; color: #22c55e; font-size: 13px;">40k</div>
+        </div>
+        <div style="background: white; border-radius: 8px; padding: 6px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-size: 9px; color: #64748b;">Dossiers</div>
+          <div style="font-weight: 800; color: #c1272d; font-size: 13px;">2</div>
+        </div>
+      </div>
+      <!-- Stepper -->
+      <div style="background: white; border-radius: 8px; padding: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 10px;">
+        <div style="font-size: 10px; font-weight: 600; color: #1a365d; margin-bottom: 6px;">Votre parcours</div>
+        <div style="display: flex; align-items: center; gap: 3px; font-size: 9px;">
+          <div style="width: 22px; height: 22px; background: #22c55e; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+          <div style="flex: 1; height: 2px; background: #22c55e;"></div>
+          <div style="width: 22px; height: 22px; background: #22c55e; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px;">&#10003;</div>
+          <div style="flex: 1; height: 2px; background: #2563eb;"></div>
+          <div style="width: 22px; height: 22px; background: #2563eb; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700;">3</div>
+          <div style="flex: 1; height: 2px; background: #e2e8f0;"></div>
+          <div style="width: 22px; height: 22px; background: #e2e8f0; border-radius: 50%; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 10px;">4</div>
+          <div style="flex: 1; height: 2px; background: #e2e8f0;"></div>
+          <div style="color: #94a3b8; font-size: 9px;">... 8</div>
+        </div>
+        <div style="margin-top: 6px; background: #eff6ff; border-radius: 6px; padding: 6px 8px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-weight: 600; color: #1a365d; font-size: 11px;">3. Rechercher un bien</div>
+            <div style="color: #64748b; font-size: 9px;">Checklist visite, guide DPE</div>
+          </div>
+          <div style="background: #2563eb; color: white; padding: 3px 10px; border-radius: 4px; font-size: 9px; font-weight: 600;">Continuer</div>
+        </div>
+      </div>
+      <!-- Alerts -->
+      <div style="background: #fef2f2; border-left: 3px solid #ef4444; border-radius: 0 6px 6px 0; padding: 6px 8px; margin-bottom: 8px; font-size: 10px;">
+        <span style="font-weight: 600; color: #dc2626;">Alerte :</span>
+        <span style="color: #475569;"> Dossier Rue Garibaldi — DPE F, interdit a la location en 2028</span>
+      </div>
+      <!-- Mini dossiers -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+        <div style="background: white; border-radius: 8px; padding: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-weight: 600; color: #1a365d; font-size: 10px;">Rue Garibaldi</div>
+          <div style="color: #64748b; font-size: 9px;">235 000 EUR · 65m2</div>
+          <div style="display: flex; gap: 4px; margin-top: 3px;">
+            <span style="background: #ff6600; color: white; padding: 1px 4px; border-radius: 3px; font-size: 8px; font-weight: 700;">F</span>
+            <span style="color: #64748b; font-size: 8px;">Score: 62/100</span>
+          </div>
+        </div>
+        <div style="background: white; border-radius: 8px; padding: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+          <div style="font-weight: 600; color: #1a365d; font-size: 10px;">Av. Berthelot</div>
+          <div style="color: #64748b; font-size: 9px;">248 000 EUR · 72m2</div>
+          <div style="display: flex; gap: 4px; margin-top: 3px;">
+            <span style="background: #99cc00; color: white; padding: 1px 4px; border-radius: 3px; font-size: 8px; font-weight: 700;">C</span>
+            <span style="color: #64748b; font-size: 8px;">Score: 84/100</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pros-cons" style="margin-top: 16px;">
+  <div class="pros">
+    <h4>Gains du nouveau dashboard</h4>
+    <ul>
+      <li>L'utilisateur voit ses chiffres cles immediatement (budget, capacite, PTZ)</li>
+      <li>Le stepper montre clairement ou il en est et l'invite a continuer</li>
+      <li>Les alertes remontent les infos critiques sans chercher</li>
+      <li>Les dossiers sont accessibles en 1 clic depuis le dashboard</li>
+      <li>Le message personnalise ("Bonjour Jean") cree de l'engagement</li>
+    </ul>
+  </div>
+</div>
