@@ -5,6 +5,7 @@ import Link from "next/link";
 import { calculerPTZ } from "@/lib/calculateurs/ptz";
 import type { ParamsPTZ } from "@/lib/calculateurs/ptz";
 import { fmt } from "@/lib/utils/format";
+import { LeadModal } from "@/components/formulaires/lead-modal";
 
 const ZONES = [
   { value: "Abis", label: "Zone Abis — Paris + 3 communes (Hauts-de-Seine, etc.)" },
@@ -42,6 +43,7 @@ export default function EligibilitePTZPage() {
   const [revenuFiscal, setRevenuFiscal] = useState(40000);
   const [tailleFoyer, setTailleFoyer] = useState(2);
   const [coutOp, setCoutOp] = useState(250000);
+  const [showLeadModal, setShowLeadModal] = useState(false);
 
   const params: ParamsPTZ = {
     zone,
@@ -199,6 +201,22 @@ export default function EligibilitePTZPage() {
           Simulation basee sur les baremes PTZ 2024. Verification definitive aupres de votre
           banque ou courtier.
         </p>
+
+        {/* Lead capture */}
+        <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre eligibilite PTZ par email</p>
+              <p className="mt-1 text-sm text-gray-600">Resultat detaille avec montant, duree et conditions.</p>
+            </div>
+            <button
+              onClick={() => setShowLeadModal(true)}
+              className="flex-shrink-0 rounded-xl bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Recevoir par email
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* CTA parcours */}
@@ -235,6 +253,18 @@ export default function EligibilitePTZPage() {
           ))}
         </div>
       </div>
+
+      <LeadModal
+        isOpen={showLeadModal}
+        onClose={() => setShowLeadModal(false)}
+        source="simulation"
+        etape={2}
+        titre="Recevez votre eligibilite PTZ detaillee"
+        description="Un recap personnalise : capacite d'emprunt, PTZ, budget total."
+        showPhone={false}
+        showConsent={false}
+        onSubmit={() => {}}
+      />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { getTipsForEtape } from "@/lib/data/tips-par-etape";
 import { loadProjet, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { fmt } from "@/lib/utils/format";
+import { LeadModal } from "@/components/formulaires/lead-modal";
 
 const TIPS = getTipsForEtape(3);
 
@@ -29,6 +30,7 @@ const DOCUMENTS_ACCORD = [
 
 export default function AccordBancairePage() {
   const [projet, setProjet] = useState<ProjetImmobilier | null>(null);
+  const [showCourtierModal, setShowCourtierModal] = useState(false);
 
   useEffect(() => {
     setProjet(loadProjet() ?? createEmptyProjet());
@@ -88,6 +90,22 @@ export default function AccordBancairePage() {
         </div>
       </div>
 
+      {/* CTA courtier */}
+      <div className="rounded-xl border border-[var(--bleu-secondaire)] bg-white p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-semibold text-[var(--bleu-marine)]">Un courtier peut comparer 100+ banques pour vous</p>
+            <p className="mt-1 text-sm text-gray-600">Service gratuit — un courtier partenaire vous rappelle sous 24h.</p>
+          </div>
+          <button
+            onClick={() => setShowCourtierModal(true)}
+            className="flex-shrink-0 rounded-xl bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+          >
+            Etre rappele
+          </button>
+        </div>
+      </div>
+
       {/* Lien dossier financement */}
       <div className="card-hero">
         <div className="flex items-center justify-between gap-4">
@@ -107,18 +125,31 @@ export default function AccordBancairePage() {
   );
 
   return (
-    <StepLayout
-      etape={3}
-      guide={
-        <p>
-          Avant de visiter des biens, obtenez un accord de principe de votre banque.
-          C&apos;est une attestation qui prouve que vous pouvez financer votre projet.
-          Ca credibilise votre offre et evite les mauvaises surprises.
-        </p>
-      }
-      outils={tools}
-      tips={TIPS}
-      checklist={CHECKLIST}
-    />
+    <>
+      <StepLayout
+        etape={3}
+        guide={
+          <p>
+            Avant de visiter des biens, obtenez un accord de principe de votre banque.
+            C&apos;est une attestation qui prouve que vous pouvez financer votre projet.
+            Ca credibilise votre offre et evite les mauvaises surprises.
+          </p>
+        }
+        outils={tools}
+        tips={TIPS}
+        checklist={CHECKLIST}
+      />
+      <LeadModal
+        isOpen={showCourtierModal}
+        onClose={() => setShowCourtierModal(false)}
+        source="courtier"
+        etape={3}
+        titre="Etre rappele par un courtier"
+        description="Un courtier partenaire vous rappelle sous 24h pour etudier votre dossier."
+        showPhone={true}
+        showConsent={true}
+        onSubmit={() => {}}
+      />
+    </>
   );
 }

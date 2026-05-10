@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { calculerFraisNotaire } from "@/lib/calculateurs/notaire";
 import { fmt } from "@/lib/utils/format";
+import { LeadModal } from "@/components/formulaires/lead-modal";
 
 function fmtPctDetailed(n: number): string {
   return (n * 100).toFixed(2) + " %";
@@ -35,6 +36,7 @@ const FAQ = [
 export default function FraisNotairePage() {
   const [prix, setPrix] = useState(250000);
   const [type, setType] = useState<"ancien" | "neuf">("ancien");
+  const [showLeadModal, setShowLeadModal] = useState(false);
 
   const result = calculerFraisNotaire(prix, type);
   const hasResult = prix > 0;
@@ -145,6 +147,22 @@ export default function FraisNotairePage() {
               Estimation indicative. Les montants exacts peuvent varier selon la commune et les
               specificites du dossier.
             </p>
+
+            {/* Lead capture */}
+            <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="font-semibold text-[var(--bleu-marine)]">Recevez le detail de vos frais par email</p>
+                  <p className="mt-1 text-sm text-gray-600">Ventilation complete des frais de notaire envoyee par email.</p>
+                </div>
+                <button
+                  onClick={() => setShowLeadModal(true)}
+                  className="flex-shrink-0 rounded-xl bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+                >
+                  Recevoir par email
+                </button>
+              </div>
+            </div>
           </>
         )}
       </div>
@@ -183,6 +201,18 @@ export default function FraisNotairePage() {
           ))}
         </div>
       </div>
+
+      <LeadModal
+        isOpen={showLeadModal}
+        onClose={() => setShowLeadModal(false)}
+        source="simulation"
+        etape={9}
+        titre="Recevez le detail de vos frais de notaire"
+        description="Ventilation complete : droits de mutation, emoluments, debours, contribution."
+        showPhone={false}
+        showConsent={false}
+        onSubmit={() => {}}
+      />
     </div>
   );
 }

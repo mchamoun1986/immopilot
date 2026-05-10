@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { calculerMensualite } from "@/lib/calculateurs/credit";
 import { fmt } from "@/lib/utils/format";
+import { LeadModal } from "@/components/formulaires/lead-modal";
 
 const FAQ = [
   {
@@ -32,6 +33,7 @@ export default function SimulateurCreditPage() {
   const [montant, setMontant] = useState(200000);
   const [taux, setTaux] = useState(3.5);
   const [duree, setDuree] = useState(20);
+  const [showLeadModal, setShowLeadModal] = useState(false);
 
   const result = calculerMensualite(montant, taux, duree);
   const hasResult = montant > 0;
@@ -140,6 +142,24 @@ export default function SimulateurCreditPage() {
           </div>
         )}
 
+        {/* Lead capture */}
+        {hasResult && (
+          <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation detaillee</p>
+                <p className="mt-1 text-sm text-gray-600">Plan de financement personnalise envoye par email.</p>
+              </div>
+              <button
+                onClick={() => setShowLeadModal(true)}
+                className="flex-shrink-0 rounded-xl bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
+              >
+                Recevoir par email
+              </button>
+            </div>
+          </div>
+        )}
+
         {hasResult && (
           <p className="mt-4 text-center text-xs text-gray-400">
             Simulation indicative — hors assurance emprunteur et frais de dossier.
@@ -181,6 +201,18 @@ export default function SimulateurCreditPage() {
           ))}
         </div>
       </div>
+
+      <LeadModal
+        isOpen={showLeadModal}
+        onClose={() => setShowLeadModal(false)}
+        source="simulation"
+        etape={2}
+        titre="Recevez votre simulation detaillee"
+        description="Un recap personnalise : capacite d'emprunt, PTZ, budget total."
+        showPhone={false}
+        showConsent={false}
+        onSubmit={() => {}}
+      />
     </div>
   );
 }

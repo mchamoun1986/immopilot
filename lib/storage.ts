@@ -1,7 +1,7 @@
 import type { ProjetImmobilier, EtapeNumber } from "./types";
 
 const STORAGE_KEY = "immopilot_projet";
-const CURRENT_SCHEMA_VERSION = 2;
+const CURRENT_SCHEMA_VERSION = 3;
 
 // Mapping old 8-step etape numbers to new 10-step numbers
 const ETAPE_MAP_V1_TO_V2: Record<number, EtapeNumber> = {
@@ -28,6 +28,14 @@ function migrateProjet(p: ProjetImmobilier): ProjetImmobilier {
     }
 
     p.schema_version = 2;
+  }
+
+  // V2 → V3: add sources_captured
+  if (version < 3) {
+    if (!p.sources_captured) {
+      p.sources_captured = [];
+    }
+    p.schema_version = 3;
   }
 
   return p;
@@ -63,6 +71,7 @@ export function createEmptyProjet(): ProjetImmobilier {
     prenom: "",
     checklists: {},
     schema_version: CURRENT_SCHEMA_VERSION,
+    sources_captured: [],
   };
 }
 

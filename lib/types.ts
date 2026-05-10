@@ -27,6 +27,7 @@ export interface ProjetImmobilier {
   prenom: string;
   checklists: Record<number, boolean[]>;
   schema_version: number;
+  sources_captured: LeadSource[];
 }
 
 export type EtapeNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
