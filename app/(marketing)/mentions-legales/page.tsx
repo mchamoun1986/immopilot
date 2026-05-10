@@ -133,6 +133,25 @@ export default function MentionsLegalesPage() {
         </div>
       </section>
 
+      {/* Liens d'affiliation */}
+      <section className="space-y-3">
+        <h2 className="text-xl font-bold text-[var(--bleu-marine)]">Liens d&apos;affiliation</h2>
+        <p className="text-sm text-gray-600">
+          Certains liens présents sur ImmoPilot sont des liens d&apos;affiliation (identifiés par la mention &quot;Partenaire&quot;).
+          Lorsque vous cliquez sur ces liens et effectuez une action (inscription, souscription), ImmoPilot peut percevoir
+          une commission de la part du partenaire.
+        </p>
+        <p className="text-sm text-gray-600">
+          Cette commission est versée par le partenaire et ne génère aucun surcoût pour vous. Le prix que vous payez
+          est strictement identique, que vous passiez par notre lien ou directement par le site du partenaire.
+        </p>
+        <p className="text-sm text-gray-600">
+          ImmoPilot reste neutre dans ses recommandations. Les partenaires affiliés ne bénéficient d&apos;aucun
+          traitement préférentiel dans nos conseils, alertes ou classements. Notre objectif est de vous guider
+          au mieux, indépendamment de nos accords commerciaux.
+        </p>
+      </section>
+
       <p className="text-xs text-gray-400">
         Dernière mise à jour : mai 2026
       </p>

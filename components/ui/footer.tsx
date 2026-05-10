@@ -11,9 +11,13 @@ export function Footer() {
           <nav className="flex gap-4">
             <Link href="/mentions-legales" className="hover:text-[var(--bleu-secondaire)]">Mentions légales</Link>
             <Link href="/mes-donnees" className="hover:text-[var(--bleu-secondaire)]">Mes données</Link>
+            <Link href="/pro" className="hover:text-[var(--bleu-secondaire)]">Espace pro</Link>
           </nav>
           <div>&copy; {new Date().getFullYear()} ImmoPilot. Tous droits réservés.</div>
         </div>
+        <p className="mt-3 text-center text-[10px] text-gray-400">
+          Certains liens sont des liens partenaires. ImmoPilot peut percevoir une commission sans surcout pour vous.
+        </p>
       </div>
     </footer>
   );

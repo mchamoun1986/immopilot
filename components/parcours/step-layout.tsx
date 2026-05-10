@@ -10,6 +10,7 @@ import { ProjectSidebar } from "@/components/parcours/project-sidebar";
 import { TabsContainer } from "@/components/ui/tabs";
 import type { ProjetImmobilier, EtapeNumber } from "@/lib/types";
 import { ETAPES, NB_ETAPES } from "@/lib/constants";
+import { AffiliateLink } from "@/components/ui/affiliate-link";
 import { getBandeauForEtape } from "@/lib/data/bandeaux-intro";
 import { getContactsForEtape } from "@/lib/data/contacts-par-etape";
 
@@ -224,9 +225,15 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                                 <div className="flex flex-shrink-0 items-center gap-2">
                                   {c.gratuit && <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-semibold text-green-700">Gratuit</span>}
                                   {c.url && (
-                                    <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-[var(--bleu-action)] hover:underline">
+                                    <AffiliateLink
+                                      href={c.url}
+                                      affiliateUrl={c.affiliate_url}
+                                      source={c.nom}
+                                      etape={etape}
+                                      className="text-xs font-semibold text-[var(--bleu-action)] hover:underline"
+                                    >
                                       Ouvrir &rarr;
-                                    </a>
+                                    </AffiliateLink>
                                   )}
                                 </div>
                               </div>
