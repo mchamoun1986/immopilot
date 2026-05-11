@@ -12,24 +12,24 @@ function fmtPctDetailed(n: number): string {
 
 const FAQ = [
   {
-    question: "Combien coutent les frais de notaire en 2026 ?",
+    question: "Combien coûtent les frais de notaire en 2026 ?",
     answer:
-      "Pour un bien ancien, les frais de notaire representent environ 7 a 8% du prix de vente. Pour un bien neuf, ils sont reduits : entre 2 et 3%. Ces frais comprennent les droits de mutation, les emoluments du notaire, les debours et la contribution de securite immobiliere.",
+      "Pour un bien ancien, les frais de notaire représentent environ 7 à 8% du prix de vente. Pour un bien neuf, ils sont réduits : entre 2 et 3%. Ces frais comprennent les droits de mutation, les émoluments du notaire, les débours et la contribution de sécurité immobilière.",
   },
   {
-    question: "Quelle est la difference entre frais ancien et frais neuf ?",
+    question: "Quelle est la différence entre frais ancien et frais neuf ?",
     answer:
-      "Dans l\u2019ancien, les droits de mutation (aussi appeles droits d\u2019enregistrement) s\u2019elevent a environ 5,8% du prix. Dans le neuf, ils sont reduits a 0,715%, ce qui explique des frais globaux bien inferieurs. En contrepartie, la TVA (20%) est incluse dans le prix de vente dans le neuf.",
+      "Dans l\u2019ancien, les droits de mutation (aussi appelés droits d\u2019enregistrement) s\u2019élèvent à environ 5,8% du prix. Dans le neuf, ils sont réduits à 0,715%, ce qui explique des frais globaux bien inférieurs. En contrepartie, la TVA (20%) est incluse dans le prix de vente dans le neuf.",
   },
   {
-    question: "Les frais de notaire sont-ils negotiables ?",
+    question: "Les frais de notaire sont-ils négociables ?",
     answer:
-      "Les emoluments du notaire sont reglementes par l\u2019Etat et fixes par decret. Ils ne sont donc pas negotiables. En revanche, pour les transactions superieures a 150 000 EUR, une remise maximale de 20% sur les emoluments peut etre consentie. Les droits de mutation, eux, sont des taxes fiscales non negotiables.",
+      "Les émoluments du notaire sont réglementés par l\u2019État et fixés par décret. Ils ne sont donc pas négociables. En revanche, pour les transactions supérieures à 150 000 EUR, une remise maximale de 10% sur les émoluments peut être consentie. Les droits de mutation, eux, sont des taxes fiscales non négociables.",
   },
   {
-    question: "Peut-on financer les frais de notaire avec le credit ?",
+    question: "Peut-on financer les frais de notaire avec le crédit ?",
     answer:
-      "Certaines banques acceptent de financer les frais de notaire dans le credit (on parle de \u00abpret a 110%\u00bb). Cela necessite generalement un dossier solide et evite d\u2019avoir a mobiliser de l\u2019apport personnel uniquement pour ces frais. Renseignez-vous aupres de votre conseiller ou courtier.",
+      "Certaines banques acceptent de financer les frais de notaire dans le crédit (on parle de \u00abprêt à 110%\u00bb). Cela nécessite généralement un dossier solide et évite d\u2019avoir à mobiliser de l\u2019apport personnel uniquement pour ces frais. Renseignez-vous auprès de votre conseiller ou courtier.",
   },
 ] as const;
 
@@ -174,7 +174,7 @@ export default function FraisNotairePage() {
         </p>
         <p className="mb-4 text-sm text-gray-600">
           Notre parcours complet intègre les frais de notaire dans le calcul de votre budget total
-          et vous guide jusqu&apos;a la signature.
+          et vous guide jusqu&apos;à la signature.
         </p>
         <Link
           href="/parcours"

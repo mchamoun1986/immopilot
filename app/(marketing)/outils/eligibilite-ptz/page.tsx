@@ -9,8 +9,8 @@ import { LeadModal } from "@/components/formulaires/lead-modal";
 
 const ZONES = [
   { value: "Abis", label: "Zone Abis — Paris + 3 communes (Hauts-de-Seine, etc.)" },
-  { value: "A", label: "Zone A — Grande couronne, Cote d\u2019Azur, Genevois francais" },
-  { value: "B1", label: "Zone B1 — Grandes agglomerations, DOM, Corse" },
+  { value: "A", label: "Zone A — Grande couronne, Côte d\u2019Azur, Genevois français" },
+  { value: "B1", label: "Zone B1 — Grandes agglomérations, DOM, Corse" },
   { value: "B2", label: "Zone B2 — Villes moyennes" },
   { value: "C", label: "Zone C — Reste du territoire" },
 ] as const;
@@ -19,22 +19,22 @@ const FAQ = [
   {
     question: "Qui a droit au PTZ en 2026 ?",
     answer:
-      "Le PTZ est reserve aux primo-accedants (personnes n\u2019ayant pas ete proprietaires de leur residence principale au cours des 2 dernieres annees) sous conditions de ressources. Le revenu fiscal de reference (annee N-2) ne doit pas depasser les plafonds definis par zone et par taille de foyer.",
+      "Le PTZ est réservé aux primo-accédants (personnes n\u2019ayant pas été propriétaires de leur résidence principale au cours des 2 dernières années) sous conditions de ressources. Le revenu fiscal de référence (année N-2) ne doit pas dépasser les plafonds définis par zone et par taille de foyer.",
   },
   {
-    question: "Quelles sont les zones PTZ eligibles ?",
+    question: "Quelles sont les zones PTZ éligibles ?",
     answer:
-      "Le territoire est divise en 5 zones : Abis (Paris et certaines communes), A (grande couronne parisienne, Cote d\u2019Azur), B1 (grandes agglomerations, DOM, Corse), B2 et C (reste du territoire). Les plafonds de ressources et les montants PTZ varient selon la zone.",
+      "Le territoire est divisé en 5 zones : Abis (Paris et certaines communes), A (grande couronne parisienne, Côte d\u2019Azur), B1 (grandes agglomérations, DOM, Corse), B2 et C (reste du territoire). Les plafonds de ressources et les montants PTZ varient selon la zone.",
   },
   {
-    question: "Le PTZ est-il cumulable avec d\u2019autres prets ?",
+    question: "Le PTZ est-il cumulable avec d\u2019autres prêts ?",
     answer:
-      "Oui, le PTZ se cumule avec le pret principal de la banque, un pret Action Logement, un pret epargne logement, ou d\u2019autres aides. Il finance une partie du bien (en general 20 a 40% selon la zone), le reste etant finance par les autres prets.",
+      "Oui, le PTZ se cumule avec le prêt principal de la banque, un prêt Action Logement, un prêt épargne logement, ou d\u2019autres aides. Il finance une partie du bien (en général 20 à 40% selon la zone), le reste étant financé par les autres prêts.",
   },
   {
     question: "Quel est le montant maximum du PTZ ?",
     answer:
-      "Le PTZ est calcule sur la base du cout total de l\u2019operation (plafonne a un certain montant selon zone et foyer), multiplie par un taux de quotite (40% en zones Abis et A, 20% en B1, B2, C). Le simulateur ci-dessus applique ces baremes pour vous donner une estimation.",
+      "Le PTZ est calculé sur la base du coût total de l\u2019opération (plafonné à un certain montant selon zone et foyer), multiplié par un taux de quotité (40% en zones Abis et A, 20% en B1, B2, C). Le simulateur ci-dessus applique ces barèmes pour vous donner une estimation.",
   },
 ] as const;
 
@@ -131,7 +131,7 @@ export default function EligibilitePTZPage() {
           {/* Cout operation */}
           <div className="sm:col-span-2">
             <label htmlFor="ptz-cout" className="mb-1 block text-sm font-medium text-gray-700">
-              Cout total de l&apos;operation (EUR)
+              Coût total de l&apos;opération (EUR)
             </label>
             <input
               id="ptz-cout"
@@ -143,7 +143,7 @@ export default function EligibilitePTZPage() {
               className="w-full rounded-lg border border-[var(--gris-border)] px-3 py-2 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
             />
             <p className="mt-1 text-xs text-gray-400">
-              Prix du bien + frais de notaire + travaux eventuels.
+              Prix du bien + frais de notaire + travaux éventuels.
             </p>
           </div>
         </div>
@@ -225,8 +225,8 @@ export default function EligibilitePTZPage() {
           Vous souhaitez aller plus loin ?
         </p>
         <p className="mb-4 text-sm text-gray-600">
-          Notre parcours complet integre le PTZ dans votre plan de financement global et vous
-          accompagne jusqu&apos;a l&apos;acte authentique.
+          Notre parcours complet intègre le PTZ dans votre plan de financement global et vous
+          accompagne jusqu&apos;à l&apos;acte authentique.
         </p>
         <Link
           href="/parcours"

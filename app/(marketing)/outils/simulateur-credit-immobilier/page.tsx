@@ -8,24 +8,24 @@ import { LeadModal } from "@/components/formulaires/lead-modal";
 
 const FAQ = [
   {
-    question: "Comment calculer ses mensualites de credit immobilier ?",
+    question: "Comment calculer ses mensualités de crédit immobilier ?",
     answer:
-      "La formule de la rente : M = P \u00d7 r \u00d7 (1+r)\u207f / ((1+r)\u207f \u2212 1), ou P est le capital emprunte, r le taux mensuel (taux annuel / 12) et n le nombre de mensualites. Notre simulateur applique cette formule en temps reel.",
+      "La formule de la rente : M = P \u00d7 r \u00d7 (1+r)\u207f / ((1+r)\u207f \u2212 1), où P est le capital emprunté, r le taux mensuel (taux annuel / 12) et n le nombre de mensualités. Notre simulateur applique cette formule en temps réel.",
   },
   {
-    question: "Quel taux d\u2019endettement maximum est autorise ?",
+    question: "Quel taux d\u2019endettement maximum est autorisé ?",
     answer:
-      "Le Haut Conseil de Stabilite Financiere (HCSF) impose un taux d\u2019endettement maximum de 35% de vos revenus nets mensuels, toutes charges comprises. Au-dela, la banque peut refuser votre dossier.",
+      "Le Haut Conseil de Stabilité Financière (HCSF) impose un taux d\u2019endettement maximum de 35% de vos revenus nets mensuels, toutes charges comprises. Au-delà, la banque peut refuser votre dossier.",
   },
   {
-    question: "Qu\u2019est-ce que le PTZ (Pret a Taux Zero) ?",
+    question: "Qu\u2019est-ce que le PTZ (Prêt à Taux Zéro) ?",
     answer:
-      "Le PTZ est un pret sans interets accorde aux primo-accedants sous conditions de ressources et de zone geographique. Il finance une partie du bien (jusqu\u2019a 40% dans les zones tendues) et se rembourse apres une periode differee. Utilisez notre outil eligibilite PTZ pour verifier votre situation.",
+      "Le PTZ est un prêt sans intérêts accordé aux primo-accédants sous conditions de ressources et de zone géographique. Il finance une partie du bien (jusqu\u2019à 40% dans les zones tendues) et se rembourse après une période différée. Utilisez notre outil éligibilité PTZ pour vérifier votre situation.",
   },
   {
-    question: "Quelle duree choisir pour mon credit immobilier ?",
+    question: "Quelle durée choisir pour mon crédit immobilier ?",
     answer:
-      "Plus la duree est longue, plus vos mensualites sont basses, mais plus le cout total des interets est eleve. En France, la duree maximum est generalement de 25 ans (27 ans en VEFA). Comparez les durees avec notre simulateur pour trouver le bon equilibre.",
+      "Plus la durée est longue, plus vos mensualités sont basses, mais plus le coût total des intérêts est élevé. En France, la durée maximum est généralement de 25 ans (27 ans en VEFA). Comparez les durées avec notre simulateur pour trouver le bon équilibre.",
   },
 ] as const;
 
