@@ -39,8 +39,9 @@ export function LeadModal({
   const [submitted, setSubmitted] = useState(false);
 
   const overlayRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
-  // Reset form when modal opens
+  // Reset form when modal opens + focus trap
   useEffect(() => {
     if (isOpen) {
       setEmail("");
@@ -53,6 +54,11 @@ export function LeadModal({
       setConsentPrivacy(false);
       setErrors({});
       setSubmitted(false);
+      // Move focus into dialog
+      requestAnimationFrame(() => {
+        const firstInput = dialogRef.current?.querySelector<HTMLElement>("input, button");
+        firstInput?.focus();
+      });
     }
   }, [isOpen]);
 
@@ -123,6 +129,7 @@ export function LeadModal({
       onClick={handleOverlayClick}
     >
       <div
+        ref={dialogRef}
         className="relative w-full max-w-md rounded-xl bg-white shadow-xl"
         role="dialog"
         aria-modal="true"

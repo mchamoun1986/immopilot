@@ -9,9 +9,10 @@ interface AffiliateLinkProps {
   source: string;
   etape?: number;
   className?: string;
+  "aria-label"?: string;
 }
 
-export function AffiliateLink({ href, affiliateUrl, children, source, etape, className }: AffiliateLinkProps) {
+export function AffiliateLink({ href, affiliateUrl, children, source, etape, className, "aria-label": ariaLabel }: AffiliateLinkProps) {
   const isAffiliate = affiliateUrl !== null;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -30,6 +31,7 @@ export function AffiliateLink({ href, affiliateUrl, children, source, etape, cla
       target="_blank"
       rel={isAffiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"}
       className={className}
+      aria-label={ariaLabel}
     >
       {children}
       {isAffiliate && (

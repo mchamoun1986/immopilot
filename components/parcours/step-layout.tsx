@@ -158,7 +158,7 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                       return (
                         <div key={i} className={`border-l-4 rounded-r-xl p-3 ${s.border} ${s.bg}`}>
                           <div className="flex items-start gap-2">
-                            <span>{s.icon}</span>
+                            <span aria-hidden="true">{s.icon}</span>
                             <div>
                               <p className="text-sm font-semibold">{tip.titre}</p>
                               <p className="mt-0.5 text-sm text-gray-700">{tip.detail}</p>
@@ -231,6 +231,7 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                                       source={c.nom}
                                       etape={etape}
                                       className="text-xs font-semibold text-[var(--bleu-action)] hover:underline"
+                                      aria-label={`Ouvrir ${c.nom}`}
                                     >
                                       Ouvrir &rarr;
                                     </AffiliateLink>

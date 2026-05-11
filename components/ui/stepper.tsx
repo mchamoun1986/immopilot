@@ -48,7 +48,7 @@ export function StepperHorizontal({ completedSteps, currentStep, onStepClick }: 
                       ? "bg-[var(--bleu-action)] text-white shadow-md ring-2 ring-[var(--bleu-action)]/30"
                       : "bg-gray-100 text-gray-400 hover:bg-gray-200"
                 }`}
-                aria-label={`Etape ${etape.numero}: ${etape.titre}`}
+                aria-label={`Étape ${etape.numero} : ${etape.titre}`}
                 aria-current={isCurrent ? "step" : undefined}
               >
                 {isCompleted ? (
@@ -78,7 +78,7 @@ export function StepperHorizontal({ completedSteps, currentStep, onStepClick }: 
           const isCurrent = etape.numero === currentStep;
           return (
             <div key={etape.numero} className="flex-1 text-center">
-              <span className="text-xs">{STEP_ICONS[etape.numero]}</span>
+              <span className="text-xs" aria-hidden="true">{STEP_ICONS[etape.numero]}</span>
               <p className={`text-[10px] leading-tight ${
                 isCurrent ? "font-bold text-[var(--bleu-action)]" : isCompleted ? "font-medium text-[var(--vert-succes)]" : "text-gray-400"
               }`}>

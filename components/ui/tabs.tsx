@@ -34,8 +34,10 @@ export function TabsContainer({ tabs, defaultTab, children }: TabsContainerProps
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            id={`tab-${tab.id}`}
             role="tab"
             aria-selected={activeTab === tab.id}
+            aria-controls={`panel-${tab.id}`}
             onClick={() => handleTabClick(tab.id)}
             className={`flex items-center gap-1.5 whitespace-nowrap border-b-2 px-4 py-2.5 text-sm font-medium transition-colors ${
               activeTab === tab.id
@@ -60,7 +62,9 @@ export function TabsContainer({ tabs, defaultTab, children }: TabsContainerProps
         return (
           <div
             key={tab.id}
+            id={`panel-${tab.id}`}
             role="tabpanel"
+            aria-labelledby={`tab-${tab.id}`}
             hidden={activeTab !== tab.id}
             className={activeTab === tab.id ? "fade-in" : ""}
           >

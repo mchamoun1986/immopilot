@@ -19,7 +19,7 @@ export function Toast({ message, visible, duration = 2000, onDismiss }: ToastPro
   if (!visible) return null;
 
   return (
-    <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 toast-slide">
+    <div className="fixed left-1/2 top-4 z-50 -translate-x-1/2 toast-slide" role="status" aria-live="polite">
       <div className="rounded-xl bg-[var(--bleu-marine)] px-4 py-2 text-sm font-medium text-white shadow-lg">
         {message}
       </div>

@@ -150,9 +150,9 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
       <div className="grid gap-4 sm:grid-cols-3">
         {/* Revenus affiches */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-600">
+          <p className="mb-1 text-xs font-medium text-gray-600">
             Revenus nets mensuels
-          </label>
+          </p>
           <div className="rounded border border-[var(--gris-border)] bg-gray-50 px-3 py-1.5 text-sm text-gray-500">
             {fmt(revenus)} EUR <span className="text-xs">(depuis étape 1)</span>
           </div>
@@ -426,6 +426,7 @@ function BudgetTotal({ projet }: { projet: ProjetImmobilier }) {
               min={0}
               value={travaux}
               onChange={(e) => setTravaux(parseFloat(e.target.value) || 0)}
+              aria-label="Travaux estimés en EUR"
               className="w-28 rounded border border-[var(--gris-border)] px-2 py-1 text-right text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
             />
             <span className="text-gray-400">EUR</span>

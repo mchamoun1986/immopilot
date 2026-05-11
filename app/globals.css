@@ -70,5 +70,6 @@ body {
 }
 .input-standard:focus {
   border-color: var(--bleu-action);
-  outline: none;
+  outline: 2px solid var(--bleu-action);
+  outline-offset: 1px;
 }
