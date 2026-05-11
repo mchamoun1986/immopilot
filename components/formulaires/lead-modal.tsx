@@ -82,8 +82,8 @@ export function LeadModal({
     if (!email.trim()) newErrors.email = "L'email est requis.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = "Email invalide.";
     if (!nom.trim()) newErrors.nom = "Le nom est requis.";
-    if (!prenom.trim()) newErrors.prenom = "Le prenom est requis.";
-    if (!consentPrivacy) newErrors.consentPrivacy = "Vous devez accepter la politique de confidentialite.";
+    if (!prenom.trim()) newErrors.prenom = "Le prénom est requis.";
+    if (!consentPrivacy) newErrors.consentPrivacy = "Vous devez accepter la politique de confidentialité.";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -179,7 +179,7 @@ export function LeadModal({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="lead-prenom">
-                    Prenom <span className="text-red-500">*</span>
+                    Prénom <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="lead-prenom"
@@ -230,7 +230,7 @@ export function LeadModal({
               {showPhone && (
                 <div>
                   <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="lead-tel">
-                    Telephone <span className="text-xs text-gray-400">(optionnel)</span>
+                    Téléphone <span className="text-xs text-gray-400">(optionnel)</span>
                   </label>
                   <input
                     id="lead-tel"
@@ -288,7 +288,7 @@ export function LeadModal({
                     />
                     <span className="text-xs text-gray-600 leading-relaxed">
                       J&apos;accepte d&apos;etre mis en relation avec des professionnels partenaires
-                      (courtiers, assureurs, demenageurs) selectionnes par ImmoPilot.
+                      (courtiers, assureurs, déménageurs) sélectionnés par ImmoPilot.
                     </span>
                   </label>
                 )}
@@ -308,7 +308,7 @@ export function LeadModal({
                       rel="noopener noreferrer"
                       className="text-[var(--bleu-secondaire)] underline hover:opacity-80"
                     >
-                      politique de confidentialite
+                      politique de confidentialité
                     </a>{" "}
                     d&apos;ImmoPilot. <span className="text-red-500">*</span>
                   </span>
@@ -327,7 +327,7 @@ export function LeadModal({
               </button>
 
               <p className="text-center text-xs text-gray-400">
-                Vos donnees sont stockees localement et ne sont jamais revendues.
+                Vos données sont stockées localement et ne sont jamais revendues.
               </p>
             </form>
           )}

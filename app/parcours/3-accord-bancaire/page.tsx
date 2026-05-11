@@ -11,20 +11,20 @@ import { LeadModal } from "@/components/formulaires/lead-modal";
 const TIPS = getTipsForEtape(3);
 
 const CHECKLIST = [
-  "J'ai rassemble mes 3 derniers bulletins de salaire",
+  "J'ai rassemblé mes 3 derniers bulletins de salaire",
   "J'ai mes 2 derniers avis d'imposition",
-  "J'ai un justificatif d'apport (releve epargne)",
-  "J'ai contacte ma banque ou un courtier",
-  "J'ai obtenu un accord de principe ecrit",
+  "J'ai un justificatif d'apport (relevé épargne)",
+  "J'ai contacté ma banque ou un courtier",
+  "J'ai obtenu un accord de principe écrit",
 ];
 
 const DOCUMENTS_ACCORD = [
-  { nom: "Piece d'identite", detail: "CNI ou passeport en cours de validite" },
+  { nom: "Pièce d'identité", detail: "CNI ou passeport en cours de validité" },
   { nom: "Justificatif de domicile", detail: "Moins de 3 mois (facture, quittance)" },
   { nom: "3 derniers bulletins de salaire", detail: "Ou bilans si independant" },
   { nom: "2 derniers avis d'imposition", detail: "Revenus N-1 et N-2" },
-  { nom: "Releves bancaires 3 mois", detail: "Tous comptes (courant + epargne)" },
-  { nom: "Justificatif d'apport", detail: "Releve epargne, attestation donation, etc." },
+  { nom: "Relevés bancaires 3 mois", detail: "Tous comptes (courant + épargne)" },
+  { nom: "Justificatif d'apport", detail: "Relevé épargne, attestation donation, etc." },
   { nom: "Tableau d'amortissement", detail: "Si credits en cours" },
 ];
 
@@ -51,7 +51,7 @@ export default function AccordBancairePage() {
       {/* Resume capacite */}
       {projet.capacite_emprunt > 0 && (
         <div className="card-hero">
-          <p className="text-sm font-semibold text-blue-200">Votre capacite calculee</p>
+          <p className="text-sm font-semibold text-blue-200">Votre capacité calculée</p>
           <p className="mt-1 text-2xl font-extrabold text-white">{fmt(projet.capacite_emprunt)} EUR</p>
           <p className="mt-1 text-sm text-blue-200/70">
             Revenus : {fmt(revenus)} EUR/mois &middot; Apport : {fmt(projet.apport)} EUR
@@ -62,7 +62,7 @@ export default function AccordBancairePage() {
 
       {/* Documents a preparer */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-4 font-semibold text-[var(--bleu-marine)]">Documents a preparer pour la banque</h2>
+        <h2 className="mb-4 font-semibold text-[var(--bleu-marine)]">Documents à préparer pour la banque</h2>
         <div className="space-y-3">
           {DOCUMENTS_ACCORD.map((doc) => (
             <div key={doc.nom} className="flex items-start gap-3 rounded-lg bg-[var(--gris-fond)] px-4 py-3">
@@ -77,14 +77,14 @@ export default function AccordBancairePage() {
       </div>
 
       {/* Conseil */}
-      <div className="rounded-xl border-l-3 border-l-blue-500 bg-blue-50 p-4">
+      <div className="rounded-xl border-l-4 border-l-blue-500 bg-blue-50 p-4">
         <div className="flex items-start gap-2">
           <span>💡</span>
           <div>
             <p className="text-sm font-semibold">Accord de principe ≠ offre de pret</p>
             <p className="mt-0.5 text-sm text-gray-700">
               L&apos;accord de principe est un &quot;feu vert&quot; indicatif de la banque. Il n&apos;engage ni vous ni la banque.
-              Mais il renforce enormement votre credibilite aupres du vendeur quand vous faites une offre.
+              Mais il renforce énormément votre crédibilité auprès du vendeur quand vous faites une offre.
             </p>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function AccordBancairePage() {
             onClick={() => setShowCourtierModal(true)}
             className="flex-shrink-0 rounded-xl bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
           >
-            Etre rappele
+            Être rappelé
           </button>
         </div>
       </div>
@@ -111,13 +111,13 @@ export default function AccordBancairePage() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-sm font-bold text-white">Dossier de financement</p>
-            <p className="mt-1 text-xs text-blue-200/70">Generez un dossier complet a presenter a votre banque.</p>
+            <p className="mt-1 text-xs text-blue-200/70">Générez un dossier complet à présenter à votre banque.</p>
           </div>
           <a
             href="/parcours/dossier-financement"
             className="flex-shrink-0 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-[var(--bleu-marine)] hover:opacity-90"
           >
-            Generer le PDF
+            Générer le PDF
           </a>
         </div>
       </div>
@@ -132,7 +132,7 @@ export default function AccordBancairePage() {
           <p>
             Avant de visiter des biens, obtenez un accord de principe de votre banque.
             C&apos;est une attestation qui prouve que vous pouvez financer votre projet.
-            Ca credibilise votre offre et evite les mauvaises surprises.
+            Ça crédibilise votre offre et évite les mauvaises surprises.
           </p>
         }
         outils={tools}
@@ -144,8 +144,8 @@ export default function AccordBancairePage() {
         onClose={() => setShowCourtierModal(false)}
         source="courtier"
         etape={3}
-        titre="Etre rappele par un courtier"
-        description="Un courtier partenaire vous rappelle sous 24h pour etudier votre dossier."
+        titre="Être rappelé par un courtier"
+        description="Un courtier partenaire vous rappelle sous 24h pour étudier votre dossier."
         showPhone={true}
         showConsent={true}
         onSubmit={() => {}}

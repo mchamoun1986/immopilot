@@ -61,10 +61,10 @@ export default function EligibilitePTZPage() {
           Outil gratuit
         </p>
         <h1 className="mb-3 text-3xl font-extrabold text-[var(--bleu-marine)] md:text-4xl">
-          Eligibilite au PTZ 2026
+          Éligibilité au PTZ 2026
         </h1>
         <p className="text-gray-600">
-          Verifiez votre eligibilite au Pret a Taux Zero et estimez le montant selon votre zone et
+          Vérifiez votre éligibilité au Prêt à Taux Zéro et estimez le montant selon votre zone et
           vos revenus.
         </p>
       </div>
@@ -77,7 +77,7 @@ export default function EligibilitePTZPage() {
           {/* Zone */}
           <div className="sm:col-span-2">
             <label htmlFor="ptz-zone" className="mb-1 block text-sm font-medium text-gray-700">
-              Zone geographique du bien
+              Zone géographique du bien
             </label>
             <select
               id="ptz-zone"
@@ -96,7 +96,7 @@ export default function EligibilitePTZPage() {
           {/* Revenu fiscal */}
           <div>
             <label htmlFor="ptz-rfr" className="mb-1 block text-sm font-medium text-gray-700">
-              Revenu fiscal de reference N-2 (EUR/an)
+              Revenu fiscal de référence N-2 (EUR/an)
             </label>
             <input
               id="ptz-rfr"
@@ -154,26 +154,26 @@ export default function EligibilitePTZPage() {
             <div className="rounded-lg border border-green-300 bg-green-50 p-5">
               <div className="mb-3 flex items-center gap-2">
                 <span className="rounded-full bg-green-500 px-3 py-0.5 text-xs font-bold uppercase text-white">
-                  Eligible PTZ
+                  Éligible PTZ
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">Montant PTZ estime</p>
+                  <p className="text-xs text-gray-500">Montant PTZ estimé</p>
                   <p className="mt-1 text-2xl font-extrabold text-green-700">
                     {fmt(result.montant)}
                   </p>
                   <p className="text-xs text-gray-400">EUR</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">Periode differee</p>
+                  <p className="text-xs text-gray-500">Période différée</p>
                   <p className="mt-1 text-2xl font-extrabold text-[var(--bleu-marine)]">
                     {result.duree_differee}
                   </p>
                   <p className="text-xs text-gray-400">ans</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-xs text-gray-500">Duree remboursement</p>
+                  <p className="text-xs text-gray-500">Durée remboursement</p>
                   <p className="mt-1 text-2xl font-extrabold text-[var(--bleu-marine)]">
                     {result.duree_remboursement}
                   </p>
@@ -181,15 +181,15 @@ export default function EligibilitePTZPage() {
                 </div>
               </div>
               <p className="mt-3 text-xs text-green-700">
-                Pendant la periode differee, vous ne remboursez pas le PTZ — vos mensualites sont
-                allегees.
+                Pendant la période différée, vous ne remboursez pas le PTZ — vos mensualités sont
+                allégées.
               </p>
             </div>
           ) : (
             <div className="rounded-lg border border-red-200 bg-red-50 p-5">
               <div className="mb-2 flex items-center gap-2">
                 <span className="rounded-full bg-red-500 px-3 py-0.5 text-xs font-bold uppercase text-white">
-                  Non eligible
+                  Non éligible
                 </span>
               </div>
               <p className="text-sm text-red-700">{result.raison_ineligibilite}</p>
@@ -198,7 +198,7 @@ export default function EligibilitePTZPage() {
         </div>
 
         <p className="mt-3 text-center text-xs text-gray-400">
-          Simulation basee sur les baremes PTZ 2024. Verification definitive aupres de votre
+          Simulation basée sur les barèmes PTZ 2026. Vérification définitive auprès de votre
           banque ou courtier.
         </p>
 
@@ -206,8 +206,8 @@ export default function EligibilitePTZPage() {
         <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre eligibilite PTZ par email</p>
-              <p className="mt-1 text-sm text-gray-600">Resultat detaille avec montant, duree et conditions.</p>
+              <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre éligibilité PTZ par email</p>
+              <p className="mt-1 text-sm text-gray-600">Résultat détaillé avec montant, durée et conditions.</p>
             </div>
             <button
               onClick={() => setShowLeadModal(true)}
@@ -232,14 +232,14 @@ export default function EligibilitePTZPage() {
           href="/parcours"
           className="inline-block rounded-lg bg-[var(--rouge-francais)] px-7 py-2.5 text-sm font-semibold text-white hover:opacity-90"
         >
-          Demarrer mon parcours
+          Démarrer mon parcours
         </Link>
       </div>
 
       {/* FAQ */}
       <div className="mt-12">
         <h2 className="mb-6 text-2xl font-extrabold text-[var(--bleu-marine)]">
-          Questions frequentes sur le PTZ
+          Questions fréquentes sur le PTZ
         </h2>
         <div className="space-y-5">
           {FAQ.map((item) => (
@@ -259,8 +259,8 @@ export default function EligibilitePTZPage() {
         onClose={() => setShowLeadModal(false)}
         source="simulation"
         etape={2}
-        titre="Recevez votre eligibilite PTZ detaillee"
-        description="Un recap personnalise : capacite d'emprunt, PTZ, budget total."
+        titre="Recevez votre éligibilité PTZ détaillée"
+        description="Un récap personnalisé : capacité d'emprunt, PTZ, budget total."
         showPhone={false}
         showConsent={false}
         onSubmit={() => {}}

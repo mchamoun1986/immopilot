@@ -23,13 +23,13 @@ export interface SeuilDPE {
  * Coefficient electricite : 2,3 jusqu'au 31/12/2025, puis 1,9 depuis le 01/01/2026.
  * verifie le 2026-05-09 */
 export const SEUILS_DPE: SeuilDPE[] = [
-  { classe: "A", energie_max_kwh: 70, ges_max_kg: 6, qualificatif: "Economie" },
+  { classe: "A", energie_max_kwh: 70, ges_max_kg: 6, qualificatif: "Économie" },
   { classe: "B", energie_max_kwh: 110, ges_max_kg: 11, qualificatif: "Basse consommation" },
   { classe: "C", energie_max_kwh: 180, ges_max_kg: 30, qualificatif: "Moyenne basse" },
   { classe: "D", energie_max_kwh: 250, ges_max_kg: 50, qualificatif: "Moyenne" },
   { classe: "E", energie_max_kwh: 330, ges_max_kg: 70, qualificatif: "Moyenne haute" },
   { classe: "F", energie_max_kwh: 420, ges_max_kg: 100, qualificatif: "Passoire thermique" },
-  { classe: "G", energie_max_kwh: Infinity, ges_max_kg: Infinity, qualificatif: "Passoire thermique extreme" },
+  { classe: "G", energie_max_kwh: Infinity, ges_max_kg: Infinity, qualificatif: "Passoire thermique extrême" },
 ];
 
 /** Coefficient de conversion electricite en energie primaire */
@@ -109,27 +109,27 @@ export const PALIERS_RE2020 = [
     en_vigueur: "2022-01-01",
     ic_construction_maison_kg_co2_m2: 640,
     ic_construction_collectif_kg_co2_m2: 740,
-    description: "Reglements environnemental 2020 — remplace la RT2012",
+    description: "Règlement environnemental 2020 — remplace la RT2012",
   },
   {
     nom: "RE2025",
     en_vigueur: "2025-01-01",
     ic_construction_maison_kg_co2_m2: 530,
     ic_construction_collectif_kg_co2_m2: 650,
-    description: "Premier palier de renforcement RE2020 — seuils carbone abaisses, materiaux biosources favorises, confort thermique ete renforce",
+    description: "Premier palier de renforcement RE2020 — seuils carbone abaissés, matériaux biosourcés favorisés, confort thermique été renforcé",
   },
   {
     nom: "RE2028",
     en_vigueur: "2028-01-01",
     ic_construction_maison_kg_co2_m2: 475,
     ic_construction_collectif_kg_co2_m2: null,
-    description: "Deuxieme palier prevu — objectif provisoire",
+    description: "Deuxième palier prévu — objectif provisoire",
   },
   {
     nom: "RE2031",
     en_vigueur: "2031-01-01",
     ic_construction_maison_kg_co2_m2: 415,
     ic_construction_collectif_kg_co2_m2: null,
-    description: "Troisieme palier prevu — reduction ~35% vs 2020",
+    description: "Troisième palier prévu — réduction ~35% vs 2020",
   },
 ] as const;

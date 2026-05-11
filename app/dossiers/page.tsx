@@ -51,7 +51,7 @@ export default function DossiersPage() {
           className="flex items-center gap-2 rounded-lg bg-[var(--bleu-secondaire)] px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
         >
           <span className="text-lg leading-none">+</span>
-          Creer un nouveau dossier
+          Créer un nouveau dossier
         </button>
       </div>
 
@@ -60,8 +60,8 @@ export default function DossiersPage() {
         <EmptyState
           icon="🏠"
           title="Vous n'avez pas encore de dossier"
-          description="Creez-en un pour chaque bien qui vous interesse."
-          actionLabel="Creer mon premier dossier"
+          description="Créez-en un pour chaque bien qui vous intéresse."
+          actionLabel="Créer mon premier dossier"
           onAction={handleCreate}
         />
       )}

@@ -50,9 +50,9 @@ export default function MesDonneesPage() {
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="mb-2 text-2xl font-bold text-[var(--bleu-marine)]">Mes donnees</h1>
+      <h1 className="mb-2 text-2xl font-bold text-[var(--bleu-marine)]">Mes données</h1>
       <p className="mb-8 text-sm text-gray-500">
-        Toutes les donnees ImmoPilot sont stockees localement dans votre navigateur.
+        Toutes les données ImmoPilot sont stockées localement dans votre navigateur.
         Aucun compte n&apos;est requis.
       </p>
 
@@ -65,9 +65,9 @@ export default function MesDonneesPage() {
               </svg>
             </div>
           </div>
-          <p className="text-base font-semibold text-green-800">Donnees supprimees</p>
+          <p className="text-base font-semibold text-green-800">Données supprimées</p>
           <p className="mt-1 text-sm text-gray-600">
-            Toutes vos donnees locales ImmoPilot ont ete effacees de ce navigateur.
+            Toutes vos données locales ImmoPilot ont été effacées de ce navigateur.
           </p>
           <a
             href="/"
@@ -82,24 +82,24 @@ export default function MesDonneesPage() {
           {summary && (
             <section className="mb-8">
               <h2 className="mb-3 text-lg font-semibold text-[var(--bleu-marine)]">
-                Donnees stockees localement
+                Données stockées localement
               </h2>
               <div className="rounded-lg border border-[var(--gris-border)] bg-white divide-y divide-[var(--gris-border)]">
                 <div className="flex items-center justify-between px-4 py-3 text-sm">
                   <span className="text-gray-600">Projet immobilier</span>
                   <span className={`font-semibold ${summary.hasProjet ? "text-[var(--bleu-marine)]" : "text-gray-400"}`}>
-                    {summary.hasProjet ? "Present" : "Aucun"}
+                    {summary.hasProjet ? "Présent" : "Aucun"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between px-4 py-3 text-sm">
                   <span className="text-gray-600">Formulaires soumis (leads)</span>
                   <span className={`font-semibold ${summary.leadsCount > 0 ? "text-[var(--bleu-marine)]" : "text-gray-400"}`}>
-                    {summary.leadsCount} {summary.leadsCount === 1 ? "entree" : "entrees"}
+                    {summary.leadsCount} {summary.leadsCount === 1 ? "entrée" : "entrées"}
                   </span>
                 </div>
                 {summary.extraKeys.length > 0 && (
                   <div className="px-4 py-3 text-sm">
-                    <p className="mb-2 text-gray-600">Autres donnees (outils, checklists)</p>
+                    <p className="mb-2 text-gray-600">Autres données (outils, checklists)</p>
                     <div className="flex flex-wrap gap-1">
                       {summary.extraKeys.map((k) => (
                         <code key={k} className="rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-700">
@@ -120,13 +120,13 @@ export default function MesDonneesPage() {
           {/* Delete section */}
           <section className="mb-8">
             <h2 className="mb-3 text-lg font-semibold text-[var(--bleu-marine)]">
-              Supprimer mes donnees
+              Supprimer mes données
             </h2>
             <div className="rounded-lg border border-red-200 bg-red-50 p-4">
               <p className="mb-3 text-sm text-gray-700">
-                Cette action supprime <strong>toutes les donnees ImmoPilot</strong> stockees
+                Cette action supprime <strong>toutes les données ImmoPilot</strong> stockées
                 dans ce navigateur (projet, simulations, checklists, formulaires). Cette action
-                est <strong>irreversible</strong>.
+                est <strong>irréversible</strong>.
               </p>
 
               {!confirmDelete ? (
@@ -134,12 +134,12 @@ export default function MesDonneesPage() {
                   onClick={() => setConfirmDelete(true)}
                   className="rounded-lg border border-red-500 bg-white px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors"
                 >
-                  Supprimer toutes mes donnees
+                  Supprimer toutes mes données
                 </button>
               ) : (
                 <div className="space-y-3">
                   <p className="rounded-lg border border-red-400 bg-white px-3 py-2 text-sm font-semibold text-red-700">
-                    Etes-vous certain ? Cette action est irreversible.
+                    Êtes-vous certain ? Cette action est irréversible.
                   </p>
                   <div className="flex gap-3">
                     <button
@@ -163,11 +163,11 @@ export default function MesDonneesPage() {
           {/* Serveur */}
           <section className="mb-8">
             <h2 className="mb-3 text-lg font-semibold text-[var(--bleu-marine)]">
-              Donnees serveur
+              Données serveur
             </h2>
             <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4 text-sm text-gray-700">
               <p>
-                Si vous avez soumis un formulaire, vos donnees de contact peuvent etre stockees
+                Si vous avez soumis un formulaire, vos données de contact peuvent être stockées
                 sur nos serveurs. Pour demander leur suppression :
               </p>
               <p className="mt-2">
@@ -179,7 +179,7 @@ export default function MesDonneesPage() {
                 </a>
               </p>
               <p className="mt-2 text-xs text-gray-500">
-                Nous traitons les demandes de suppression sous 30 jours, conformement au RGPD.
+                Nous traitons les demandes de suppression sous 30 jours, conformément au RGPD.
               </p>
             </div>
           </section>
@@ -187,7 +187,7 @@ export default function MesDonneesPage() {
           <p className="text-xs text-gray-400">
             En savoir plus :{" "}
             <a href="/mentions-legales" className="text-[var(--bleu-secondaire)] underline hover:opacity-80">
-              Politique de confidentialite
+              Politique de confidentialité
             </a>
           </p>
         </>

@@ -10,27 +10,27 @@ const TYPES_PRO = [
   "Diagnostiqueur",
   "Assureur (emprunteur/MRH)",
   "Notaire",
-  "Demenageur",
+  "Déménageur",
   "Autre",
 ] as const;
 
 const ETAPES_COMMENT_CA_MARCHE = [
-  { numero: "1", titre: "L'acheteur utilise nos outils gratuits", detail: "Calculateur credit, PTZ, frais de notaire, parcours en 10 etapes, alertes DPE..." },
-  { numero: "2", titre: "Il accepte d'etre mis en relation", detail: "Consentement explicite RGPD — l'acheteur choisit de partager ses coordonnees." },
-  { numero: "3", titre: "Vous recevez le lead avec son projet", detail: "Budget, zone, etape du parcours, contact — un lead qualifie, pret a etre rappele." },
+  { numero: "1", titre: "L'acheteur utilise nos outils gratuits", detail: "Calculateur crédit, PTZ, frais de notaire, parcours en 10 étapes, alertes DPE..." },
+  { numero: "2", titre: "Il accepte d'être mis en relation", detail: "Consentement explicite RGPD — l'acheteur choisit de partager ses coordonnées." },
+  { numero: "3", titre: "Vous recevez le lead avec son projet", detail: "Budget, zone, étape du parcours, contact — un lead qualifié, prêt à être rappelé." },
 ] as const;
 
 const KPIS = [
   { valeur: "750 000", label: "Primo-accedants / an en France" },
-  { valeur: "10 etapes", label: "Parcours complet couvert" },
-  { valeur: "12 categories", label: "De professionnels concernes" },
-  { valeur: "Lead qualifie", label: "Budget + zone + etape + consent" },
+  { valeur: "10 étapes", label: "Parcours complet couvert" },
+  { valeur: "12 catégories", label: "De professionnels concernés" },
+  { valeur: "Lead qualifié", label: "Budget + zone + étape + consent" },
 ] as const;
 
 const TIERS = [
-  { nom: "Starter", prix: "49", leads: "5", visibilite: "Annuaire", zone: "1 departement", stats: "Basiques", popular: false },
-  { nom: "Business", prix: "199", leads: "20", visibilite: "Annuaire + badge", zone: "3 departements", stats: "Detaillees", popular: true },
-  { nom: "Premium", prix: "499", leads: "Illimite", visibilite: "Priorite + badge", zone: "National", stats: "Temps reel", popular: false },
+  { nom: "Starter", prix: "49", leads: "5", visibilite: "Annuaire", zone: "1 département", stats: "Basiques", popular: false },
+  { nom: "Business", prix: "199", leads: "20", visibilite: "Annuaire + badge", zone: "3 départements", stats: "Détaillées", popular: true },
+  { nom: "Premium", prix: "499", leads: "Illimité", visibilite: "Priorité + badge", zone: "National", stats: "Temps réel", popular: false },
 ] as const;
 
 export default function ProPage() {
@@ -64,11 +64,11 @@ export default function ProPage() {
             Espace Professionnels
           </p>
           <h1 className="mb-5 text-3xl font-extrabold text-white md:text-4xl">
-            Recevez des leads qualifies<br />
+            Recevez des leads qualifiés<br />
             <span className="bg-gradient-to-r from-[#ff6b6b] to-[#ee5a24] bg-clip-text text-transparent">dans votre zone</span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-blue-200/70">
-            ImmoPilot guide les primo-accedants de A a Z. Quand ils cherchent un courtier,
+            ImmoPilot guide les primo-accédants de A à Z. Quand ils cherchent un courtier,
             un diagnostiqueur ou un assureur — on vous les envoie.
           </p>
         </div>
@@ -91,7 +91,7 @@ export default function ProPage() {
       {/* Comment ca marche */}
       <section className="bg-white py-14">
         <div className="mx-auto max-w-4xl px-4">
-          <h2 className="mb-8 text-center text-2xl font-extrabold text-[var(--bleu-marine)]">Comment ca marche</h2>
+          <h2 className="mb-8 text-center text-2xl font-extrabold text-[var(--bleu-marine)]">Comment ça marche</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {ETAPES_COMMENT_CA_MARCHE.map((e) => (
               <div key={e.numero} className="text-center">
@@ -143,8 +143,8 @@ export default function ProPage() {
       {/* Formulaire d'interet */}
       <section className="bg-white py-14">
         <div className="mx-auto max-w-xl px-4">
-          <h2 className="mb-2 text-center text-2xl font-extrabold text-[var(--bleu-marine)]">Interessé ?</h2>
-          <p className="mb-8 text-center text-sm text-gray-500">Laissez vos coordonnees — on vous recontacte sous 48h.</p>
+          <h2 className="mb-2 text-center text-2xl font-extrabold text-[var(--bleu-marine)]">Intéressé ?</h2>
+          <p className="mb-8 text-center text-sm text-gray-500">Laissez vos coordonnées — on vous recontacte sous 48h.</p>
 
           {submitted ? (
             <div className="rounded-2xl border border-green-300 bg-green-50 p-8 text-center">
@@ -169,7 +169,7 @@ export default function ProPage() {
                   <input type="email" className={inputCls} value={form.email} onChange={(e) => updateField("email", e.target.value)} required />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Telephone</label>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">Téléphone</label>
                   <input type="tel" className={inputCls} value={form.telephone} onChange={(e) => updateField("telephone", e.target.value)} />
                 </div>
               </div>
@@ -177,14 +177,14 @@ export default function ProPage() {
                 <div>
                   <label className="mb-1 block text-sm font-medium text-gray-700">Type de professionnel *</label>
                   <select className={inputCls} value={form.type_pro} onChange={(e) => updateField("type_pro", e.target.value)} required>
-                    <option value="">Selectionnez...</option>
+                    <option value="">Sélectionnez...</option>
                     {TYPES_PRO.map((t) => (
                       <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm font-medium text-gray-700">Departement</label>
+                  <label className="mb-1 block text-sm font-medium text-gray-700">Département</label>
                   <input className={inputCls} value={form.departement} onChange={(e) => updateField("departement", e.target.value)} placeholder="Ex. 69, 75, 13" />
                 </div>
               </div>
@@ -192,10 +192,10 @@ export default function ProPage() {
                 type="submit"
                 className="w-full rounded-xl bg-[var(--rouge-fr)] px-6 py-3 text-base font-bold text-white shadow hover:opacity-90 transition"
               >
-                Recevoir les details
+                Recevoir les détails
               </button>
               <p className="text-center text-[10px] text-gray-400">
-                Vos donnees sont stockees localement et ne sont pas partagees sans votre accord.
+                Vos données sont stockées localement et ne sont pas partagées sans votre accord.
               </p>
             </form>
           )}

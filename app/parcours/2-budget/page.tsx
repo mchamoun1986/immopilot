@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { StepLayout } from "@/components/parcours/step-layout";
 import type { TipData } from "@/components/parcours/step-layout";
-import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, saveProjet, saveProjetDebounced, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { calculerMensualite } from "@/lib/calculateurs/credit";
 import { calculerEndettement } from "@/lib/calculateurs/endettement";
@@ -20,9 +20,9 @@ import { TAUX_MARCHE, DISCLAIMER_TAUX } from "@/lib/data/credit-rules";
 const TIPS = getTipsForEtape(2);
 
 const CHECKLIST = [
-  "J'ai calcule ma capacite d'emprunt",
-  "J'ai verifie mon eligibilite PTZ",
-  "J'ai defini mon budget total (prix + frais + travaux)",
+  "J'ai calculé ma capacité d'emprunt",
+  "J'ai vérifié mon éligibilité PTZ",
+  "J'ai défini mon budget total (prix + frais + travaux)",
   "J'ai pris contact avec un courtier",
 ];
 
@@ -31,7 +31,7 @@ type ZonePTZ = (typeof ZONES_PTZ)[number];
 
 // ─── Section : Simulateur credit ────────────────────────────────────────────
 
-function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (p: ProjetImmobilier) => void }) {
+function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (fields: Partial<ProjetImmobilier>) => void }) {
   const [montant, setMontant] = useState(projet.budget_max || 200000);
   const [taux, setTaux] = useState(3.5);
   const [duree, setDuree] = useState(projet.duree_souhaitee || 20);
@@ -40,14 +40,13 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
 
   // Persist capacite_emprunt when montant changes
   useEffect(() => {
-    const updated = { ...projet, capacite_emprunt: montant, duree_souhaitee: duree };
-    onUpdate(updated);
+    onUpdate({ capacite_emprunt: montant, duree_souhaitee: duree });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [montant, duree]);
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Simulateur de credit</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Simulateur de crédit</h2>
       <p className="mb-4 text-xs text-gray-500">
         Formule : M = P &times; r &times; (1+r)&sup;n / ((1+r)&sup;n - 1)
       </p>
@@ -56,7 +55,7 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
         {/* Montant */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="sim-montant">
-            Montant emprunte (EUR)
+            Montant emprunté (EUR)
           </label>
           <input
             id="sim-montant"
@@ -88,7 +87,7 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
         {/* Duree */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="sim-duree">
-            Duree (annees)
+            Durée (années)
           </label>
           <input
             id="sim-duree"
@@ -105,15 +104,15 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
       {montant > 0 && (
         <div className="mt-4 grid grid-cols-3 gap-3">
           <div className="rounded-lg bg-[var(--gris-clair)] p-3 text-center">
-            <p className="text-xs text-gray-500">Mensualite</p>
+            <p className="text-xs text-gray-500">Mensualité</p>
             <p className="mt-1 text-lg font-bold text-[var(--bleu-marine)]">{fmt(result.mensualite)} EUR</p>
           </div>
           <div className="rounded-lg bg-[var(--gris-clair)] p-3 text-center">
-            <p className="text-xs text-gray-500">Cout total</p>
+            <p className="text-xs text-gray-500">Coût total</p>
             <p className="mt-1 text-lg font-bold text-[var(--bleu-marine)]">{fmt(result.cout_total)} EUR</p>
           </div>
           <div className="rounded-lg bg-[var(--gris-clair)] p-3 text-center">
-            <p className="text-xs text-gray-500">Cout interets</p>
+            <p className="text-xs text-gray-500">Coût intérêts</p>
             <p className="mt-1 text-lg font-bold text-orange-600">{fmt(result.cout_interets)} EUR</p>
           </div>
         </div>
@@ -124,7 +123,7 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
 
 // ─── Section : Taux endettement ─────────────────────────────────────────────
 
-function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (p: ProjetImmobilier) => void }) {
+function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (fields: Partial<ProjetImmobilier>) => void }) {
   const revenus = projet.revenus_net + (projet.revenus_conjoint ?? 0);
   const [charges, setCharges] = useState(projet.charges_fixes || 0);
   const [taux, setTaux] = useState(3.5);
@@ -137,8 +136,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
 
   // Persist taux_endettement
   useEffect(() => {
-    const updated = { ...projet, taux_endettement: result.taux, charges_fixes: charges };
-    onUpdate(updated);
+    onUpdate({ taux_endettement: result.taux, charges_fixes: charges });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charges, taux, duree]);
 
@@ -146,7 +144,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
       <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Taux d&apos;endettement</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Regle HCSF : maximum 35% des revenus nets mensuels
+        Règle HCSF : maximum 35% des revenus nets mensuels
       </p>
 
       <div className="grid gap-4 sm:grid-cols-3">
@@ -156,7 +154,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
             Revenus nets mensuels
           </label>
           <div className="rounded border border-[var(--gris-border)] bg-gray-50 px-3 py-1.5 text-sm text-gray-500">
-            {fmt(revenus)} EUR <span className="text-xs">(depuis etape 1)</span>
+            {fmt(revenus)} EUR <span className="text-xs">(depuis étape 1)</span>
           </div>
         </div>
 
@@ -178,7 +176,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
         {/* Taux */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="endet-taux">
-            Taux credit (%)
+            Taux crédit (%)
           </label>
           <input
             id="endet-taux"
@@ -224,7 +222,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
                   isConform ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
                 }`}
               >
-                {isConform ? "Conforme HCSF" : "Depasse le plafond HCSF"}
+                {isConform ? "Conforme HCSF" : "Dépasse le plafond HCSF"}
               </span>
             </div>
           </div>
@@ -232,7 +230,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
           {/* Key figures */}
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-lg bg-[var(--gris-clair)] p-3">
-              <p className="text-xs text-gray-500">Mensualite max autorisee</p>
+              <p className="text-xs text-gray-500">Mensualité max autorisée</p>
               <p className="mt-1 text-lg font-bold text-[var(--bleu-marine)]">{fmt(result.mensualite_max)} EUR</p>
             </div>
             <div className="rounded-lg bg-[var(--gris-clair)] p-3">
@@ -248,7 +246,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
 
 // ─── Section : Eligibilite PTZ ───────────────────────────────────────────────
 
-function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (p: ProjetImmobilier) => void }) {
+function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (fields: Partial<ProjetImmobilier>) => void }) {
   const revenus = projet.revenus_net + (projet.revenus_conjoint ?? 0);
   const [zone, setZone] = useState<ZonePTZ>("B1");
   // Revenu fiscal ≈ revenu net annuel * 0.9 (approximation)
@@ -261,27 +259,22 @@ function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpda
 
   // Persist PTZ result
   useEffect(() => {
-    const updated = {
-      ...projet,
-      eligible_ptz: result.eligible,
-      montant_ptz: result.eligible ? result.montant : 0,
-    };
-    onUpdate(updated);
+    onUpdate({ eligible_ptz: result.eligible, montant_ptz: result.eligible ? result.montant : 0 });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [zone, revenuFiscal, taille_foyer, cout_op]);
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Eligibilite au PTZ</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Éligibilité au PTZ</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Pret a Taux Zero — reserve aux primo-accedants sous conditions de ressources (baremes 2024)
+        Prêt à Taux Zéro — réservé aux primo-accédants sous conditions de ressources (barèmes 2026)
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Zone */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="ptz-zone">
-            Zone geographique
+            Zone géographique
           </label>
           <select
             id="ptz-zone"
@@ -316,7 +309,7 @@ function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpda
         {/* Revenu fiscal */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="ptz-rfr">
-            Revenu fiscal de reference (N-2) — EUR/an
+            Revenu fiscal de référence (N-2) — EUR/an
           </label>
           <input
             id="ptz-rfr"
@@ -361,7 +354,7 @@ function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpda
                   : "bg-red-500 text-white"
               }`}
             >
-              {result.eligible ? "Eligible PTZ" : "Non eligible"}
+              {result.eligible ? "Éligible PTZ" : "Non éligible"}
             </span>
           </div>
 
@@ -372,11 +365,11 @@ function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpda
                 <p className="font-bold text-green-700">{fmt(result.montant)} EUR</p>
               </div>
               <div>
-                <p className="text-xs text-gray-500">Duree differee</p>
+                <p className="text-xs text-gray-500">Durée différée</p>
                 <p className="font-bold text-[var(--bleu-marine)]">{result.duree_differee} ans</p>
               </div>
               <div>
-                <p className="text-xs text-gray-500">Duree remboursement</p>
+                <p className="text-xs text-gray-500">Durée remboursement</p>
                 <p className="font-bold text-[var(--bleu-marine)]">{result.duree_remboursement} ans</p>
               </div>
             </div>
@@ -403,9 +396,9 @@ function BudgetTotal({ projet }: { projet: ProjetImmobilier }) {
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Budget total reel</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Budget total réel</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Estimation complete : prix + frais de notaire + travaux eventuels
+        Estimation complète : prix + frais de notaire + travaux éventuels
       </p>
 
       <div className="space-y-2">
@@ -426,7 +419,7 @@ function BudgetTotal({ projet }: { projet: ProjetImmobilier }) {
 
         {/* Travaux */}
         <div className="flex items-center justify-between rounded bg-[var(--gris-clair)] px-3 py-2 text-sm">
-          <span className="text-gray-600">Travaux estimes</span>
+          <span className="text-gray-600">Travaux estimés</span>
           <div className="flex items-center gap-2">
             <input
               type="number"
@@ -479,9 +472,9 @@ function BudgetTotal({ projet }: { projet: ProjetImmobilier }) {
           }`}
         >
           {is_ok ? (
-            <>Votre projet est financable — excedent de {fmt(delta)} EUR</>
+            <>Votre projet est finançable — excédent de {fmt(delta)} EUR</>
           ) : (
-            <>Attention : depassement de {fmt(Math.abs(delta))} EUR par rapport a votre financement</>
+            <>Attention : dépassement de {fmt(Math.abs(delta))} EUR par rapport à votre financement</>
           )}
         </div>
       )}
@@ -489,22 +482,22 @@ function BudgetTotal({ projet }: { projet: ProjetImmobilier }) {
       {/* Detail frais notaire */}
       {prix_bien > 0 && (
         <details className="mt-3 text-xs text-gray-500">
-          <summary className="cursor-pointer hover:text-gray-700">Detail des frais de notaire</summary>
+          <summary className="cursor-pointer hover:text-gray-700">Détail des frais de notaire</summary>
           <div className="mt-2 space-y-1 rounded bg-gray-50 p-3">
             <div className="flex justify-between">
               <span>Droits de mutation</span>
               <span>{fmt(fraisNotaire.droits_mutation)} EUR</span>
             </div>
             <div className="flex justify-between">
-              <span>Emoluments notaire</span>
+              <span>Émoluments notaire</span>
               <span>{fmt(fraisNotaire.emoluments)} EUR</span>
             </div>
             <div className="flex justify-between">
-              <span>Debours forfaitaires</span>
+              <span>Débours forfaitaires</span>
               <span>{fmt(fraisNotaire.debours)} EUR</span>
             </div>
             <div className="flex justify-between">
-              <span>Contribution securite immobiliere</span>
+              <span>Contribution sécurité immobilière</span>
               <span>{fmt(fraisNotaire.contribution_securite)} EUR</span>
             </div>
           </div>
@@ -528,9 +521,9 @@ function GateLead() {
       <div className="rounded-lg border border-[var(--bleu-secondaire)] bg-white p-5">
         <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
           <div className="flex-1">
-            <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation detaillee par email</p>
+            <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation détaillée par email</p>
             <p className="mt-1 text-sm text-gray-600">
-              Un recap PDF personnalise : capacite d&apos;emprunt, PTZ, budget total, conseils adaptes a votre profil.
+              Un récap PDF personnalisé : capacité d&apos;emprunt, PTZ, budget total, conseils adaptés à votre profil.
             </p>
           </div>
           <button
@@ -547,8 +540,8 @@ function GateLead() {
         onClose={() => setShowModal(false)}
         source="simulation"
         etape={2}
-        titre="Recevez votre simulation detaillee"
-        description="Un recap PDF personnalise : capacite d'emprunt, PTZ, budget total, conseils adaptes a votre profil."
+        titre="Recevez votre simulation détaillée"
+        description="Un récap PDF personnalisé : capacité d'emprunt, PTZ, budget total, conseils adaptés à votre profil."
         showPhone={false}
         showConsent={false}
         onSubmit={handleLeadSubmit}
@@ -569,10 +562,14 @@ export default function EtapeCapacitePage() {
     setLoaded(true);
   }, []);
 
-  const handleUpdate = useCallback(
-    (updated: ProjetImmobilier) => {
-      setProjet(updated);
-      saveProjet(updated);
+  const handleFieldUpdate = useCallback(
+    (fields: Partial<ProjetImmobilier>) => {
+      setProjet((prev) => {
+        if (!prev) return prev;
+        const next = { ...prev, ...fields };
+        saveProjetDebounced(next);
+        return next;
+      });
     },
     []
   );
@@ -587,23 +584,23 @@ export default function EtapeCapacitePage() {
 
   const tools = (
     <div className="space-y-5">
-      <SimulateurCredit projet={projet} onUpdate={handleUpdate} />
-      <TauxEndettement projet={projet} onUpdate={handleUpdate} />
-      <EligibilitePTZ projet={projet} onUpdate={handleUpdate} />
+      <SimulateurCredit projet={projet} onUpdate={handleFieldUpdate} />
+      <TauxEndettement projet={projet} onUpdate={handleFieldUpdate} />
+      <EligibilitePTZ projet={projet} onUpdate={handleFieldUpdate} />
       <BudgetTotal projet={projet} />
       <GateLead />
 
       {/* Taux du marche — source: lib/data/credit-rules.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Taux du marche</h2>
+        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Taux du marché</h2>
         <p className="mb-4 text-xs text-gray-500">
-          Taux indicatifs credit immobilier — mis a jour le {TAUX_MARCHE[0].date_maj}
+          Taux indicatifs crédit immobilier — mis à jour le {TAUX_MARCHE[0].date_maj}
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[var(--gris-border)] text-left text-xs text-gray-500">
-                <th className="pb-2 pr-3">Duree</th>
+                <th className="pb-2 pr-3">Durée</th>
                 <th className="pb-2 pr-3">Moyen</th>
                 <th className="pb-2 pr-3">Bon dossier</th>
                 <th className="pb-2">Excellent</th>
@@ -633,7 +630,7 @@ export default function EtapeCapacitePage() {
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
         <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Aides disponibles</h2>
         <p className="mb-4 text-xs text-gray-500">
-          Prets aides et dispositifs d&apos;accession a la propriete en France
+          Prêts aidés et dispositifs d&apos;accession à la propriété en France
         </p>
         <div className="space-y-3">
           {AIDES_ACHAT.filter((a) => a.actif).map((aide) => (
@@ -670,7 +667,7 @@ export default function EtapeCapacitePage() {
                   <p className="mt-2 text-xs text-green-600 font-medium">Cumulable avec le PTZ</p>
                 )}
                 {aide.duree_max_annees && (
-                  <p className="mt-1 text-xs text-gray-400">Duree max : {aide.duree_max_annees} ans</p>
+                  <p className="mt-1 text-xs text-gray-400">Durée max : {aide.duree_max_annees} ans</p>
                 )}
               </div>
             </details>
@@ -685,8 +682,8 @@ export default function EtapeCapacitePage() {
       etape={2}
       guide={
         <p>
-          La regle HCSF impose un taux d&apos;endettement maximum de 35%. Les banques regardent aussi
-          votre reste a vivre et votre stabilite professionnelle.
+          La règle HCSF impose un taux d&apos;endettement maximum de 35%. Les banques regardent aussi
+          votre reste à vivre et votre stabilité professionnelle.
         </p>
       }
       outils={tools}

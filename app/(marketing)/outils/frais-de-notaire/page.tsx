@@ -53,13 +53,13 @@ export default function FraisNotairePage() {
           Calculateur frais de notaire
         </h1>
         <p className="text-gray-600">
-          Estimez les frais de notaire pour un bien ancien ou neuf avec le detail complet.
+          Estimez les frais de notaire pour un bien ancien ou neuf avec le détail complet.
         </p>
       </div>
 
       {/* Calculator card */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-6 shadow-sm">
-        <h2 className="mb-5 font-semibold text-[var(--bleu-marine)]">Vos parametres</h2>
+        <h2 className="mb-5 font-semibold text-[var(--bleu-marine)]">Vos paramètres</h2>
 
         <div className="grid gap-5 sm:grid-cols-2">
           {/* Prix */}
@@ -95,8 +95,8 @@ export default function FraisNotairePage() {
               onChange={(e) => setType(e.target.value as "ancien" | "neuf")}
               className="w-full rounded-lg border border-[var(--gris-border)] px-3 py-2 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
             >
-              <option value="ancien">Bien ancien (7 a 8% de frais)</option>
-              <option value="neuf">Bien neuf / VEFA (2 a 3% de frais)</option>
+              <option value="ancien">Bien ancien (7 à 8% de frais)</option>
+              <option value="neuf">Bien neuf / VEFA (2 à 3% de frais)</option>
             </select>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function FraisNotairePage() {
           <>
             {/* Total highlight */}
             <div className="mt-6 rounded-lg bg-[var(--bleu-marine)] p-5 text-center text-white">
-              <p className="text-sm opacity-80">Frais de notaire estimes</p>
+              <p className="text-sm opacity-80">Frais de notaire estimés</p>
               <p className="mt-1 text-4xl font-extrabold">{fmt(result.total)} EUR</p>
               <p className="mt-1 text-sm opacity-70">soit {fmtPctDetailed(tauxTotal)} du prix de vente</p>
             </div>
@@ -114,7 +114,7 @@ export default function FraisNotairePage() {
             {/* Detail */}
             <div className="mt-5 space-y-2">
               <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">
-                Detail
+                Détail
               </p>
               <div className="flex justify-between rounded-lg bg-[var(--gris-clair)] px-4 py-3 text-sm">
                 <span className="text-gray-600">
@@ -126,15 +126,15 @@ export default function FraisNotairePage() {
                 <span className="font-semibold">{fmt(result.droits_mutation)} EUR</span>
               </div>
               <div className="flex justify-between rounded-lg bg-[var(--gris-clair)] px-4 py-3 text-sm">
-                <span className="text-gray-600">Emoluments du notaire</span>
+                <span className="text-gray-600">Émoluments du notaire</span>
                 <span className="font-semibold">{fmt(result.emoluments)} EUR</span>
               </div>
               <div className="flex justify-between rounded-lg bg-[var(--gris-clair)] px-4 py-3 text-sm">
-                <span className="text-gray-600">Debours forfaitaires</span>
+                <span className="text-gray-600">Débours forfaitaires</span>
                 <span className="font-semibold">{fmt(result.debours)} EUR</span>
               </div>
               <div className="flex justify-between rounded-lg bg-[var(--gris-clair)] px-4 py-3 text-sm">
-                <span className="text-gray-600">Contribution de securite immobiliere</span>
+                <span className="text-gray-600">Contribution de sécurité immobilière</span>
                 <span className="font-semibold">{fmt(result.contribution_securite)} EUR</span>
               </div>
               <div className="flex justify-between rounded-lg border border-[var(--bleu-marine)] bg-[var(--bleu-marine)] px-4 py-3 text-sm font-bold text-white">
@@ -145,15 +145,15 @@ export default function FraisNotairePage() {
 
             <p className="mt-3 text-center text-xs text-gray-400">
               Estimation indicative. Les montants exacts peuvent varier selon la commune et les
-              specificites du dossier.
+              spécificités du dossier.
             </p>
 
             {/* Lead capture */}
             <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="font-semibold text-[var(--bleu-marine)]">Recevez le detail de vos frais par email</p>
-                  <p className="mt-1 text-sm text-gray-600">Ventilation complete des frais de notaire envoyee par email.</p>
+                  <p className="font-semibold text-[var(--bleu-marine)]">Recevez le détail de vos frais par email</p>
+                  <p className="mt-1 text-sm text-gray-600">Ventilation complète des frais de notaire envoyée par email.</p>
                 </div>
                 <button
                   onClick={() => setShowLeadModal(true)}
@@ -173,21 +173,21 @@ export default function FraisNotairePage() {
           Vous souhaitez aller plus loin ?
         </p>
         <p className="mb-4 text-sm text-gray-600">
-          Notre parcours complet integre les frais de notaire dans le calcul de votre budget total
+          Notre parcours complet intègre les frais de notaire dans le calcul de votre budget total
           et vous guide jusqu&apos;a la signature.
         </p>
         <Link
           href="/parcours"
           className="inline-block rounded-lg bg-[var(--rouge-francais)] px-7 py-2.5 text-sm font-semibold text-white hover:opacity-90"
         >
-          Demarrer mon parcours
+          Démarrer mon parcours
         </Link>
       </div>
 
       {/* FAQ */}
       <div className="mt-12">
         <h2 className="mb-6 text-2xl font-extrabold text-[var(--bleu-marine)]">
-          Questions frequentes
+          Questions fréquentes
         </h2>
         <div className="space-y-5">
           {FAQ.map((item) => (
@@ -207,8 +207,8 @@ export default function FraisNotairePage() {
         onClose={() => setShowLeadModal(false)}
         source="simulation"
         etape={9}
-        titre="Recevez le detail de vos frais de notaire"
-        description="Ventilation complete : droits de mutation, emoluments, debours, contribution."
+        titre="Recevez le détail de vos frais de notaire"
+        description="Ventilation complète : droits de mutation, émoluments, débours, contribution."
         showPhone={false}
         showConsent={false}
         onSubmit={() => {}}

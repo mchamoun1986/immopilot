@@ -16,7 +16,7 @@ interface AlertCardProps {
 export function AlertCard({ severity, title, detail }: AlertCardProps) {
   const s = SEVERITY_STYLES[severity];
   return (
-    <div className={`border-l-3 rounded-r-xl p-3 ${s.border} ${s.bg}`}>
+    <div className={`border-l-4 rounded-r-xl p-3 ${s.border} ${s.bg}`}>
       <div className="flex items-start gap-2">
         <span className="flex-shrink-0">{s.icon}</span>
         <div>

@@ -222,7 +222,7 @@ const banques: ActeurImmobilier[] = [
     categorie: "banque",
     description:
       "Grande banque universelle française offrant des prêts immobiliers, assurances et services bancaires à travers un vaste réseau d'agences.",
-    site_web: "https://mabanque.bnpparibas",
+    site_web: "https://mabanque.bnpparibas.com",
     logo_url: "https://group.bnpparibas/uploads/2020/10/logo-bnp-paribas-1.svg",
     couverture: "nationale",
     etapes_pertinentes: [2, 3],

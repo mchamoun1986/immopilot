@@ -4,36 +4,36 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Outils gratuits pour votre achat immobilier 2026 | ImmoPilot",
   description:
-    "Simulateur de credit immobilier, calculateur de frais de notaire, eligibilite PTZ — tous les outils gratuits pour preparer votre premier achat.",
+    "Simulateur de crédit immobilier, calculateur de frais de notaire, éligibilité PTZ — tous les outils gratuits pour préparer votre premier achat.",
 };
 
 const OUTILS = [
   {
-    titre: "Simulateur de credit immobilier",
+    titre: "Simulateur de crédit immobilier",
     description:
-      "Calculez vos mensualites, le cout total et le cout des interets. Simulez differentes durees et taux en temps reel.",
+      "Calculez vos mensualités, le coût total et le coût des intérêts. Simulez différentes durées et taux en temps réel.",
     href: "/outils/simulateur-credit-immobilier",
-    tag: "Credit",
+    tag: "Crédit",
     tagColor: "bg-blue-100 text-blue-800",
-    cta: "Simuler mon credit",
+    cta: "Simuler mon crédit",
   },
   {
     titre: "Calculateur frais de notaire",
     description:
-      "Estimez les frais de notaire pour un bien ancien ou neuf avec le detail complet : droits de mutation, emoluments, debours.",
+      "Estimez les frais de notaire pour un bien ancien ou neuf avec le détail complet : droits de mutation, émoluments, débours.",
     href: "/outils/frais-de-notaire",
     tag: "Notaire",
     tagColor: "bg-amber-100 text-amber-800",
     cta: "Calculer les frais",
   },
   {
-    titre: "Eligibilite PTZ 2026",
+    titre: "Éligibilité PTZ 2026",
     description:
-      "Verifiez si vous etes eligible au Pret a Taux Zero. Renseignez votre zone, revenus et taille de foyer pour obtenir le montant estimatif.",
+      "Vérifiez si vous êtes éligible au Prêt à Taux Zéro. Renseignez votre zone, revenus et taille de foyer pour obtenir le montant estimatif.",
     href: "/outils/eligibilite-ptz",
     tag: "PTZ",
     tagColor: "bg-green-100 text-green-800",
-    cta: "Verifier mon PTZ",
+    cta: "Vérifier mon PTZ",
   },
 ] as const;
 
@@ -50,7 +50,7 @@ export default function OutilsIndexPage() {
         </h1>
         <p className="mx-auto max-w-xl text-lg text-gray-600">
           Tous les simulateurs et calculateurs pour estimer votre projet, votre financement et vos
-          couts avant de vous lancer.
+          coûts avant de vous lancer.
         </p>
       </div>
 
@@ -84,14 +84,14 @@ export default function OutilsIndexPage() {
           Vous souhaitez aller plus loin ?
         </h2>
         <p className="mb-5 text-gray-600">
-          Suivez notre parcours complet en 10 etapes — de la definition de votre projet jusqu&apos;a
+          Suivez notre parcours complet en 10 étapes — de la définition de votre projet jusqu&apos;à
           la signature chez le notaire.
         </p>
         <Link
           href="/parcours"
           className="inline-block rounded-lg bg-[var(--bleu-secondaire)] px-8 py-3 text-sm font-semibold text-white hover:opacity-90"
         >
-          Decouvrir le parcours complet
+          Découvrir le parcours complet
         </Link>
       </div>
     </div>

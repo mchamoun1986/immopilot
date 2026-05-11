@@ -20,14 +20,14 @@ export const CERTIFICATS_URBANISME: CertificatUrbanisme[] = [
     type: "CUa",
     nom: "Certificat d'urbanisme d'information",
     validite_mois: 18,
-    description: "Indique les regles d'urbanisme applicables, les taxes et les servitudes d'utilite publique",
+    description: "Indique les règles d'urbanisme applicables, les taxes et les servitudes d'utilité publique",
     delai_instruction_mois: 1,
   },
   {
     type: "CUb",
     nom: "Certificat d'urbanisme operationnel",
     validite_mois: 18,
-    description: "Indique si le terrain peut etre utilise pour un projet precis et l'etat des voiries/reseaux",
+    description: "Indique si le terrain peut être utilisé pour un projet précis et l'état des voiries/réseaux",
     delai_instruction_mois: 2,
   },
 ];
@@ -54,10 +54,10 @@ export interface RegleUrbanisme {
 }
 
 export const REGLES_URBANISME: RegleUrbanisme[] = [
-  { nom: "PLU", description: "Plan Local d'Urbanisme — zonage, regles de construction (hauteur, emprise, recul)", ou_consulter: "Mairie ou geoportail-urbanisme.gouv.fr" },
-  { nom: "Servitudes", description: "Droits de passage, vue, mitoyennete, servitudes d'utilite publique", ou_consulter: "Certificat d'urbanisme, notaire" },
-  { nom: "Cadastre", description: "Decoupage parcellaire, surfaces, limites de propriete", ou_consulter: "cadastre.gouv.fr" },
-  { nom: "Zones protegees", description: "ABF (Architectes des Batiments de France), sites classes, AVAP", ou_consulter: "Mairie, DRAC" },
+  { nom: "PLU", description: "Plan Local d'Urbanisme — zonage, règles de construction (hauteur, emprise, recul)", ou_consulter: "Mairie ou geoportail-urbanisme.gouv.fr" },
+  { nom: "Servitudes", description: "Droits de passage, vue, mitoyenneté, servitudes d'utilité publique", ou_consulter: "Certificat d'urbanisme, notaire" },
+  { nom: "Cadastre", description: "Découpage parcellaire, surfaces, limites de propriété", ou_consulter: "cadastre.gouv.fr" },
+  { nom: "Zones protégées", description: "ABF (Architectes des Bâtiments de France), sites classés, AVAP", ou_consulter: "Mairie, DRAC" },
 ];
 
 /** Loi Huwart n°2025-1129 du 26/11/2025 — simplification urbanisme
@@ -70,27 +70,27 @@ export const LOI_HUWART_2025 = {
   entree_en_vigueur_plu: "2026-05-27",
   mesures_cles: [
     {
-      titre: "Suppression revision allegee et modification simplifiee PLU",
-      detail: "Ne subsistent plus que 2 procedures : revision generale (evolutions structurantes) et modification unique (procedure de droit commun). Entree en vigueur 27/05/2026.",
+      titre: "Suppression révision allégée et modification simplifiée PLU",
+      detail: "Ne subsistent plus que 2 procédures : révision générale (évolutions structurantes) et modification unique (procédure de droit commun). Entrée en vigueur 27/05/2026.",
     },
     {
-      titre: "Enquete publique non systematique",
-      detail: "Dans la procedure de modification, l'enquete publique peut etre remplacee par PPVE (participation public voie electronique) ou simple mise a disposition. Decision motivee de l'autorite.",
+      titre: "Enquête publique non systématique",
+      detail: "Dans la procédure de modification, l'enquête publique peut être remplacée par PPVE (participation public voie électronique) ou simple mise à disposition. Décision motivée de l'autorité.",
     },
     {
-      titre: "Derogations PLU elargies pour le logement",
-      detail: "Toutes les communes (plus seulement les zones tendues) peuvent desormais derroger aux regles PLU via L.152-6 code urb. (gabarit, densite, surelevation, stationnement, recul). Nouvelles derogations : logements en zones activite economique, logements etudiants, changement destination batiment agricole.",
+      titre: "Dérogations PLU élargies pour le logement",
+      detail: "Toutes les communes (plus seulement les zones tendues) peuvent désormais déroger aux règles PLU via L.152-6 code urb. (gabarit, densité, surélévation, stationnement, recul). Nouvelles dérogations : logements en zones activité économique, logements étudiants, changement destination bâtiment agricole.",
     },
     {
       titre: "Document unique SCOT + PLUi possible",
-      detail: "Les collectivites peuvent fusionner SCOT et PLUi si perimetre identique. Entree en vigueur 27/05/2026.",
+      detail: "Les collectivités peuvent fusionner SCOT et PLUi si périmètre identique. Entrée en vigueur 27/05/2026.",
     },
     {
-      titre: "Suppression caducite automatique des SCOT",
-      detail: "Delai analyse resultats SCOT passe de 6 a 10 ans.",
+      titre: "Suppression caducité automatique des SCOT",
+      detail: "Délai analyse résultats SCOT passe de 6 à 10 ans.",
     },
     {
-      titre: "Sanctions renforcees travaux irreguliers",
+      titre: "Sanctions renforcées travaux irréguliers",
       detail: "Amende mise en demeure jusqu'a 30 000€. Astreinte max: 25 000€ → 100 000€.",
     },
   ],

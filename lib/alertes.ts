@@ -6,8 +6,8 @@ export function buildProjectAlerts(projet: ProjetImmobilier): Alerte[] {
   if (projet.taux_endettement > 0.30) {
     alertes.push({
       type: "danger",
-      message: `Taux d'endettement eleve : ${(projet.taux_endettement * 100).toFixed(1)}%`,
-      detail: "Le plafond HCSF est de 35%. Au-dela, les banques refuseront le pret.",
+      message: `Taux d'endettement élevé : ${(projet.taux_endettement * 100).toFixed(1)}%`,
+      detail: "Le plafond HCSF est de 35%. Au-delà, les banques refuseront le prêt.",
       etape: 2 as EtapeNumber,
       severity: projet.taux_endettement > 0.35 ? "danger" : "warning",
       source_reglementaire: "HCSF",
@@ -21,31 +21,31 @@ export function buildProjectAlerts(projet: ProjetImmobilier): Alerte[] {
     if (dossier.dpe_energie === "G") {
       alertes.push({
         type: "danger",
-        message: `DPE G detecte sur ${label}`,
+        message: `DPE G détecté sur ${label}`,
         detail: "Passoire thermique — location interdite depuis 2025 (classe G).",
         etape: 5 as EtapeNumber,
         severity: "danger",
-        source_reglementaire: "Loi Climat et Resilience",
+        source_reglementaire: "Loi Climat et Résilience",
         date_effet: "2025-01-01",
       });
     } else if (dossier.dpe_energie === "F") {
       alertes.push({
         type: "danger",
-        message: `DPE F detecte sur ${label}`,
-        detail: "Interdiction de location a partir de 2028 (classe F).",
+        message: `DPE F détecté sur ${label}`,
+        detail: "Interdiction de location à partir de 2028 (classe F).",
         etape: 5 as EtapeNumber,
         severity: "danger",
-        source_reglementaire: "Loi Climat et Resilience",
+        source_reglementaire: "Loi Climat et Résilience",
         date_effet: "2028-01-01",
       });
     } else if (dossier.dpe_energie === "E") {
       alertes.push({
         type: "attention",
         message: `DPE E sur ${label} — gel des loyers`,
-        detail: "Interdiction de location prevue en 2034.",
+        detail: "Interdiction de location prévue en 2034.",
         etape: 5 as EtapeNumber,
         severity: "warning",
-        source_reglementaire: "Loi Climat et Resilience",
+        source_reglementaire: "Loi Climat et Résilience",
         date_effet: "2034-01-01",
       });
     }
@@ -55,7 +55,7 @@ export function buildProjectAlerts(projet: ProjetImmobilier): Alerte[] {
       if (ratio > 50) {
         alertes.push({
           type: "attention",
-          message: `Charges copro elevees sur ${label}`,
+          message: `Charges copro élevées sur ${label}`,
           detail: `${Math.round(dossier.charges_copro)} EUR/mois pour ${dossier.surface} m2.`,
           etape: 5 as EtapeNumber,
           severity: "warning",
@@ -69,7 +69,7 @@ export function buildProjectAlerts(projet: ProjetImmobilier): Alerte[] {
       alertes.push({
         type: "attention",
         message: `Bien ancien (avant 1949) — ${label}`,
-        detail: "Verifiez les diagnostics plomb et amiante obligatoires.",
+        detail: "Vérifiez les diagnostics plomb et amiante obligatoires.",
         etape: 5 as EtapeNumber,
         severity: "warning",
         source_reglementaire: null,

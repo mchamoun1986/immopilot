@@ -5,17 +5,17 @@ import { FranceMap } from "@/components/ui/france-map";
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const CHIFFRES_CLES = [
-  { valeur: "35%", label: "Taux d'endettement max", detail: "Regle HCSF depuis 2022" },
+  { valeur: "35%", label: "Taux d'endettement max", detail: "Règle HCSF depuis 2022" },
   { valeur: "7-8%", label: "Frais de notaire (ancien)", detail: "2-3% dans le neuf" },
-  { valeur: "180 000 EUR", label: "PTZ max en 2026", detail: "73% des Francais eligibles" },
-  { valeur: "12 000 EUR", label: "Economie assurance", detail: "Loi Lemoine — delegation" },
+  { valeur: "180 000 EUR", label: "PTZ max en 2026", detail: "73% des Français éligibles" },
+  { valeur: "12 000 EUR", label: "Économie assurance", detail: "Loi Lemoine — délégation" },
 ] as const;
 
 const QUESTIONS_FREQUENTES = [
   "Combien puis-je emprunter avec mon salaire ?",
-  "Suis-je eligible au PTZ 2026 ?",
-  "Combien coutent les frais de notaire ?",
-  "Comment negocier le prix d'un appartement ?",
+  "Suis-je éligible au PTZ 2026 ?",
+  "Combien coûtent les frais de notaire ?",
+  "Comment négocier le prix d'un appartement ?",
   "Quels diagnostics sont obligatoires ?",
   "Peut-on acheter sans apport ?",
 ] as const;
@@ -24,33 +24,33 @@ const PILIERS = [
   {
     icone: "📐",
     titre: "Calculez vos chiffres",
-    detail: "Credit, endettement, PTZ, frais de notaire — vos vrais chiffres en 30 secondes.",
+    detail: "Crédit, endettement, PTZ, frais de notaire — vos vrais chiffres en 30 secondes.",
     href: "/outils",
   },
   {
     icone: "🗺️",
     titre: "Suivez le parcours",
-    detail: "10 etapes de A a Z : du budget a la remise des cles. Rien n'est oublie.",
+    detail: "10 étapes de A à Z : du budget à la remise des clés. Rien n'est oublié.",
     href: "/parcours",
   },
   {
     icone: "⚠️",
-    titre: "Evitez les pieges",
-    detail: "Alertes DPE, clauses suspectes, delais legaux — on vous previent quand ca compte.",
+    titre: "Évitez les pièges",
+    detail: "Alertes DPE, clauses suspectes, délais légaux — on vous prévient quand ça compte.",
     href: "/parcours/4-recherche",
   },
 ] as const;
 
 const OUTILS = [
-  { titre: "Simulateur de credit", sousTitre: "Mensualites, cout total, interets", href: "/outils/simulateur-credit-immobilier", cta: "Simuler mon credit" },
-  { titre: "Frais de notaire", sousTitre: "Ancien ou neuf — detail complet", href: "/outils/frais-de-notaire", cta: "Calculer mes frais" },
-  { titre: "Eligibilite PTZ", sousTitre: "Zone, revenus, montant", href: "/outils/eligibilite-ptz", cta: "Verifier mon PTZ" },
+  { titre: "Simulateur de crédit", sousTitre: "Mensualités, coût total, intérêts", href: "/outils/simulateur-credit-immobilier", cta: "Simuler mon crédit" },
+  { titre: "Frais de notaire", sousTitre: "Ancien ou neuf — détail complet", href: "/outils/frais-de-notaire", cta: "Calculer mes frais" },
+  { titre: "Éligibilité PTZ", sousTitre: "Zone, revenus, montant", href: "/outils/eligibilite-ptz", cta: "Vérifier mon PTZ" },
 ] as const;
 
 const SOURCES = [
   { nom: "ANIL", role: "Agence Nationale d'Information sur le Logement" },
   { nom: "service-public.fr", role: "Portail officiel de l'administration" },
-  { nom: "notaires.fr", role: "Conseil superieur du notariat" },
+  { nom: "notaires.fr", role: "Conseil supérieur du notariat" },
   { nom: "LegiFrance", role: "Textes de loi en vigueur" },
 ] as const;
 
@@ -76,7 +76,7 @@ export default function HomePage() {
             <div className="max-w-xl flex-shrink-0">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2">
                 <span className="h-2 w-2 rounded-full bg-[var(--vert-succes)] animate-pulse" />
-                <span className="text-xs font-semibold text-white/70">Guide gratuit &middot; Mis a jour 2026</span>
+                <span className="text-xs font-semibold text-white/70">Guide gratuit &middot; Mis à jour 2026</span>
               </div>
 
               <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] text-white md:text-[3.2rem]">
@@ -85,9 +85,9 @@ export default function HomePage() {
                 <span className="bg-gradient-to-r from-[#ff6b6b] to-[#ee5a24] bg-clip-text text-transparent">sans rien louper.</span>
               </h1>
               <p className="mb-8 max-w-lg text-base leading-relaxed text-blue-200/70">
-                73% des Francais sont eligibles au PTZ sans le savoir. Calculez votre
-                capacite, verifiez vos aides, suivez les 10 etapes — de la simulation
-                a la remise des cles.
+                73% des Français sont éligibles au PTZ sans le savoir. Calculez votre
+                capacité, vérifiez vos aides, suivez les 10 étapes — de la simulation
+                à la remise des clés.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
@@ -101,13 +101,13 @@ export default function HomePage() {
                   href="/outils/simulateur-credit-immobilier"
                   className="rounded-xl border-2 border-white/25 px-7 py-3.5 text-sm font-semibold text-white/90 hover:bg-white hover:text-[var(--bleu-marine)] transition-all"
                 >
-                  Calculer ma capacite
+                  Calculer ma capacité
                 </Link>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-5 text-xs text-blue-300/50">
                 <span>&#10003; Aucun compte requis</span>
-                <span>&#10003; Donnees locales</span>
+                <span>&#10003; Données locales</span>
                 <span>&#10003; 100% gratuit</span>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function HomePage() {
                       <p className="text-lg font-extrabold text-white">250 000 &euro;</p>
                     </div>
                     <div className="rounded-xl bg-white/10 p-3">
-                      <p className="text-[10px] text-blue-300/60">Capacite</p>
+                      <p className="text-[10px] text-blue-300/60">Capacité</p>
                       <p className="text-lg font-extrabold text-[#60a5fa]">230 000 &euro;</p>
                     </div>
                     <div className="rounded-xl bg-white/10 p-3">
@@ -134,7 +134,7 @@ export default function HomePage() {
                       <p className="text-lg font-extrabold text-[var(--vert-succes)]">67 500 &euro;</p>
                     </div>
                     <div className="rounded-xl bg-white/10 p-3">
-                      <p className="text-[10px] text-blue-300/60">Mensualite</p>
+                      <p className="text-[10px] text-blue-300/60">Mensualité</p>
                       <p className="text-lg font-extrabold text-white">1 160 &euro;</p>
                     </div>
                   </div>
@@ -150,11 +150,11 @@ export default function HomePage() {
                       </div>
                     ))}
                   </div>
-                  <p className="mt-2 text-[10px] text-blue-300/50">Etape 3 sur 10 — Premier feu vert bancaire</p>
+                  <p className="mt-2 text-[10px] text-blue-300/50">Étape 3 sur 10 — Premier feu vert bancaire</p>
 
                   {/* Verdict badge */}
                   <div className="mt-3 rounded-lg bg-[var(--vert-succes)]/15 border border-[var(--vert-succes)]/20 px-3 py-2">
-                    <p className="text-xs font-semibold text-[var(--vert-succes)]">&#10003; Projet financable — excedent de 47 500 &euro;</p>
+                    <p className="text-xs font-semibold text-[var(--vert-succes)]">&#10003; Projet finançable — excédent de 47 500 &euro;</p>
                   </div>
                 </div>
 
@@ -163,8 +163,8 @@ export default function HomePage() {
                   <div className="flex items-center gap-2">
                     <span className="text-sm">&#9888;&#65039;</span>
                     <div>
-                      <p className="text-xs font-semibold text-orange-300">DPE F detecte</p>
-                      <p className="text-[10px] text-white/40">Rue Garibaldi — travaux a prevoir</p>
+                      <p className="text-xs font-semibold text-orange-300">DPE F détecté</p>
+                      <p className="text-[10px] text-white/40">Rue Garibaldi — travaux à prévoir</p>
                     </div>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ export default function HomePage() {
           <h2 className="mb-2 text-center text-2xl font-extrabold text-[var(--bleu-marine)]">
             Vous vous posez ces questions ?
           </h2>
-          <p className="mb-8 text-center text-sm text-gray-500">Nous aussi, on se les est posees. Et on y repond.</p>
+          <p className="mb-8 text-center text-sm text-gray-500">Nous aussi, on se les est posées. Et on y répond.</p>
           <div className="flex flex-wrap justify-center gap-3">
             {QUESTIONS_FREQUENTES.map((q) => (
               <span
@@ -208,7 +208,7 @@ export default function HomePage() {
           </div>
           <p className="mt-8 text-center">
             <Link href="/parcours" className="text-sm font-semibold text-[var(--bleu-action)] hover:underline">
-              Trouvez les reponses dans le parcours &rarr;
+              Trouvez les réponses dans le parcours &rarr;
             </Link>
           </p>
         </div>
@@ -243,10 +243,10 @@ export default function HomePage() {
         <div className="mx-auto max-w-5xl px-4">
           <div className="mb-10 text-center">
             <h2 className="text-2xl font-extrabold text-[var(--bleu-marine)]">
-              Du projet aux cles : 10 etapes
+              Du projet aux clés : 10 étapes
             </h2>
             <p className="mt-2 text-sm text-gray-500">
-              Chaque etape contient des outils, des conseils, des alertes et une checklist.
+              Chaque étape contient des outils, des conseils, des alertes et une checklist.
             </p>
           </div>
 
@@ -280,7 +280,7 @@ export default function HomePage() {
             Vos calculs en 30 secondes
           </h2>
           <p className="mb-8 text-center text-sm text-gray-500">
-            Pas besoin de rendez-vous. Simulez, comparez, decidez.
+            Pas besoin de rendez-vous. Simulez, comparez, décidez.
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {OUTILS.map((o) => (
@@ -304,7 +304,7 @@ export default function HomePage() {
       <section className="border-y border-[var(--gris-border)] bg-[var(--gris-fond)] py-10">
         <div className="mx-auto max-w-4xl px-4">
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-gray-400">
-            Nos conseils sont bases sur des sources officielles
+            Nos conseils sont basés sur des sources officielles
           </p>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {SOURCES.map((s) => (
@@ -325,11 +325,11 @@ export default function HomePage() {
           </h2>
           <div className="space-y-3">
             {[
-              "Vous achetez pour la premiere fois en France",
-              "Vous voulez comprendre votre capacite d'emprunt avant de visiter",
+              "Vous achetez pour la première fois en France",
+              "Vous voulez comprendre votre capacité d'emprunt avant de visiter",
               "Vous cherchez un outil neutre — pas un courtier qui veut vous vendre",
-              "Vous voulez etre sur de ne rien oublier (diagnostics, clauses, delais legaux)",
-              "Vous avez trouve un bien et vous voulez savoir si le prix est correct",
+              "Vous voulez être sûr de ne rien oublier (diagnostics, clauses, délais légaux)",
+              "Vous avez trouvé un bien et vous voulez savoir si le prix est correct",
             ].map((item) => (
               <div key={item} className="flex items-center gap-3 rounded-xl bg-[var(--gris-fond)] px-5 py-3.5">
                 <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[var(--vert-succes)] text-xs text-white">&#10003;</span>
@@ -345,11 +345,11 @@ export default function HomePage() {
         <div className="card-hero mx-auto max-w-4xl">
           <div className="py-12 text-center">
             <h2 className="mb-3 text-2xl font-extrabold text-white md:text-3xl">
-              Pret a acheter en toute confiance ?
+              Prêt à acheter en toute confiance ?
             </h2>
             <p className="mx-auto mb-8 max-w-lg text-base text-blue-200">
-              Rejoignez les primo-accedants qui font leur projet sans stress.
-              Gratuit, sans compte, vos donnees restent chez vous.
+              Rejoignez les primo-accédants qui font leur projet sans stress.
+              Gratuit, sans compte, vos données restent chez vous.
             </p>
             <Link
               href="/parcours"

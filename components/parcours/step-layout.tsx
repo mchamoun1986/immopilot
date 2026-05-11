@@ -107,10 +107,10 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
       {bandeau && (
         <div className="mb-6 rounded-xl bg-[var(--gris-fond)] px-5 py-4">
           <p className="text-sm text-gray-700">
-            Dans cette etape, vous allez <strong className="text-[var(--bleu-marine)]">{bandeau.objectif}</strong>.
+            Dans cette étape, vous allez <strong className="text-[var(--bleu-marine)]">{bandeau.objectif}</strong>.
           </p>
           <div className="mt-2 flex flex-wrap gap-4 text-xs text-gray-500">
-            <span>Entree : {bandeau.entree}</span>
+            <span>Entrée : {bandeau.entree}</span>
             <span className="text-gray-300">&rarr;</span>
             <span>Sortie : <strong className="text-[var(--bleu-marine)]">{bandeau.sortie}</strong></span>
           </div>
@@ -156,7 +156,7 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                     {tips.map((tip, i) => {
                       const s = TIP_STYLES[tip.type];
                       return (
-                        <div key={i} className={`border-l-3 rounded-r-xl p-3 ${s.border} ${s.bg}`}>
+                        <div key={i} className={`border-l-4 rounded-r-xl p-3 ${s.border} ${s.bg}`}>
                           <div className="flex items-start gap-2">
                             <span>{s.icon}</span>
                             <div>
@@ -190,7 +190,7 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                               ? "border-[var(--vert-succes)] bg-[var(--vert-succes)] text-white"
                               : "border-gray-300 bg-white"
                           }`}
-                          aria-label={checked[i] ? "Demarquer" : "Marquer comme fait"}
+                          aria-label={checked[i] ? "Démarquer" : "Marquer comme fait"}
                         >
                           {checked[i] && (
                             <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>

@@ -104,7 +104,7 @@ export default function DossierFinancementPage() {
           onClick={() => window.print()}
           className="rounded-xl bg-[var(--rouge-fr)] px-6 py-3 text-sm font-bold text-white shadow hover:opacity-90"
         >
-          Telecharger en PDF
+          Télécharger en PDF
         </button>
       </div>
 
@@ -112,21 +112,21 @@ export default function DossierFinancementPage() {
       <div className="mb-8 rounded-2xl bg-gradient-to-br from-[var(--bleu-marine)] to-[#1e3a5f] p-10 text-white print:rounded-none print:p-8">
         <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">ImmoPilot</p>
         <h1 className="mt-2 text-3xl font-extrabold print:text-2xl">Dossier de Financement</h1>
-        <p className="mt-1 text-lg text-blue-200">Projet d&apos;acquisition immobiliere</p>
+        <p className="mt-1 text-lg text-blue-200">Projet d&apos;acquisition immobilière</p>
         <div className="mt-6 space-y-1 text-sm text-blue-200/80">
           {projet.prenom && <p>Emprunteur : <strong className="text-white">{projet.prenom}</strong></p>}
           <p>Date : <strong className="text-white">{todayStr}</strong></p>
-          <p>Budget envisage : <strong className="text-white">{fmt(projet.budget_max)} EUR</strong></p>
-          <p>Etapes completees : <strong className="text-white">{data.completedSteps.length} / 10</strong></p>
+          <p>Budget envisagé : <strong className="text-white">{fmt(projet.budget_max)} EUR</strong></p>
+          <p>Étapes complétées : <strong className="text-white">{data.completedSteps.length} / 10</strong></p>
         </div>
       </div>
 
       {/* ── 1. Profil Emprunteur ────────────────────────────────────── */}
       <SectionTitle>1. Profil de l&apos;emprunteur</SectionTitle>
       <div className="space-y-0">
-        {projet.prenom && <Row label="Prenom" value={projet.prenom} />}
-        <Row label="Situation familiale" value={projet.situation === "celibataire" ? "Celibataire" : projet.situation === "couple" ? "En couple" : "Famille"} />
-        <Row label="Age" value={projet.age > 0 ? `${projet.age} ans` : "Non renseigne"} />
+        {projet.prenom && <Row label="Prénom" value={projet.prenom} />}
+        <Row label="Situation familiale" value={projet.situation === "celibataire" ? "Célibataire" : projet.situation === "couple" ? "En couple" : "Famille"} />
+        <Row label="Âge" value={projet.age > 0 ? `${projet.age} ans` : "Non renseigné"} />
         <Row label="Taille du foyer" value={`${projet.taille_foyer} personne${projet.taille_foyer > 1 ? "s" : ""}`} />
         <Row label="Type de contrat" value={projet.type_contrat.toUpperCase()} />
         <Row label="Revenus nets mensuels" value={`${fmt(projet.revenus_net)} EUR`} bold />
@@ -138,12 +138,12 @@ export default function DossierFinancementPage() {
       </div>
 
       {/* ── 2. Capacite Financiere ──────────────────────────────────── */}
-      <SectionTitle>2. Capacite financiere</SectionTitle>
+      <SectionTitle>2. Capacité financière</SectionTitle>
       <div className="space-y-0 mb-4">
-        <Row label="Capacite d'emprunt" value={`${fmt(data.endettement.capacite_emprunt)} EUR`} bold />
-        <Row label="Mensualite max autorisee" value={`${fmt(data.endettement.mensualite_max)} EUR / mois`} />
+        <Row label="Capacité d'emprunt" value={`${fmt(data.endettement.capacite_emprunt)} EUR`} bold />
+        <Row label="Mensualité max autorisée" value={`${fmt(data.endettement.mensualite_max)} EUR / mois`} />
         <Row label="Taux d'endettement actuel" value={`${fmtPct(data.endettement.taux)}%`} danger={!data.endettement.conforme_hcsf} />
-        <Row label="Conformite HCSF (35%)" value={data.endettement.conforme_hcsf ? "CONFORME" : "NON CONFORME"} danger={!data.endettement.conforme_hcsf} />
+        <Row label="Conformité HCSF (35%)" value={data.endettement.conforme_hcsf ? "CONFORME" : "NON CONFORME"} danger={!data.endettement.conforme_hcsf} />
         <Row label="Apport personnel" value={`${fmt(projet.apport)} EUR`} bold />
       </div>
 
@@ -166,25 +166,25 @@ export default function DossierFinancementPage() {
       {/* ── 3. Projet Immobilier ────────────────────────────────────── */}
       <SectionTitle>3. Projet immobilier</SectionTitle>
       <div className="space-y-0 mb-4">
-        <Row label="Type de bien recherche" value={projet.type_bien === "appartement" ? "Appartement" : "Maison"} />
-        <Row label="Usage" value="Residence principale" />
-        <Row label="Commune visee" value={projet.commune || "Non renseignee"} />
-        <Row label="Code postal" value={projet.code_postal || "Non renseigne"} />
+        <Row label="Type de bien recherché" value={projet.type_bien === "appartement" ? "Appartement" : "Maison"} />
+        <Row label="Usage" value="Résidence principale" />
+        <Row label="Commune visée" value={projet.commune || "Non renseignée"} />
+        <Row label="Code postal" value={projet.code_postal || "Non renseigné"} />
         <Row label="Budget max" value={`${fmt(projet.budget_max)} EUR`} bold />
       </div>
 
       {dossierPrincipal && (
         <>
-          <h3 className="mt-4 mb-2 text-sm font-bold text-[var(--bleu-marine)]">Bien identifie</h3>
+          <h3 className="mt-4 mb-2 text-sm font-bold text-[var(--bleu-marine)]">Bien identifié</h3>
           <div className="space-y-0 rounded-lg border border-gray-200 p-4">
-            <Row label="Adresse" value={dossierPrincipal.adresse || "Non renseignee"} />
+            <Row label="Adresse" value={dossierPrincipal.adresse || "Non renseignée"} />
             <Row label="Commune" value={dossierPrincipal.commune || "—"} />
             <Row label="Prix" value={`${fmt(dossierPrincipal.prix)} EUR`} bold />
             <Row label="Surface" value={`${dossierPrincipal.surface} m2`} />
-            <Row label="Pieces" value={`${dossierPrincipal.pieces}`} />
-            <Row label="DPE Energie" value={dossierPrincipal.dpe_energie} danger={["F", "G"].includes(dossierPrincipal.dpe_energie)} />
-            <Row label="Annee de construction" value={dossierPrincipal.annee_construction > 0 ? String(dossierPrincipal.annee_construction) : "—"} />
-            {dossierPrincipal.type_copro && <Row label="Copropriete" value={`Oui — ${dossierPrincipal.charges_copro} EUR/mois charges`} />}
+            <Row label="Pièces" value={`${dossierPrincipal.pieces}`} />
+            <Row label="DPE Énergie" value={dossierPrincipal.dpe_energie} danger={["F", "G"].includes(dossierPrincipal.dpe_energie)} />
+            <Row label="Année de construction" value={dossierPrincipal.annee_construction > 0 ? String(dossierPrincipal.annee_construction) : "—"} />
+            {dossierPrincipal.type_copro && <Row label="Copropriété" value={`Oui — ${dossierPrincipal.charges_copro} EUR/mois charges`} />}
           </div>
         </>
       )}
@@ -203,9 +203,9 @@ export default function DossierFinancementPage() {
       <h3 className="mt-6 mb-2 text-sm font-bold text-gray-500 uppercase tracking-wide">Sources de financement</h3>
       <div className="space-y-0 mb-3">
         <Row label="Apport personnel" value={`${fmt(projet.apport)} EUR`} />
-        <Row label="Credit immobilier (capacite)" value={`${fmt(data.endettement.capacite_emprunt)} EUR`} />
+        <Row label="Crédit immobilier (capacité)" value={`${fmt(data.endettement.capacite_emprunt)} EUR`} />
         {data.ptzResult.eligible && (
-          <Row label="Pret a Taux Zero (PTZ)" value={`${fmt(data.ptzResult.montant)} EUR`} />
+          <Row label="Prêt à Taux Zéro (PTZ)" value={`${fmt(data.ptzResult.montant)} EUR`} />
         )}
       </div>
       <TotalRow label="TOTAL FINANCEMENT" value={`${fmt(data.financementTotal)} EUR`} variant="green" />
@@ -216,29 +216,29 @@ export default function DossierFinancementPage() {
       }`}>
         <p className="text-base font-bold">
           {isFinancable
-            ? `PROJET FINANCABLE — excedent de ${fmtEur(data.financementTotal - data.budgetTotal)}`
-            : `DEPASSEMENT DE ${fmtEur(data.budgetTotal - data.financementTotal)}`
+            ? `PROJET FINANÇABLE — excédent de ${fmtEur(data.financementTotal - data.budgetTotal)}`
+            : `DÉPASSEMENT DE ${fmtEur(data.budgetTotal - data.financementTotal)}`
           }
         </p>
       </div>
 
       {/* ── 5. Simulation Credit ────────────────────────────────────── */}
-      <SectionTitle>5. Simulation de credit</SectionTitle>
+      <SectionTitle>5. Simulation de crédit</SectionTitle>
       <div className="space-y-0 mb-4">
-        <Row label="Montant emprunte" value={`${fmt(data.montantEmprunt)} EUR`} bold />
+        <Row label="Montant emprunté" value={`${fmt(data.montantEmprunt)} EUR`} bold />
         <Row label="Taux nominal (indicatif)" value={`${data.taux}%`} />
-        <Row label="Duree" value={`${data.duree} ans (${data.duree * 12} mois)`} />
-        <Row label="Mensualite estimee" value={`${fmt(data.credit.mensualite)} EUR / mois`} bold />
-        <Row label="Cout total du credit" value={`${fmt(data.credit.cout_total)} EUR`} />
-        <Row label="Cout des interets" value={`${fmt(data.credit.cout_interets)} EUR`} />
+        <Row label="Durée" value={`${data.duree} ans (${data.duree * 12} mois)`} />
+        <Row label="Mensualité estimée" value={`${fmt(data.credit.mensualite)} EUR / mois`} bold />
+        <Row label="Coût total du crédit" value={`${fmt(data.credit.cout_total)} EUR`} />
+        <Row label="Coût des intérêts" value={`${fmt(data.credit.cout_interets)} EUR`} />
       </div>
 
       {/* Reste a vivre */}
       <div className="rounded-lg border border-gray-200 p-4">
-        <h3 className="mb-3 text-sm font-bold text-[var(--bleu-marine)]">Reste a vivre mensuel</h3>
+        <h3 className="mb-3 text-sm font-bold text-[var(--bleu-marine)]">Reste à vivre mensuel</h3>
         <div className="space-y-0">
           <Row label="Revenus nets" value={`${fmt(data.revenus)} EUR`} />
-          <Row label="- Mensualite credit" value={`- ${fmt(data.credit.mensualite)} EUR`} />
+          <Row label="- Mensualité crédit" value={`- ${fmt(data.credit.mensualite)} EUR`} />
           <Row label="- Charges fixes" value={`- ${fmt(projet.charges_fixes)} EUR`} />
         </div>
         <TotalRow
@@ -249,14 +249,14 @@ export default function DossierFinancementPage() {
       </div>
 
       {/* ── 6. Eligibilite PTZ ──────────────────────────────────────── */}
-      <SectionTitle>6. Eligibilite au Pret a Taux Zero</SectionTitle>
+      <SectionTitle>6. Éligibilité au Prêt à Taux Zéro</SectionTitle>
       <div className="space-y-0">
-        <Row label="Eligible" value={data.ptzResult.eligible ? "OUI" : "NON"} bold danger={!data.ptzResult.eligible} />
+        <Row label="Éligible" value={data.ptzResult.eligible ? "OUI" : "NON"} bold danger={!data.ptzResult.eligible} />
         {data.ptzResult.eligible ? (
           <>
             <Row label="Montant PTZ" value={`${fmt(data.ptzResult.montant)} EUR`} bold />
-            <Row label="Duree differee (sans remboursement)" value={`${data.ptzResult.duree_differee} ans`} />
-            <Row label="Duree de remboursement" value={`${data.ptzResult.duree_remboursement} ans`} />
+            <Row label="Durée différée (sans remboursement)" value={`${data.ptzResult.duree_differee} ans`} />
+            <Row label="Durée de remboursement" value={`${data.ptzResult.duree_remboursement} ans`} />
           </>
         ) : (
           <Row label="Raison" value={data.ptzResult.raison_ineligibilite || "Conditions non remplies"} />
@@ -264,12 +264,12 @@ export default function DossierFinancementPage() {
       </div>
 
       {/* ── 7. Frais de notaire ─────────────────────────────────────── */}
-      <SectionTitle>7. Detail des frais de notaire</SectionTitle>
+      <SectionTitle>7. Détail des frais de notaire</SectionTitle>
       <div className="space-y-0 mb-3">
         <Row label="Droits de mutation (taxes)" value={`${fmt(data.fraisNotaire.droits_mutation)} EUR`} />
-        <Row label="Emoluments du notaire" value={`${fmt(data.fraisNotaire.emoluments)} EUR`} />
-        <Row label="Debours forfaitaires" value={`${fmt(data.fraisNotaire.debours)} EUR`} />
-        <Row label="Contribution securite immobiliere" value={`${fmt(data.fraisNotaire.contribution_securite)} EUR`} />
+        <Row label="Émoluments du notaire" value={`${fmt(data.fraisNotaire.emoluments)} EUR`} />
+        <Row label="Débours forfaitaires" value={`${fmt(data.fraisNotaire.debours)} EUR`} />
+        <Row label="Contribution sécurité immobilière" value={`${fmt(data.fraisNotaire.contribution_securite)} EUR`} />
       </div>
       <TotalRow label="TOTAL FRAIS DE NOTAIRE" value={`${fmt(data.fraisNotaire.total)} EUR`} variant="blue" />
 
@@ -292,13 +292,13 @@ export default function DossierFinancementPage() {
 
       {/* ── 9. Documents a fournir ──────────────────────────────────── */}
       <div className="print:break-before-page" />
-      <SectionTitle>9. Documents a fournir a la banque</SectionTitle>
+      <SectionTitle>9. Documents à fournir à la banque</SectionTitle>
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 print:grid-cols-2">
         {[
-          { cat: "Identite", docs: ["Piece d'identite (CNI ou passeport)", "Justificatif de domicile (< 3 mois)", "Livret de famille (si applicable)"] },
+          { cat: "Identité", docs: ["Pièce d'identité (CNI ou passeport)", "Justificatif de domicile (< 3 mois)", "Livret de famille (si applicable)"] },
           { cat: "Revenus", docs: ["3 derniers bulletins de salaire", "2 derniers avis d'imposition", "Contrat de travail ou attestation employeur"] },
-          { cat: "Patrimoine", docs: ["3 derniers releves bancaires (tous comptes)", "Justificatif d'apport (epargne, donation, vente)", "Tableaux d'amortissement (credits en cours)"] },
-          { cat: "Projet", docs: ["Compromis de vente (si signe)", "Diagnostics immobiliers (DPE, amiante, etc.)", "Devis travaux (si applicable)", "Plan de financement (ce document)"] },
+          { cat: "Patrimoine", docs: ["3 derniers relevés bancaires (tous comptes)", "Justificatif d'apport (épargne, donation, vente)", "Tableaux d'amortissement (crédits en cours)"] },
+          { cat: "Projet", docs: ["Compromis de vente (si signé)", "Diagnostics immobiliers (DPE, amiante, etc.)", "Devis travaux (si applicable)", "Plan de financement (ce document)"] },
         ].map((section) => (
           <div key={section.cat} className="rounded-lg border border-gray-200 p-3 print:border-gray-300">
             <p className="mb-2 text-xs font-bold uppercase tracking-wide text-gray-500">{section.cat}</p>
@@ -316,9 +316,9 @@ export default function DossierFinancementPage() {
 
       {/* ── Footer ──────────────────────────────────────────────────── */}
       <div className="mt-10 border-t border-gray-200 pt-4 text-center text-xs text-gray-400 print:mt-6">
-        <p>Document genere par <strong>ImmoPilot</strong> le {todayStr}</p>
-        <p className="mt-1">Ce document est un outil d&apos;aide a la decision. Il ne constitue pas une offre de pret ni un engagement contractuel.</p>
-        <p>Les montants sont indicatifs et bases sur les informations saisies par l&apos;utilisateur.</p>
+        <p>Document généré par <strong>ImmoPilot</strong> le {todayStr}</p>
+        <p className="mt-1">Ce document est un outil d&apos;aide à la décision. Il ne constitue pas une offre de prêt ni un engagement contractuel.</p>
+        <p>Les montants sont indicatifs et basés sur les informations saisies par l&apos;utilisateur.</p>
         <p className="mt-2">Sources : ANIL, service-public.fr, Banque de France, LegiFrance</p>
       </div>
 

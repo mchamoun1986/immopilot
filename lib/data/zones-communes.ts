@@ -79,7 +79,6 @@ export const COMMUNES_ZONAGE: CommuneZonage[] = [
   { code_insee: "91405", code_postal: "91300", nom: "Massy", zone: "A", departement: "91" },
   { code_insee: "91377", code_postal: "91120", nom: "Palaiseau", zone: "A", departement: "91" },
   { code_insee: "91434", code_postal: "91400", nom: "Orsay", zone: "A", departement: "91" },
-  { code_insee: "91021", code_postal: "91160", nom: "Antony", zone: "Abis", departement: "91" },
   { code_insee: "91471", code_postal: "91190", nom: "Gif-sur-Yvette", zone: "A", departement: "91" },
   // Val-d'Oise (95) — proche banlieue nord
   { code_insee: "95210", code_postal: "95880", nom: "Enghien-les-Bains", zone: "Abis", departement: "95" },

@@ -44,14 +44,14 @@ export default function DashboardPage() {
       <div>
         <h1 className="text-2xl font-extrabold text-[var(--bleu-marine)]">{greeting}</h1>
         <p className="mt-1 text-sm text-gray-500">
-          Votre projet avance bien — etape {currentStep.numero} sur {NB_ETAPES}
+          Votre projet avance bien — étape {currentStep.numero} sur {NB_ETAPES}
         </p>
       </div>
 
       {/* KPIs */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <KpiCard label="Budget" value={summary.budget > 0 ? `${fmt(summary.budget)} EUR` : "\u2014"} href="/parcours/1-projet" />
-        <KpiCard label="Capacite" value={summary.capacite > 0 ? `${fmt(summary.capacite)} EUR` : "\u2014"} color="var(--bleu-action)" href="/parcours/2-budget" />
+        <KpiCard label="Capacité" value={summary.capacite > 0 ? `${fmt(summary.capacite)} EUR` : "\u2014"} color="var(--bleu-action)" href="/parcours/2-budget" />
         <KpiCard label="PTZ" value={summary.ptz > 0 ? `${fmt(summary.ptz)} EUR` : "\u2014"} color="var(--vert-succes)" href="/parcours/2-budget" />
         <KpiCard label="Dossiers" value={String(summary.nb_dossiers)} color="var(--rouge-fr)" href="/dossiers" />
       </div>
@@ -67,7 +67,7 @@ export default function DashboardPage() {
           }}
         />
         <div className="card-hero mt-2">
-          <p className="text-sm font-semibold opacity-80">Etape {currentStep.numero}</p>
+          <p className="text-sm font-semibold opacity-80">Étape {currentStep.numero}</p>
           <p className="mt-1 text-lg font-bold">{currentStep.titre}</p>
           <p className="mt-1 text-sm opacity-80">{currentStep.description}</p>
           <button
@@ -126,8 +126,8 @@ export default function DashboardPage() {
           <EmptyState
             icon="🏠"
             title="Aucun dossier pour l'instant"
-            description="Creez votre premier dossier pour suivre un bien."
-            actionLabel="Creer un dossier"
+            description="Créez votre premier dossier pour suivre un bien."
+            actionLabel="Créer un dossier"
             onAction={() => router.push("/dossiers")}
           />
         )}
@@ -138,13 +138,13 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-sm font-bold text-white">Dossier de financement</p>
-            <p className="mt-1 text-xs text-blue-200/70">Generez un dossier complet pour votre banque — profil, capacite, plan de financement, alertes.</p>
+            <p className="mt-1 text-xs text-blue-200/70">Générez un dossier complet pour votre banque — profil, capacité, plan de financement, alertes.</p>
           </div>
           <button
             onClick={() => router.push("/parcours/dossier-financement")}
             className="flex-shrink-0 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-[var(--bleu-marine)] hover:opacity-90"
           >
-            Generer le PDF
+            Générer le PDF
           </button>
         </div>
       </div>

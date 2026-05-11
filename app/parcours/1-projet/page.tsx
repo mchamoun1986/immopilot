@@ -51,7 +51,7 @@ export default function EtapeProjetPage() {
           {/* Prenom */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="prenom">
-              Votre prenom <span className="text-gray-400">(optionnel)</span>
+              Votre prénom <span className="text-gray-400">(optionnel)</span>
             </label>
             <input
               id="prenom"
@@ -132,7 +132,7 @@ export default function EtapeProjetPage() {
               <option value="cdi">CDI (salarie)</option>
               <option value="fonctionnaire">Fonctionnaire / titulaire</option>
               <option value="cdd">CDD</option>
-              <option value="independant">Independant / freelance</option>
+              <option value="independant">Indépendant / freelance</option>
               <option value="autre">Autre</option>
             </select>
           </div>
@@ -146,7 +146,7 @@ export default function EtapeProjetPage() {
           {/* Revenus nets */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="revenus_net">
-              Revenus nets mensuels <span className="text-gray-400">(apres impots, avant charges)</span>
+              Revenus nets mensuels <span className="text-gray-400">(après impôts, avant charges)</span>
             </label>
             <div className="relative max-w-xs">
               <input
@@ -231,7 +231,7 @@ export default function EtapeProjetPage() {
           {/* Budget max */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="budget_max">
-              Budget maximum envisage
+              Budget maximum envisagé
             </label>
             <div className="relative max-w-xs">
               <input
@@ -272,7 +272,7 @@ export default function EtapeProjetPage() {
 
       {/* Localisation */}
       <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Localisation souhaitee</h2>
+        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Localisation souhaitée</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="code_postal">
@@ -304,13 +304,13 @@ export default function EtapeProjetPage() {
         </div>
       </div>
 
-      {/* CTA passer a l'etape suivante */}
+      {/* CTA passer à l'étape suivante */}
       <div className="flex justify-end">
         <button
           onClick={handleNext}
           className="rounded-lg bg-[var(--bleu-secondaire)] px-6 py-3 text-sm font-semibold text-white hover:opacity-90"
         >
-          Passer a l&apos;etape suivante &rarr;
+          Passer à l&apos;étape suivante &rarr;
         </button>
       </div>
 
@@ -321,7 +321,7 @@ export default function EtapeProjetPage() {
           {GARANTIE_FINANCIERE_ACHEVEMENT.description}
         </p>
 
-        <h3 className="mb-2 text-sm font-semibold text-blue-900">Echeancier des appels de fonds</h3>
+        <h3 className="mb-2 text-sm font-semibold text-blue-900">Échéancier des appels de fonds</h3>
         <div className="space-y-1 mb-4">
           {ECHEANCIER_VEFA.map((e) => (
             <div key={e.etape} className="flex items-center justify-between rounded bg-white/60 px-3 py-2 text-xs">
@@ -350,8 +350,8 @@ export default function EtapeProjetPage() {
       etape={1}
       guide={
         <p>
-          Definissez votre projet immobilier. Ces informations serviront a calculer votre
-          capacite d&apos;emprunt, votre eligibilite au PTZ, et a personnaliser vos alertes tout
+          Définissez votre projet immobilier. Ces informations serviront à calculer votre
+          capacité d&apos;emprunt, votre éligibilité au PTZ, et à personnaliser vos alertes tout
           au long du parcours.
         </p>
       }

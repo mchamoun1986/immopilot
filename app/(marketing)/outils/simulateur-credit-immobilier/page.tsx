@@ -46,16 +46,16 @@ export default function SimulateurCreditPage() {
           Outil gratuit
         </p>
         <h1 className="mb-3 text-3xl font-extrabold text-[var(--bleu-marine)] md:text-4xl">
-          Simulateur de credit immobilier
+          Simulateur de crédit immobilier
         </h1>
         <p className="text-gray-600">
-          Calculez vos mensualites, le cout total et le cout des interets en quelques secondes.
+          Calculez vos mensualités, le coût total et le coût des intérêts en quelques secondes.
         </p>
       </div>
 
       {/* Calculator card */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-6 shadow-sm">
-        <h2 className="mb-5 font-semibold text-[var(--bleu-marine)]">Vos parametres</h2>
+        <h2 className="mb-5 font-semibold text-[var(--bleu-marine)]">Vos paramètres</h2>
 
         <div className="grid gap-5 sm:grid-cols-3">
           {/* Montant */}
@@ -64,7 +64,7 @@ export default function SimulateurCreditPage() {
               htmlFor="sc-montant"
               className="mb-1 block text-sm font-medium text-gray-700"
             >
-              Montant emprunte (EUR)
+              Montant emprunté (EUR)
             </label>
             <input
               id="sc-montant"
@@ -103,7 +103,7 @@ export default function SimulateurCreditPage() {
               htmlFor="sc-duree"
               className="mb-1 block text-sm font-medium text-gray-700"
             >
-              Duree (annees)
+              Durée (années)
             </label>
             <input
               id="sc-duree"
@@ -121,19 +121,19 @@ export default function SimulateurCreditPage() {
         {hasResult && (
           <div className="mt-6 grid grid-cols-3 gap-4">
             <div className="rounded-lg bg-[var(--bleu-marine)] p-4 text-center text-white">
-              <p className="text-xs opacity-80">Mensualite</p>
+              <p className="text-xs opacity-80">Mensualité</p>
               <p className="mt-1 text-2xl font-extrabold">{fmt(result.mensualite)}</p>
               <p className="text-xs opacity-70">EUR / mois</p>
             </div>
             <div className="rounded-lg bg-[var(--gris-clair)] p-4 text-center">
-              <p className="text-xs text-gray-500">Cout total</p>
+              <p className="text-xs text-gray-500">Coût total</p>
               <p className="mt-1 text-2xl font-extrabold text-[var(--bleu-marine)]">
                 {fmt(result.cout_total)}
               </p>
               <p className="text-xs text-gray-400">EUR</p>
             </div>
             <div className="rounded-lg bg-[var(--gris-clair)] p-4 text-center">
-              <p className="text-xs text-gray-500">Cout des interets</p>
+              <p className="text-xs text-gray-500">Coût des intérêts</p>
               <p className="mt-1 text-2xl font-extrabold text-orange-600">
                 {fmt(result.cout_interets)}
               </p>
@@ -147,8 +147,8 @@ export default function SimulateurCreditPage() {
           <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation detaillee</p>
-                <p className="mt-1 text-sm text-gray-600">Plan de financement personnalise envoye par email.</p>
+                <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation détaillée</p>
+                <p className="mt-1 text-sm text-gray-600">Plan de financement personnalisé envoyé par email.</p>
               </div>
               <button
                 onClick={() => setShowLeadModal(true)}
@@ -173,21 +173,21 @@ export default function SimulateurCreditPage() {
           Vous souhaitez aller plus loin ?
         </p>
         <p className="mb-4 text-sm text-gray-600">
-          Decouvrez notre parcours complet : capacite d&apos;emprunt, PTZ, budget total, conseils
-          d&apos;experts etape par etape.
+          Découvrez notre parcours complet : capacité d&apos;emprunt, PTZ, budget total, conseils
+          d&apos;experts étape par étape.
         </p>
         <Link
           href="/parcours"
           className="inline-block rounded-lg bg-[var(--rouge-francais)] px-7 py-2.5 text-sm font-semibold text-white hover:opacity-90"
         >
-          Demarrer mon parcours
+          Démarrer mon parcours
         </Link>
       </div>
 
       {/* FAQ */}
       <div className="mt-12">
         <h2 className="mb-6 text-2xl font-extrabold text-[var(--bleu-marine)]">
-          Questions frequentes
+          Questions fréquentes
         </h2>
         <div className="space-y-5">
           {FAQ.map((item) => (
@@ -207,8 +207,8 @@ export default function SimulateurCreditPage() {
         onClose={() => setShowLeadModal(false)}
         source="simulation"
         etape={2}
-        titre="Recevez votre simulation detaillee"
-        description="Un recap personnalise : capacite d'emprunt, PTZ, budget total."
+        titre="Recevez votre simulation détaillée"
+        description="Un récap personnalisé : capacité d'emprunt, PTZ, budget total."
         showPhone={false}
         showConsent={false}
         onSubmit={() => {}}

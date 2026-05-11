@@ -20,11 +20,11 @@ const DPE_OPTIONS: DpeClasse[] = ["A", "B", "C", "D", "E", "F", "G"];
 const STATUT_OPTIONS: { value: DossierStatut; label: string }[] = [
   { value: "en_recherche", label: "En recherche" },
   { value: "offre", label: "Offre en cours" },
-  { value: "compromis", label: "Compromis signe" },
+  { value: "compromis", label: "Compromis signé" },
   { value: "financement", label: "Financement" },
-  { value: "acte", label: "Acte signe" },
-  { value: "termine", label: "Termine" },
-  { value: "abandonne", label: "Abandonne" },
+  { value: "acte", label: "Acte signé" },
+  { value: "termine", label: "Terminé" },
+  { value: "abandonne", label: "Abandonné" },
 ];
 
 import { VISITE_CHECKLIST, ALL_CHECKLIST_ITEMS } from "@/lib/data/checklist-visite-items";
@@ -128,7 +128,7 @@ function SectionInfos({
             placeholder="55"
           />
         </FieldRow>
-        <FieldRow label="Pieces">
+        <FieldRow label="Pièces">
           <input
             type="number"
             className={inputCls}
@@ -137,7 +137,7 @@ function SectionInfos({
             placeholder="3"
           />
         </FieldRow>
-        <FieldRow label="Etage">
+        <FieldRow label="Étage">
           <input
             type="number"
             className={inputCls}
@@ -162,7 +162,7 @@ function SectionInfos({
             placeholder="Gaz individuel, electrique..."
           />
         </FieldRow>
-        <FieldRow label="Annee de construction">
+        <FieldRow label="Année de construction">
           <input
             type="number"
             className={inputCls}
@@ -180,7 +180,7 @@ function SectionInfos({
             placeholder="https://..."
           />
         </FieldRow>
-        <FieldRow label="DPE energie">
+        <FieldRow label="DPE énergie">
           <select
             className={inputCls}
             value={dossier.dpe_energie}
@@ -199,7 +199,7 @@ function SectionInfos({
             value={dossier.dpe_ges ?? ""}
             onChange={(e) => onChange({ dpe_ges: (e.target.value as DpeClasse) || null })}
           >
-            <option value="">Non renseigne</option>
+            <option value="">Non renseigné</option>
             {DPE_OPTIONS.map((c) => (
               <option key={c} value={c}>
                 {c}
@@ -243,7 +243,7 @@ function SectionInfos({
             placeholder="200"
           />
         </FieldRow>
-        <FieldRow label="Taxe fonciere annuelle (€)">
+        <FieldRow label="Taxe foncière annuelle (€)">
           <input
             type="number"
             className={inputCls}
@@ -315,7 +315,7 @@ function SectionChecklist({
                             ? "border-green-500 bg-green-500 text-white"
                             : "border-gray-300 bg-white"
                         }`}
-                        aria-label={isChecked ? "Demarquer" : "Marquer comme verifie"}
+                        aria-label={isChecked ? "Démarquer" : "Marquer comme vérifié"}
                       >
                         {isChecked && (
                           <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
@@ -337,7 +337,7 @@ function SectionChecklist({
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Checklist complete — vous avez verifie tous les points importants !
+          Checklist complète — vous avez vérifié tous les points importants !
         </div>
       )}
     </Section>
@@ -369,7 +369,7 @@ function SectionNotes({
             className={`${inputCls} min-h-[120px] resize-y`}
             value={dossier.notes_visite ?? ""}
             onChange={(e) => onChange({ notes_visite: e.target.value || null })}
-            placeholder="Impressions generales, points forts, points faibles, questions a poser..."
+            placeholder="Impressions générales, points forts, points faibles, questions à poser..."
           />
         </FieldRow>
       </div>
@@ -384,9 +384,9 @@ function SectionFinance({ dossier }: { dossier: DossierBien }) {
 
   if (!projet || dossier.prix === 0 || dossier.surface === 0) {
     return (
-      <Section title="Analyse financiere automatique">
+      <Section title="Analyse financière automatique">
         <p className="text-sm text-gray-500">
-          Renseignez le prix et la surface du bien pour obtenir l&apos;analyse financiere.
+          Renseignez le prix et la surface du bien pour obtenir l&apos;analyse financière.
         </p>
       </Section>
     );
@@ -412,7 +412,7 @@ function SectionFinance({ dossier }: { dossier: DossierBien }) {
   const finançable = ecart <= 0;
 
   return (
-    <Section title="Analyse financiere automatique">
+    <Section title="Analyse financière automatique">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <div className="rounded-lg bg-[var(--gris-clair)] p-3">
           <p className="text-xs text-gray-500 mb-1">Prix au m²</p>
@@ -427,7 +427,7 @@ function SectionFinance({ dossier }: { dossier: DossierBien }) {
           <p className="font-semibold text-gray-800 text-sm">{fmt(budget_total)} €</p>
         </div>
         <div className="rounded-lg bg-[var(--gris-clair)] p-3">
-          <p className="text-xs text-gray-500 mb-1">Mensualite estimee</p>
+          <p className="text-xs text-gray-500 mb-1">Mensualité estimée</p>
           <p className="font-semibold text-gray-800 text-sm">
             {fmt(simCredit.mensualite)} €/mois
           </p>
@@ -443,7 +443,7 @@ function SectionFinance({ dossier }: { dossier: DossierBien }) {
             {taux_effort.toFixed(1)}%
           </p>
           {taux_effort > 35 && (
-            <p className="text-xs text-red-500">Depasse 35%</p>
+            <p className="text-xs text-red-500">Dépasse 35%</p>
           )}
         </div>
         <div className="rounded-lg bg-[var(--gris-clair)] p-3">
@@ -461,8 +461,8 @@ function SectionFinance({ dossier }: { dossier: DossierBien }) {
         }`}
       >
         {finançable
-          ? "Financable — votre budget couvre ce bien"
-          : `Depassement de ${fmt(ecart)} € par rapport a votre financement disponible`}
+          ? "Finançable — votre budget couvre ce bien"
+          : `Dépassement de ${fmt(ecart)} € par rapport à votre financement disponible`}
       </div>
     </Section>
   );
@@ -482,13 +482,13 @@ function buildAlertes(dossier: DossierBien): AlerteAuto[] {
     alertes.push({
       severity: "danger",
       message:
-        "Passoire thermique — location interdite depuis 2025 (classe G). Valeur de revente impactee.",
+        "Passoire thermique — location interdite depuis 2025 (classe G). Valeur de revente impactée.",
     });
   } else if (dossier.dpe_energie === "F") {
     alertes.push({
       severity: "danger",
       message:
-        "Passoire thermique — interdiction de louer a partir de 2028 (classe F). Travaux de renovation energetique prevoir.",
+        "Passoire thermique — interdiction de louer à partir de 2028 (classe F). Travaux de rénovation énergétique à prévoir.",
     });
   }
 
@@ -496,7 +496,7 @@ function buildAlertes(dossier: DossierBien): AlerteAuto[] {
     alertes.push({
       severity: "warning",
       message:
-        "Classe E — gel des loyers en vigueur, interdiction de location prevue en 2034.",
+        "Classe E — gel des loyers en vigueur, interdiction de location prévue en 2034.",
     });
   }
 
@@ -508,7 +508,7 @@ function buildAlertes(dossier: DossierBien): AlerteAuto[] {
   ) {
     alertes.push({
       severity: "warning",
-      message: `Charges de copropriete elevees — ${fmt(dossier.charges_copro)} €/mois pour ${dossier.surface} m² (${fmt(dossier.charges_copro / dossier.surface)} €/m²).`,
+      message: `Charges de copropriété élevées — ${fmt(dossier.charges_copro)} €/mois pour ${dossier.surface} m² (${fmt(dossier.charges_copro / dossier.surface)} €/m²).`,
     });
   }
 
@@ -516,7 +516,7 @@ function buildAlertes(dossier: DossierBien): AlerteAuto[] {
     alertes.push({
       severity: "warning",
       message:
-        "Bien ancien (avant 1949) — verifiez les diagnostics plomb et amiante obligatoires.",
+        "Bien ancien (avant 1949) — vérifiez les diagnostics plomb et amiante obligatoires.",
     });
   } else if (
     dossier.annee_construction > 0 &&
@@ -525,7 +525,7 @@ function buildAlertes(dossier: DossierBien): AlerteAuto[] {
     alertes.push({
       severity: "info",
       message:
-        "Bien construit avant 1997 — verifiez le diagnostic amiante (obligatoire pour toute renovation).",
+        "Bien construit avant 1997 — vérifiez le diagnostic amiante (obligatoire pour toute rénovation).",
     });
   }
 
@@ -551,7 +551,7 @@ function SectionAlertes({ dossier }: { dossier: DossierBien }) {
     <Section title="Alertes automatiques">
       {alertes.length === 0 ? (
         <p className="text-sm text-gray-500">
-          Aucune alerte pour ce bien. Completez les informations pour obtenir des alertes personnalisees.
+          Aucune alerte pour ce bien. Complétez les informations pour obtenir des alertes personnalisées.
         </p>
       ) : (
         <div className="space-y-3">
@@ -582,15 +582,15 @@ function SectionAnalyseIA({ score }: { score: number }) {
           <div className="mb-2">
             <span className="text-4xl font-extrabold text-[var(--bleu-secondaire)]">{score}</span>
             <span className="text-lg text-gray-500">/100</span>
-            <p className="mt-1 text-xs text-gray-500">Score calcule par l&apos;IA</p>
+            <p className="mt-1 text-xs text-gray-500">Score calculé par l&apos;IA</p>
           </div>
         ) : (
           <div className="mb-3">
             <p className="text-sm font-semibold text-gray-700 mb-1">
-              Obtenez une analyse IA complete de ce dossier
+              Obtenez une analyse IA complète de ce dossier
             </p>
             <p className="text-xs text-gray-500">
-              Score global, recommandations, points de vigilance, comparaison marche.
+              Score global, recommandations, points de vigilance, comparaison marché.
             </p>
           </div>
         )}
@@ -728,7 +728,7 @@ export default function DossierDetailPage() {
         {/* Auto-save indicator */}
         {saveIndicator && (
           <span className="flex-shrink-0 text-xs text-green-600 font-medium">
-            Sauvegarde
+            Sauvegardé
           </span>
         )}
       </div>

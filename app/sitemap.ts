@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/parcours/9-acte`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/parcours/10-emmenagement`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${base}/parcours/dossier-financement`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/pro`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${base}/mentions-legales`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
   ]
 }
