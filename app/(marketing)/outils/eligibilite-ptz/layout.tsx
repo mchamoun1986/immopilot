@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Éligibilité PTZ 2026 — Prêt à Taux Zéro | ImmoPilot",
   description:
     "Vérifiez votre éligibilité au PTZ 2026 gratuitement. Montant, durée différée, zone — simulateur officiel en ligne.",
-  alternates: { canonical: "https://immopilot.fr/outils/eligibilite-ptz" },
+  alternates: { canonical: "/outils/eligibilite-ptz" },
 };
 
 const faqJsonLd = {

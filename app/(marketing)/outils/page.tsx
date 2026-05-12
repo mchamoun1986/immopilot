@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Outils gratuits pour votre achat immobilier 2026 | ImmoPilot",
   description:
     "Simulateur de crédit immobilier, calculateur de frais de notaire, éligibilité PTZ — tous les outils gratuits pour préparer votre premier achat.",
+  alternates: { canonical: "/outils" },
 };
 
 const OUTILS = [

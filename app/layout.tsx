@@ -7,8 +7,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin", "latin-ext"], display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://immopilot.fr"),
-  alternates: { canonical: "https://immopilot.fr" },
+  metadataBase: new URL("https://immopilot-rust.vercel.app"),
+  alternates: { canonical: "https://immopilot-rust.vercel.app" },
   title: "ImmoPilot — Achat immobilier primo-accédant | Guide gratuit",
   description: "Guide gratuit pour votre premier achat immobilier en France. Simulateur crédit, PTZ 2026, frais de notaire, 10 étapes de A à Z. Sans compte, 100% gratuit.",
   openGraph: {

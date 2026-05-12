@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "Calculateur frais de notaire gratuit 2026 | ImmoPilot",
   description:
     "Estimez les frais de notaire pour un bien ancien ou neuf. Détail complet : droits de mutation, émoluments, débours et contribution sécurité immobilière.",
-  alternates: { canonical: "https://immopilot.fr/outils/frais-de-notaire" },
+  alternates: { canonical: "/outils/frais-de-notaire" },
 };
 
 const faqJsonLd = {

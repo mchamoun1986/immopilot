@@ -9,6 +9,7 @@ import { calculerMensualite } from "@/lib/calculateurs/credit";
 import { calculerEndettement } from "@/lib/calculateurs/endettement";
 import { calculerFraisNotaire } from "@/lib/calculateurs/notaire";
 import { calculerPTZ } from "@/lib/calculateurs/ptz";
+import { findZoneByCodePostal } from "@/lib/data/zones-communes";
 import type { ProjetImmobilier, DossierBien } from "@/lib/types";
 import { fmt, fmtPct, formatDateLong, fmtEur } from "@/lib/utils/format";
 
@@ -63,8 +64,7 @@ export default function DossierFinancementPage() {
     const credit = calculerMensualite(montantEmprunt, taux, duree);
     const endettement = calculerEndettement(revenus, projet.charges_fixes, taux, duree);
     const fraisNotaire = calculerFraisNotaire(projet.budget_max, "ancien");
-    // TODO: lookup real zone from projet.code_postal via zones-communes.ts
-    const zone = "B1";
+    const zone = findZoneByCodePostal(projet.code_postal ?? "") ?? "B1";
     const ptzResult = calculerPTZ({
       zone,
       revenu_fiscal: Math.round(revenus * 12 * 0.9),
