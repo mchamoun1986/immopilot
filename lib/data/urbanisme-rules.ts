@@ -25,7 +25,7 @@ export const CERTIFICATS_URBANISME: CertificatUrbanisme[] = [
   },
   {
     type: "CUb",
-    nom: "Certificat d'urbanisme operationnel",
+    nom: "Certificat d'urbanisme opérationnel",
     validite_mois: 18,
     description: "Indique si le terrain peut être utilisé pour un projet précis et l'état des voiries/réseaux",
     delai_instruction_mois: 2,
@@ -41,7 +41,7 @@ export interface DroitPreemption {
 
 /** Source: code de l'urbanisme art. L210-1 et suivants */
 export const DROIT_PREEMPTION_URBAIN: DroitPreemption = {
-  type: "DPU (Droit de Preemption Urbain)",
+  type: "DPU (Droit de Préemption Urbain)",
   beneficiaire: "Commune ou EPCI",
   delai_reponse_mois: 2,
   silence_vaut: "Renonciation",

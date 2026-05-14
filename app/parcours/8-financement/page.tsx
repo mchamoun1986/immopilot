@@ -177,7 +177,7 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
       )}
       {capital <= 0 && (
         <p className="mb-4 rounded bg-orange-50 border border-orange-200 px-3 py-2 text-xs text-orange-700">
-          Renseignez votre capacite d&apos;emprunt a l&apos;etape 2 pour un calcul precis. Les calculs ci-dessous utilisent vos donnees disponibles.
+          Renseignez votre capacité d&apos;emprunt à l&apos;étape 2 pour un calcul précis. Les calculs ci-dessous utilisent vos donnees disponibles.
         </p>
       )}
 
@@ -307,7 +307,7 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
                     <p className={`text-sm font-bold ${isBest ? "text-green-800" : "text-[var(--bleu-marine)]"}`}>{fmt(res.mensualiteTotale)} EUR</p>
                   </div>
                   <div className={`rounded border p-2 text-center ${isBest ? "border-green-300 bg-green-100" : "bg-white border-gray-200"}`}>
-                    <p className="text-xs text-gray-500">Cout total credit + ass.</p>
+                    <p className="text-xs text-gray-500">Coût total crédit + ass.</p>
                     <p className={`text-sm font-bold ${isBest ? "text-green-800" : "text-[var(--bleu-marine)]"}`}>{fmt(res.coutTotal)} EUR</p>
                   </div>
                 </div>

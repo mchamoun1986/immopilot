@@ -135,7 +135,7 @@ export function LeadModal({
     if (e.target === overlayRef.current) onClose();
   };
 
-  const inputClass = "w-full rounded border border-[var(--gris-border)] px-3 py-2 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none";
+  const inputClass = "w-full rounded-lg border border-[var(--gris-border)] px-3 py-2 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none focus:ring-2 focus:ring-[var(--bleu-secondaire)]/30";
   const errorClass = "mt-1 text-xs text-red-600";
 
   return (
@@ -310,7 +310,7 @@ export function LeadModal({
                       className="mt-0.5 h-4 w-4 flex-shrink-0 rounded border-gray-300 accent-[var(--bleu-secondaire)]"
                     />
                     <span className="text-xs text-gray-600 leading-relaxed">
-                      J&apos;accepte d&apos;etre mis en relation avec des professionnels partenaires
+                      J&apos;accepte d&apos;être mis en relation avec des professionnels partenaires
                       (courtiers, assureurs, déménageurs) sélectionnés par ImmoPilot.
                     </span>
                   </label>

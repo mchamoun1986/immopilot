@@ -19,9 +19,9 @@ const JOUR_J_ITEMS = [
   "RIB pour le virement du solde",
   "Attestation d'assurance habitation (obligatoire AVANT remise des cles)",
   "Cheque de banque ou preuve de virement pour les frais de notaire",
-  "Verifier que tous les diagnostics sont annexes",
-  "Verifier les servitudes mentionnees",
-  "Compter les jeux de cles remis",
+  "Vérifier que tous les diagnostics sont annexés",
+  "Vérifier les servitudes mentionnées",
+  "Compter les jeux de clés remis",
   "Relever les compteurs (eau, elec, gaz)",
 ];
 
@@ -335,7 +335,7 @@ export default function EtapeNotairePage() {
       etape={9}
       guide={
         <p>
-          L&apos;acte authentique est la derniere etape juridique. Le notaire officialise la vente et vous remet les cles.
+          L&apos;acte authentique est la dernière étape juridique. Le notaire officialise la vente et vous remet les clés.
           Les frais de notaire representent 7 a 8% du prix dans l&apos;ancien et 2 a 3% dans le neuf.
         </p>
       }

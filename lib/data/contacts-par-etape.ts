@@ -34,7 +34,7 @@ export const CONTACTS_PAR_ETAPE: ContactEtape[] = [
   // Etape 4
   { etape: 4, categorie: "portail", nom: "SeLoger", description: "Portail d'annonces immobilières", url: "https://www.seloger.com/", gratuit: true, affiliate_url: "https://www.seloger.com/?ref=immopilot&subid={sessionId}" },
   { etape: 4, categorie: "portail", nom: "LeBonCoin Immo", description: "Annonces entre particuliers et agences", url: "https://www.leboncoin.fr/immobilier/", gratuit: true, affiliate_url: "https://www.leboncoin.fr/immobilier/?ref=immopilot&subid={sessionId}" },
-  { etape: 4, categorie: "portail", nom: "PAP", description: "Particulier a Particulier — sans frais d'agence", url: "https://www.pap.fr/", gratuit: true, affiliate_url: "https://www.pap.fr/?ref=immopilot&subid={sessionId}" },
+  { etape: 4, categorie: "portail", nom: "PAP", description: "Particulier à Particulier — sans frais d'agence", url: "https://www.pap.fr/", gratuit: true, affiliate_url: "https://www.pap.fr/?ref=immopilot&subid={sessionId}" },
   { etape: 4, categorie: "portail", nom: "Bien'ici", description: "Portail avec carte interactive", url: "https://www.bienici.com/", gratuit: true, affiliate_url: "https://www.bienici.com/?ref=immopilot&subid={sessionId}" },
 
   // Etape 5

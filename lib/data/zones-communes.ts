@@ -84,7 +84,8 @@ export const COMMUNES_ZONAGE: CommuneZonage[] = [
   { code_insee: "95210", code_postal: "95880", nom: "Enghien-les-Bains", zone: "Abis", departement: "95" },
   { code_insee: "95476", code_postal: "95000", nom: "Cergy", zone: "A", departement: "95" },
   { code_insee: "95500", code_postal: "95100", nom: "Argenteuil", zone: "A", departement: "95" },
-  { code_insee: "95018", code_postal: "95800", nom: "Cergy-le-Haut", zone: "A", departement: "95" },
+  // 95018 = Auvers-sur-Oise (pas Cergy-le-Haut qui n'est pas une commune legale)
+  { code_insee: "95018", code_postal: "95430", nom: "Auvers-sur-Oise", zone: "B1", departement: "95" },
   { code_insee: "95127", code_postal: "95110", nom: "Sannois", zone: "A", departement: "95" },
   // Ain (01) — frontalier Geneve
   { code_insee: "01139", code_postal: "01210", nom: "Ferney-Voltaire", zone: "Abis", departement: "01" },

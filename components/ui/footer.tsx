@@ -16,7 +16,7 @@ export function Footer() {
           <div>&copy; {new Date().getFullYear()} ImmoPilot. Tous droits réservés.</div>
         </div>
         <p className="mt-3 text-center text-[10px] text-gray-400">
-          Certains liens sont des liens partenaires. ImmoPilot peut percevoir une commission sans surcout pour vous.
+          Certains liens sont des liens partenaires. ImmoPilot peut percevoir une commission sans surcoût pour vous.
         </p>
       </div>
     </footer>

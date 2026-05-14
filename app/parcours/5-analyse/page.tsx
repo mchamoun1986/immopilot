@@ -18,11 +18,11 @@ import { DpeBadge } from "@/components/ui/dpe-badge";
 const TIPS = getTipsForEtape(5);
 
 const CHECKLIST = [
-  "J'ai verifie le DPE et les diagnostics obligatoires",
-  "J'ai consulte les prix du quartier sur DVF Etalab",
-  "J'ai demande les PV d'AG (si copropriete)",
-  "J'ai verifie les risques sur georisques.gouv.fr",
-  "J'ai fait ma decision : je fonce ou je passe",
+  "J'ai vérifié le DPE et les diagnostics obligatoires",
+  "J'ai consulté les prix du quartier sur DVF Etalab",
+  "J'ai demandé les PV d'AG (si copropriété)",
+  "J'ai vérifié les risques sur georisques.gouv.fr",
+  "J'ai fait ma décision : je fonce ou je passe",
 ];
 
 export default function AnalysePage() {
@@ -48,7 +48,7 @@ export default function AnalysePage() {
       {/* Dossiers existants */}
       {dossiers.length > 0 ? (
         <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-          <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Vos biens a analyser</h2>
+          <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Vos biens à analyser</h2>
           <div className="space-y-2">
             {dossiers.map((d) => (
               <button
@@ -59,7 +59,7 @@ export default function AnalysePage() {
                 <div>
                   <p className="text-sm font-semibold text-[var(--bleu-marine)]">{d.adresse || d.commune || "Nouveau dossier"}</p>
                   <p className="text-xs text-gray-500">
-                    {d.prix > 0 ? `${fmt(d.prix)} EUR` : "Prix non renseigne"} &middot; {d.surface > 0 ? `${d.surface} m2` : "Surface ?"}
+                    {d.prix > 0 ? `${fmt(d.prix)} EUR` : "Prix non renseigné"} &middot; {d.surface > 0 ? `${d.surface} m2` : "Surface ?"}
                   </p>
                 </div>
                 <DpeBadge classe={d.dpe_energie} />
@@ -69,22 +69,22 @@ export default function AnalysePage() {
         </div>
       ) : (
         <div className="rounded-xl border-2 border-dashed border-[var(--gris-border)] bg-[var(--gris-fond)] p-8 text-center">
-          <p className="text-base font-semibold text-gray-700">Aucun dossier a analyser</p>
-          <p className="mt-1 text-sm text-gray-500">Creez un dossier dans l&apos;etape &quot;Rechercher et visiter&quot; d&apos;abord.</p>
+          <p className="text-base font-semibold text-gray-700">Aucun dossier à analyser</p>
+          <p className="mt-1 text-sm text-gray-500">Créez un dossier dans l&apos;étape &quot;Rechercher et visiter&quot; d&apos;abord.</p>
           <button
             onClick={() => router.push("/parcours/4-recherche")}
             className="mt-4 rounded-xl bg-[var(--bleu-action)] px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
           >
-            Retour a la recherche
+            Retour à la recherche
           </button>
         </div>
       )}
 
       {/* Diagnostics obligatoires */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Diagnostics obligatoires a verifier</h2>
+        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Diagnostics obligatoires à vérifier</h2>
         <p className="mb-4 text-xs text-gray-500">
-          Cout estimatif pack complet : {COUT_PACK_DIAGNOSTICS.appartement.min}-{COUT_PACK_DIAGNOSTICS.appartement.max} EUR (appart) / {COUT_PACK_DIAGNOSTICS.maison.min}-{COUT_PACK_DIAGNOSTICS.maison.max} EUR (maison)
+          Coût estimatif pack complet : {COUT_PACK_DIAGNOSTICS.appartement.min}-{COUT_PACK_DIAGNOSTICS.appartement.max} EUR (appart) / {COUT_PACK_DIAGNOSTICS.maison.min}-{COUT_PACK_DIAGNOSTICS.maison.max} EUR (maison)
         </p>
         <div className="space-y-2">
           {DIAGNOSTICS_OBLIGATOIRES.map((d) => (
@@ -94,10 +94,10 @@ export default function AnalysePage() {
                   <p className="text-sm font-semibold text-[var(--bleu-marine)]">{d.nom}</p>
                   <p className="text-xs text-gray-500">{d.description}</p>
                 </div>
-                <span className="flex-shrink-0 text-xs text-gray-400">Validite : {d.validite}</span>
+                <span className="flex-shrink-0 text-xs text-gray-400">Validité : {d.validite}</span>
               </div>
               <p className="mt-1 text-xs text-gray-400">
-                Obligatoire si : {d.obligatoire_si} &middot; Cout : {d.cout_moyen_euros.min}-{d.cout_moyen_euros.max} EUR
+                Obligatoire si : {d.obligatoire_si} &middot; Coût : {d.cout_moyen_euros.min}-{d.cout_moyen_euros.max} EUR
               </p>
             </div>
           ))}
@@ -142,9 +142,9 @@ export default function AnalysePage() {
         </div>
       </div>
 
-      {/* Points de vigilance copropriete — source: lib/data/copropriete-rules.ts */}
+      {/* Points de vigilance copropriété — source: lib/data/copropriete-rules.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Points de vigilance copropriete</h2>
+        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Points de vigilance copropriété</h2>
         <p className="mb-4 text-xs text-gray-500">
           Fonds de travaux : minimum {FONDS_TRAVAUX_ALUR.taux_minimum_budget_previsionnel}% du budget previsionnel (loi Alur)
         </p>
@@ -201,8 +201,8 @@ export default function AnalysePage() {
             <thead>
               <tr className="border-b border-[var(--gris-border)] text-left text-xs text-gray-500">
                 <th className="pb-2 pr-3">Type de travaux</th>
-                <th className="pb-2 pr-3">Cout min</th>
-                <th className="pb-2 pr-3">Cout max</th>
+                <th className="pb-2 pr-3">Coût min</th>
+                <th className="pb-2 pr-3">Coût max</th>
                 <th className="pb-2">Unite</th>
               </tr>
             </thead>
@@ -274,8 +274,8 @@ export default function AnalysePage() {
       guide={
         <p>
           Vous avez identifie un bien qui vous interesse. Avant de faire une offre,
-          verifiez tout : DPE, diagnostics, charges de copropriete, prix du quartier,
-          risques naturels. Cette etape vous evite les mauvaises surprises.
+          vérifiez tout : DPE, diagnostics, charges de copropriété, prix du quartier,
+          risques naturels. Cette étape vous évite les mauvaises surprises.
         </p>
       }
       outils={tools}

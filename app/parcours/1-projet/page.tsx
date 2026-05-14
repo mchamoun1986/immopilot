@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { StepLayout } from "@/components/parcours/step-layout";
-import { loadProjet, saveProjetDebounced, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, saveProjetDebounced, flushPendingSave, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
 import { GARANTIES_CONSTRUCTEUR, ECHEANCIER_VEFA, GARANTIE_FINANCIERE_ACHEVEMENT } from "@/lib/data/vefa-rules";
@@ -19,6 +19,7 @@ export default function EtapeProjetPage() {
     const p = loadProjet() ?? createEmptyProjet();
     setProjet(p);
     setLoaded(true);
+    return () => flushPendingSave();
   }, []);
 
   const update = <K extends keyof ProjetImmobilier>(key: K, value: ProjetImmobilier[K]) => {
@@ -87,7 +88,7 @@ export default function EtapeProjetPage() {
           {/* Age */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="age">
-              Votre age
+              Votre âge
             </label>
             <input
               id="age"
@@ -129,7 +130,7 @@ export default function EtapeProjetPage() {
               onChange={(e) => update("type_contrat", e.target.value as ProjetImmobilier["type_contrat"])}
               className="w-full max-w-xs rounded-lg border border-[var(--gris-border)] px-3 py-2 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
             >
-              <option value="cdi">CDI (salarie)</option>
+              <option value="cdi">CDI (salarié)</option>
               <option value="fonctionnaire">Fonctionnaire / titulaire</option>
               <option value="cdd">CDD</option>
               <option value="independant">Indépendant / freelance</option>
@@ -187,7 +188,7 @@ export default function EtapeProjetPage() {
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700" htmlFor="charges_fixes">
               Charges fixes mensuelles{" "}
-              <span className="text-gray-400">(credits en cours, pension alimentaire, etc.)</span>
+              <span className="text-gray-400">(crédits en cours, pension alimentaire, etc.)</span>
             </label>
             <div className="relative max-w-xs">
               <input

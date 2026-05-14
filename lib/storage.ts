@@ -80,12 +80,27 @@ export function saveProjet(projet: ProjetImmobilier): void {
 }
 
 let saveTimeout: ReturnType<typeof setTimeout> | null = null;
+let pendingProjet: ProjetImmobilier | null = null;
 
 export function saveProjetDebounced(projet: ProjetImmobilier): void {
+  pendingProjet = projet;
   if (saveTimeout) clearTimeout(saveTimeout);
   saveTimeout = setTimeout(() => {
     saveProjet(projet);
+    pendingProjet = null;
   }, 400);
+}
+
+/** Flush any pending debounced save immediately — call in useEffect cleanup on unmount */
+export function flushPendingSave(): void {
+  if (saveTimeout) {
+    clearTimeout(saveTimeout);
+    saveTimeout = null;
+  }
+  if (pendingProjet) {
+    saveProjet(pendingProjet);
+    pendingProjet = null;
+  }
 }
 
 export function loadProjet(): ProjetImmobilier | null {

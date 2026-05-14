@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Dossier de Financement | ImmoPilot",
-  description: "Generez votre dossier de financement immobilier complet pour votre banque. Profil emprunteur, capacite, plan de financement, alertes.",
+  description: "Générez votre dossier de financement immobilier complet pour votre banque. Profil emprunteur, capacité, plan de financement, alertes.",
   alternates: { canonical: "/parcours/dossier-financement" },
 };
 

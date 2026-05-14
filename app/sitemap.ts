@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://immopilot.fr'
+  const base = 'https://immopilot-rust.vercel.app'
   return [
     { url: base, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${base}/parcours`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },

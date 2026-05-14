@@ -85,8 +85,8 @@ const DOCS_COMPROMIS: DocCategorie[] = [
     items: [
       "Titre de propriete",
       "Diagnostics techniques obligatoires (DPE, amiante, plomb, etc.)",
-      "PV d'AG (3 derniers, si copropriete)",
-      "Etat date des charges (si copropriete)",
+      "PV d'AG (3 derniers, si copropriété)",
+      "État daté des charges (si copropriété)",
     ],
   },
 ];
@@ -100,9 +100,9 @@ const TIPS = getTipsForEtape(7);
 
 const CHECKLIST = [
   "J'ai lu et compris toutes les clauses suspensives",
-  "J'ai verifie que la clause de pret est incluse",
-  "Le depot de garantie est verse chez le notaire",
-  "J'ai note les dates limites (retractation, pret, acte)",
+  "J'ai vérifié que la clause de prêt est incluse",
+  "Le dépôt de garantie est versé chez le notaire",
+  "J'ai noté les dates limites (rétractation, prêt, acte)",
 ];
 
 // ─── Composant : Guide clauses suspensives ────────────────────────────────────
@@ -131,7 +131,7 @@ function GuideClauses() {
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
       <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Guide clauses suspensives</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Verifiez que ces clauses sont presentes dans votre compromis avant de signer
+        Vérifiez que ces clauses sont présentes dans votre compromis avant de signer
       </p>
 
       <div className="space-y-3">
@@ -184,7 +184,7 @@ function GuideClauses() {
 
       <div className="mt-3 rounded-lg border border-green-200 bg-green-50 px-3 py-2">
         <p className="text-xs text-green-800">
-          <strong>{Object.values(checked).filter(Boolean).length} / {CLAUSES.length}</strong> clauses verifiees
+          <strong>{Object.values(checked).filter(Boolean).length} / {CLAUSES.length}</strong> clauses vérifiées
         </p>
       </div>
     </div>
@@ -317,7 +317,7 @@ function CalendrierDelais() {
       </div>
 
       <p className="mt-3 text-xs text-gray-400">
-        Les dates ci-dessus sont calculees sur la base de la date de signature saisie. Verifiez les delais exacts dans votre compromis.
+        Les dates ci-dessus sont calculées sur la base de la date de signature saisie. Vérifiez les délais exacts dans votre compromis.
       </p>
     </div>
   );
@@ -465,8 +465,8 @@ export default function EtapeCompromisPage() {
       guide={
         <p>
           Le compromis de vente (ou promesse synallagmatique) engage juridiquement les deux parties.
-          C&apos;est l&apos;etape la plus importante du processus. Vous disposez d&apos;un delai de retractation
-          de 10 jours calendaires apres la signature (loi SRU).
+          C&apos;est l&apos;étape la plus importante du processus. Vous disposez d&apos;un délai de rétractation
+          de 10 jours calendaires après la signature (loi SRU).
         </p>
       }
       outils={tools}

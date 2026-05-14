@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { loadProjet, saveProjet } from "@/lib/storage";
 import { saveLead } from "@/lib/leads";
 import type { LeadCapture, LeadSource, EtapeNumber } from "@/lib/types";
@@ -17,9 +17,12 @@ interface UseLeadModalReturn {
  */
 export function useLeadModal(source: LeadSource, etape: EtapeNumber): UseLeadModalReturn {
   const [isOpen, setIsOpen] = useState(false);
+  const [alreadyCaptured, setAlreadyCaptured] = useState(true); // default true to hide button during SSR
 
-  const projet = loadProjet();
-  const alreadyCaptured = projet?.sources_captured?.includes(source) ?? false;
+  useEffect(() => {
+    const projet = loadProjet();
+    setAlreadyCaptured(projet?.sources_captured?.includes(source) ?? false);
+  }, [source]);
 
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);

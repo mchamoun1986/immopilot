@@ -73,7 +73,7 @@ export default function MesDonneesPage() {
             href="/"
             className="mt-5 inline-block rounded-lg bg-[var(--bleu-secondaire)] px-6 py-2 text-sm font-semibold text-white hover:opacity-90"
           >
-            Retour a l&apos;accueil
+            Retour à l&apos;accueil
           </a>
         </div>
       ) : (
@@ -110,7 +110,7 @@ export default function MesDonneesPage() {
                   </div>
                 )}
                 <div className="flex items-center justify-between px-4 py-3 text-sm">
-                  <span className="font-semibold text-gray-700">Total cles immopilot</span>
+                  <span className="font-semibold text-gray-700">Total clés ImmoPilot</span>
                   <span className="font-bold text-[var(--bleu-marine)]">{summary.totalKeys}</span>
                 </div>
               </div>

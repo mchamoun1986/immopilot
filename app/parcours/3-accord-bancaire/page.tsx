@@ -21,11 +21,11 @@ const CHECKLIST = [
 const DOCUMENTS_ACCORD = [
   { nom: "Pièce d'identité", detail: "CNI ou passeport en cours de validité" },
   { nom: "Justificatif de domicile", detail: "Moins de 3 mois (facture, quittance)" },
-  { nom: "3 derniers bulletins de salaire", detail: "Ou bilans si independant" },
+  { nom: "3 derniers bulletins de salaire", detail: "Ou bilans si indépendant" },
   { nom: "2 derniers avis d'imposition", detail: "Revenus N-1 et N-2" },
   { nom: "Relevés bancaires 3 mois", detail: "Tous comptes (courant + épargne)" },
   { nom: "Justificatif d'apport", detail: "Relevé épargne, attestation donation, etc." },
-  { nom: "Tableau d'amortissement", detail: "Si credits en cours" },
+  { nom: "Tableau d'amortissement", detail: "Si crédits en cours" },
 ];
 
 export default function AccordBancairePage() {

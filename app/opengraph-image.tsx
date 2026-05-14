@@ -80,7 +80,7 @@ export default function OgImage() {
             opacity: 0.6,
           }}
         >
-          <span>immopilot.fr</span>
+          <span>immopilot-rust.vercel.app</span>
           <span>100% gratuit</span>
           <span>Sans compte</span>
         </div>

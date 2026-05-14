@@ -139,7 +139,7 @@ function ChecklistVisite() {
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Checklist complete — vous avez verifie tous les points importants !
+          Checklist complète — vous avez vérifié tous les points importants !
         </div>
       )}
     </div>
@@ -247,7 +247,7 @@ export default function EtapeRecherchePage() {
             Un bien vous interesse ?
           </p>
           <p className="text-xs text-gray-600 mt-0.5">
-            Creez un dossier pour centraliser toutes les infos, checklist et analyse financiere.
+            Créez un dossier pour centraliser toutes les infos, checklist et analyse financière.
           </p>
         </div>
         <button

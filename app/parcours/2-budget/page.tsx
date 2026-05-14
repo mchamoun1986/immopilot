@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { StepLayout } from "@/components/parcours/step-layout";
 import type { TipData } from "@/components/parcours/step-layout";
-import { loadProjet, saveProjet, saveProjetDebounced, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, saveProjet, saveProjetDebounced, flushPendingSave, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { calculerMensualite } from "@/lib/calculateurs/credit";
 import { calculerEndettement } from "@/lib/calculateurs/endettement";
@@ -561,6 +561,7 @@ export default function EtapeCapacitePage() {
     const p = loadProjet() ?? createEmptyProjet();
     setProjet(p);
     setLoaded(true);
+    return () => flushPendingSave();
   }, []);
 
   const handleFieldUpdate = useCallback(

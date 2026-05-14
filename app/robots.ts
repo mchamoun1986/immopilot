@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/dossiers/', '/mes-donnees'],
     },
-    sitemap: 'https://immopilot.fr/sitemap.xml',
+    sitemap: 'https://immopilot-rust.vercel.app/sitemap.xml',
   }
 }
