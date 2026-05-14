@@ -43,13 +43,23 @@ export default function ProPage() {
     e.preventDefault();
     if (!form.nom || !form.email || !form.type_pro) return;
 
-    const existing = JSON.parse(localStorage.getItem(PRO_STORAGE_KEY) || "[]");
+    let existing: Array<Record<string, string>> = [];
+    try {
+      const raw = localStorage.getItem(PRO_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) existing = parsed;
+      }
+    } catch { /* corrupted — reset */ }
     existing.push({ ...form, date: new Date().toISOString() });
-    localStorage.setItem(PRO_STORAGE_KEY, JSON.stringify(existing));
+    try {
+      localStorage.setItem(PRO_STORAGE_KEY, JSON.stringify(existing));
+    } catch { /* quota exceeded */ }
     setSubmitted(true);
   };
 
-  const updateField = (key: string, value: string) => {
+  type FormKey = keyof typeof form;
+  const updateField = (key: FormKey, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
 

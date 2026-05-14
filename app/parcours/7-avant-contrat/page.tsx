@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { StepLayout } from "@/components/parcours/step-layout";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
-import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { formatDate } from "@/lib/utils/format";
 // TODO: refactor inline CLAUSES to use CONDITIONS_SUSPENSIVES from compromis-rules.ts
@@ -432,16 +432,6 @@ export default function EtapeCompromisPage() {
     setProjet(p);
     setLoaded(true);
   }, []);
-
-  const handleUpdate = useCallback(
-    (updated: ProjetImmobilier) => {
-      setProjet(updated);
-      saveProjet(updated);
-    },
-    []
-  );
-
-  void handleUpdate;
 
   if (!loaded || !projet) {
     return (

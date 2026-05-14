@@ -9,7 +9,7 @@ import { StepNav } from "@/components/parcours/step-nav";
 import { ProjectSidebar } from "@/components/parcours/project-sidebar";
 import { TabsContainer } from "@/components/ui/tabs";
 import type { ProjetImmobilier, EtapeNumber } from "@/lib/types";
-import { ETAPES, NB_ETAPES } from "@/lib/constants";
+import { ETAPES } from "@/lib/constants";
 import { AffiliateLink } from "@/components/ui/affiliate-link";
 import { getBandeauForEtape } from "@/lib/data/bandeaux-intro";
 import { getContactsForEtape } from "@/lib/data/contacts-par-etape";

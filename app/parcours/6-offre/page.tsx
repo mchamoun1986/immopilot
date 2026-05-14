@@ -315,11 +315,10 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
   const handleSave = () => {
     if (estimMin === null || estimMax === null) return;
     const milieu = Math.round((estimMin + estimMax) / 2);
-    const updated = { ...projet, budget_max: projet.budget_max }; // preserve but could extend
-    // Store the travaux estimation in a note — projet type doesn't have travaux field directly
-    // We save to localStorage as a side note
-    localStorage.setItem("immopilot_travaux_estim", JSON.stringify({ niveau, surface, min: estimMin, max: estimMax, milieu }));
-    onUpdate(updated);
+    // Store the travaux estimation as a side note
+    try {
+      localStorage.setItem("immopilot_travaux_estim", JSON.stringify({ niveau, surface, min: estimMin, max: estimMax, milieu }));
+    } catch { /* quota exceeded */ }
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };

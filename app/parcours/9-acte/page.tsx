@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { StepLayout } from "@/components/parcours/step-layout";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
-import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier } from "@/lib/types";
 import { calculerFraisNotaire } from "@/lib/calculateurs/notaire";
 import { fmt } from "@/lib/utils/format";
@@ -303,16 +303,6 @@ export default function EtapeNotairePage() {
     setProjet(p);
     setLoaded(true);
   }, []);
-
-  const handleUpdate = useCallback(
-    (updated: ProjetImmobilier) => {
-      setProjet(updated);
-      saveProjet(updated);
-    },
-    []
-  );
-
-  void handleUpdate;
 
   if (!loaded || !projet) {
     return (

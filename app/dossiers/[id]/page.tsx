@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getDossier, updateDossier, deleteDossier } from "@/lib/dossiers";
 import { loadProjet } from "@/lib/storage";
 import { calculerFraisNotaire } from "@/lib/calculateurs/notaire";
 import { calculerMensualite } from "@/lib/calculateurs/credit";
-import type { DossierBien, DpeClasse, DossierStatut, ChecklistItem } from "@/lib/types";
+import type { DossierBien, DpeClasse, DossierStatut, ChecklistItem, ProjetImmobilier } from "@/lib/types";
 import { fmt } from "@/lib/utils/format";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -379,8 +379,7 @@ function SectionNotes({
 
 // ─── Section: Analyse financiere ──────────────────────────────────────────────
 
-function SectionFinance({ dossier }: { dossier: DossierBien }) {
-  const projet = loadProjet();
+function SectionFinance({ dossier, projet }: { dossier: DossierBien; projet: ProjetImmobilier | null }) {
 
   if (!projet || dossier.prix === 0 || dossier.surface === 0) {
     return (
@@ -648,9 +647,11 @@ export default function DossierDetailPage() {
   const router = useRouter();
 
   const [dossier, setDossier] = useState<DossierBien | null>(null);
+  const [projet, setProjetState] = useState<ProjetImmobilier | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [saveIndicator, setSaveIndicator] = useState(false);
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -665,7 +666,9 @@ export default function DossierDetailPage() {
       checklist_visite: initChecklist(d.checklist_visite),
     };
     setDossier(withChecklist);
+    setProjetState(loadProjet());
     setLoaded(true);
+    return () => { if (saveTimerRef.current) clearTimeout(saveTimerRef.current); };
   }, [id, router]);
 
   const handleChange = useCallback(
@@ -676,7 +679,8 @@ export default function DossierDetailPage() {
       updateDossier(next.id, updates);
       // Brief save indicator
       setSaveIndicator(true);
-      setTimeout(() => setSaveIndicator(false), 1200);
+      if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = setTimeout(() => setSaveIndicator(false), 1200);
     },
     [dossier]
   );
@@ -741,7 +745,7 @@ export default function DossierDetailPage() {
           onChange={handleChecklistChange}
         />
         <SectionNotes dossier={dossier} onChange={handleChange} />
-        <SectionFinance dossier={dossier} />
+        <SectionFinance dossier={dossier} projet={projet} />
         <SectionAlertes dossier={dossier} />
         <SectionAnalyseIA score={dossier.score} />
         <SectionStatut

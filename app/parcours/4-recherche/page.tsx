@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { StepLayout } from "@/components/parcours/step-layout";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
 import { SEUILS_DPE, CALENDRIER_PASSOIRES } from "@/lib/data/dpe-rules";
-import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, createEmptyProjet } from "@/lib/storage";
 import { createDossier } from "@/lib/dossiers";
 import type { ProjetImmobilier } from "@/lib/types";
 
@@ -213,17 +213,6 @@ export default function EtapeRecherchePage() {
     setProjet(p);
     setLoaded(true);
   }, []);
-
-  const handleUpdate = useCallback(
-    (updated: ProjetImmobilier) => {
-      setProjet(updated);
-      saveProjet(updated);
-    },
-    []
-  );
-
-  // Suppress unused warning
-  void handleUpdate;
 
   function handleCreateDossier() {
     const d = createDossier();

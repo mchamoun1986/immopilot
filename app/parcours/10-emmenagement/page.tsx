@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { StepLayout } from "@/components/parcours/step-layout";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
-import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
+import { loadProjet, createEmptyProjet } from "@/lib/storage";
 import type { ProjetImmobilier, LeadCapture } from "@/lib/types";
 import { LeadModal } from "@/components/formulaires/lead-modal";
 import { CHECKLIST_DEMENAGEMENT } from "@/lib/data/demenagement-checklist";
@@ -351,16 +351,6 @@ export default function EtapePostAchatPage() {
     setProjet(p);
     setLoaded(true);
   }, []);
-
-  const handleUpdate = useCallback(
-    (updated: ProjetImmobilier) => {
-      setProjet(updated);
-      saveProjet(updated);
-    },
-    []
-  );
-
-  void handleUpdate;
 
   if (!loaded || !projet) {
     return (

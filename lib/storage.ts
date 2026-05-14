@@ -76,7 +76,11 @@ export function createEmptyProjet(): ProjetImmobilier {
 }
 
 export function saveProjet(projet: ProjetImmobilier): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(projet));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(projet));
+  } catch {
+    // quota exceeded — silently fail
+  }
 }
 
 let saveTimeout: ReturnType<typeof setTimeout> | null = null;

@@ -6,9 +6,22 @@ const LEADS_KEY = "immopilot_leads";
 export function saveLead(lead: LeadCapture): void {
   // Save to localStorage (leads array)
   // In production, this would POST to /api/leads
-  const leads = JSON.parse(localStorage.getItem(LEADS_KEY) || "[]") as Array<LeadCapture & { created_at: string }>;
+  let leads: Array<LeadCapture & { created_at: string }> = [];
+  try {
+    const raw = localStorage.getItem(LEADS_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) leads = parsed;
+    }
+  } catch {
+    // corrupted data — reset
+  }
   leads.push({ ...lead, created_at: new Date().toISOString() });
-  localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+  try {
+    localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+  } catch {
+    // quota exceeded — silently fail
+  }
 
   // Mark projet as lead captured
   const projet = loadProjet();
