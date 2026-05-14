@@ -673,16 +673,18 @@ export default function DossierDetailPage() {
 
   const handleChange = useCallback(
     (updates: Partial<DossierBien>) => {
-      if (!dossier) return;
-      const next = { ...dossier, ...updates };
-      setDossier(next);
-      updateDossier(next.id, updates);
+      setDossier((prev) => {
+        if (!prev) return prev;
+        const next = { ...prev, ...updates };
+        updateDossier(next.id, updates);
+        return next;
+      });
       // Brief save indicator
       setSaveIndicator(true);
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
       saveTimerRef.current = setTimeout(() => setSaveIndicator(false), 1200);
     },
-    [dossier]
+    []
   );
 
   const handleChecklistChange = useCallback(

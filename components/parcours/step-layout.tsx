@@ -54,8 +54,10 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
   const toggleCheck = (idx: number) => {
     const next = checked.map((v, i) => (i === idx ? !v : v));
     setChecked(next);
-    if (projet) {
-      const updated = { ...projet, checklists: { ...projet.checklists, [etape]: next } };
+    // Reload fresh project to avoid overwriting concurrent edits
+    const fresh = loadProjet();
+    if (fresh) {
+      const updated = { ...fresh, checklists: { ...fresh.checklists, [etape]: next } };
       setProjet(updated);
       saveProjet(updated);
     }

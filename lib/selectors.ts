@@ -44,7 +44,7 @@ export function getCompletedSteps(projet: ProjetImmobilier): EtapeNumber[] {
     completed.push(1);
   }
   // 2. Definir son budget
-  if (projet.capacite_emprunt > 0 && typeof projet.eligible_ptz === "boolean") {
+  if (projet.capacite_emprunt > 0 && projet.taux_endettement > 0) {
     completed.push(2);
   }
   // 3. Premier feu vert bancaire (accord de principe = capacite validee)

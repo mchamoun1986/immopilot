@@ -110,9 +110,9 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
     const raw = localStorage.getItem(COMPARATEUR_KEY);
     if (raw) {
       try {
-        const parsed = JSON.parse(raw) as OffreBanque[];
-        if (Array.isArray(parsed) && parsed.length === 3) {
-          setOffres(parsed);
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length === 3 && parsed.every((o: unknown) => typeof o === "object" && o !== null && "taux" in o)) {
+          setOffres(parsed as OffreBanque[]);
         }
       } catch {
         // keep default
@@ -418,7 +418,14 @@ function ChecklistDossierBanque() {
     const raw = localStorage.getItem(DOCS_BANQUE_KEY);
     if (raw) {
       try {
-        setChecked(JSON.parse(raw) as boolean[]);
+        const parsed = JSON.parse(raw) as boolean[];
+        if (Array.isArray(parsed)) {
+          // Normalize to current checklist length
+          const normalized = DOCS_BANQUE.map((_, i) => parsed[i] ?? false);
+          setChecked(normalized);
+        } else {
+          setChecked(new Array(DOCS_BANQUE.length).fill(false));
+        }
       } catch {
         setChecked(new Array(DOCS_BANQUE.length).fill(false));
       }

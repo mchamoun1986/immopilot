@@ -28,9 +28,13 @@ export function trackAffiliateClick(url: string, source: string, etape?: number)
     timestamp: new Date().toISOString(),
   };
 
-  const clicks = getAffiliateClicks();
-  clicks.push(click);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(clicks));
+  try {
+    const clicks = getAffiliateClicks();
+    clicks.push(click);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(clicks));
+  } catch {
+    // storage unavailable — click still navigates
+  }
 
   return subId;
 }

@@ -51,10 +51,10 @@ describe("getCompletedSteps", () => {
     expect(steps).toContain(1);
   });
 
-  it("marks step 2 complete when capacite calculated", () => {
+  it("marks step 2 complete when capacite and endettement calculated", () => {
     const steps = getCompletedSteps(makeProjet({
       capacite_emprunt: 180000,
-      eligible_ptz: true,
+      taux_endettement: 28,
     }));
     expect(steps).toContain(2);
   });

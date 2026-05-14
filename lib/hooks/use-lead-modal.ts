@@ -28,17 +28,12 @@ export function useLeadModal(source: LeadSource, etape: EtapeNumber): UseLeadMod
   const closeModal = useCallback(() => setIsOpen(false), []);
 
   const onSubmit = useCallback((lead: LeadCapture) => {
-    // Save lead with project snapshot
+    const enrichedLead = { ...lead, source, etape };
+    saveLead(enrichedLead);
+
+    // Mark source as captured on project if available
     const p = loadProjet();
     if (p) {
-      const enrichedLead = {
-        ...lead,
-        source,
-        etape,
-      };
-      saveLead(enrichedLead);
-
-      // Mark source as captured
       if (!p.sources_captured) p.sources_captured = [];
       if (!p.sources_captured.includes(source)) {
         p.sources_captured.push(source);
