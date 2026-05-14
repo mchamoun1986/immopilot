@@ -31,18 +31,16 @@ type ZonePTZ = (typeof ZONES_PTZ)[number];
 
 // ─── Section : Simulateur credit ────────────────────────────────────────────
 
-function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (fields: Partial<ProjetImmobilier>) => void }) {
+function SimulateurCredit({ projet, taux, duree, onTauxChange, onDureeChange }: {
+  projet: ProjetImmobilier;
+  taux: number;
+  duree: number;
+  onTauxChange: (t: number) => void;
+  onDureeChange: (d: number) => void;
+}) {
   const [montant, setMontant] = useState(projet.budget_max || 200000);
-  const [taux, setTaux] = useState(3.5);
-  const [duree, setDuree] = useState(projet.duree_souhaitee || 20);
 
   const result = calculerMensualite(montant, taux, duree);
-
-  // Persist capacite_emprunt when montant changes
-  useEffect(() => {
-    onUpdate({ capacite_emprunt: montant, duree_souhaitee: duree });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [montant, duree]);
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
@@ -79,7 +77,7 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
             min={0}
             max={15}
             value={taux}
-            onChange={(e) => setTaux(parseFloat(e.target.value) || 0)}
+            onChange={(e) => onTauxChange(parseFloat(e.target.value) || 0)}
             className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
           />
         </div>
@@ -95,7 +93,7 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
             min={1}
             max={25}
             value={duree}
-            onChange={(e) => setDuree(parseInt(e.target.value) || 20)}
+            onChange={(e) => onDureeChange(parseInt(e.target.value) || 20)}
             className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
           />
         </div>
@@ -123,20 +121,23 @@ function SimulateurCredit({ projet, onUpdate }: { projet: ProjetImmobilier; onUp
 
 // ─── Section : Taux endettement ─────────────────────────────────────────────
 
-function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpdate: (fields: Partial<ProjetImmobilier>) => void }) {
+function TauxEndettement({ projet, taux, duree, onUpdate }: {
+  projet: ProjetImmobilier;
+  taux: number;
+  duree: number;
+  onUpdate: (fields: Partial<ProjetImmobilier>) => void;
+}) {
   const revenus = projet.revenus_net + (projet.revenus_conjoint ?? 0);
   const [charges, setCharges] = useState(projet.charges_fixes || 0);
-  const [taux, setTaux] = useState(3.5);
-  const [duree, setDuree] = useState(projet.duree_souhaitee || 20);
 
   const result = calculerEndettement(revenus, charges, taux, duree);
   const tauxPct = Math.round(result.taux * 10000) / 100; // to %, 2 decimals
   const isConform = result.conforme_hcsf;
   const barWidth = Math.min(tauxPct / 0.5, 100); // scale 0-50% range to 0-100% bar
 
-  // Persist taux_endettement
+  // Persist taux_endettement + capacite_emprunt (source of truth for capacity)
   useEffect(() => {
-    onUpdate({ taux_endettement: result.taux, charges_fixes: charges });
+    onUpdate({ taux_endettement: result.taux, charges_fixes: charges, capacite_emprunt: result.capacite_emprunt, duree_souhaitee: duree });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charges, taux, duree]);
 
@@ -147,7 +148,7 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
         Règle HCSF : maximum 35% des revenus nets mensuels
       </p>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {/* Revenus affiches */}
         <div>
           <p className="mb-1 text-xs font-medium text-gray-600">
@@ -172,24 +173,10 @@ function TauxEndettement({ projet, onUpdate }: { projet: ProjetImmobilier; onUpd
             className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
           />
         </div>
-
-        {/* Taux */}
-        <div>
-          <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="endet-taux">
-            Taux crédit (%)
-          </label>
-          <input
-            id="endet-taux"
-            type="number"
-            step={0.05}
-            min={0}
-            max={15}
-            value={taux}
-            onChange={(e) => setTaux(parseFloat(e.target.value) || 0)}
-            className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
-          />
-        </div>
       </div>
+      <p className="mt-2 text-xs text-gray-400">
+        Taux et durée utilisés : {taux}% sur {duree} ans (modifiables dans le simulateur ci-dessus)
+      </p>
 
       {revenus > 0 && (
         <div className="mt-4 space-y-3">
@@ -564,6 +551,15 @@ export default function EtapeCapacitePage() {
     return () => flushPendingSave();
   }, []);
 
+  // Shared taux/duree state — single source of truth for both simulateur and endettement
+  const [sharedTaux, setSharedTaux] = useState(3.5);
+  const [sharedDuree, setSharedDuree] = useState(20);
+
+  // Initialize shared duree from projet once loaded
+  useEffect(() => {
+    if (projet?.duree_souhaitee) setSharedDuree(projet.duree_souhaitee);
+  }, [projet?.duree_souhaitee]);
+
   const handleFieldUpdate = useCallback(
     (fields: Partial<ProjetImmobilier>) => {
       setProjet((prev) => {
@@ -586,8 +582,8 @@ export default function EtapeCapacitePage() {
 
   const tools = (
     <div className="space-y-5">
-      <SimulateurCredit projet={projet} onUpdate={handleFieldUpdate} />
-      <TauxEndettement projet={projet} onUpdate={handleFieldUpdate} />
+      <SimulateurCredit projet={projet} taux={sharedTaux} duree={sharedDuree} onTauxChange={setSharedTaux} onDureeChange={setSharedDuree} />
+      <TauxEndettement projet={projet} taux={sharedTaux} duree={sharedDuree} onUpdate={handleFieldUpdate} />
       <EligibilitePTZ projet={projet} onUpdate={handleFieldUpdate} />
       <BudgetTotal projet={projet} />
       <GateLead />

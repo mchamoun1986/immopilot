@@ -28,13 +28,41 @@ const DOCUMENTS_ACCORD = [
   { nom: "Tableau d'amortissement", detail: "Si crédits en cours" },
 ];
 
+const DOCS_ACCORD_KEY = "immopilot_docs_accord_checked";
+
 export default function AccordBancairePage() {
   const [projet, setProjet] = useState<ProjetImmobilier | null>(null);
   const [showCourtierModal, setShowCourtierModal] = useState(false);
+  const [docsChecked, setDocsChecked] = useState<boolean[]>([]);
 
   useEffect(() => {
     setProjet(loadProjet() ?? createEmptyProjet());
+    // Restore docs checklist
+    const raw = localStorage.getItem(DOCS_ACCORD_KEY);
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          setDocsChecked(DOCUMENTS_ACCORD.map((_, i) => parsed[i] ?? false));
+        } else {
+          setDocsChecked(new Array(DOCUMENTS_ACCORD.length).fill(false));
+        }
+      } catch {
+        setDocsChecked(new Array(DOCUMENTS_ACCORD.length).fill(false));
+      }
+    } else {
+      setDocsChecked(new Array(DOCUMENTS_ACCORD.length).fill(false));
+    }
   }, []);
+
+  const toggleDoc = (idx: number) => {
+    const next = docsChecked.map((v, i) => (i === idx ? !v : v));
+    setDocsChecked(next);
+    try { localStorage.setItem(DOCS_ACCORD_KEY, JSON.stringify(next)); } catch {}
+  };
+
+  const docsTotal = DOCUMENTS_ACCORD.length;
+  const docsCheckedCount = docsChecked.filter(Boolean).length;
 
   if (!projet) {
     return (
@@ -60,20 +88,53 @@ export default function AccordBancairePage() {
         </div>
       )}
 
-      {/* Documents a preparer */}
+      {/* Documents a preparer — checklist interactive */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-4 font-semibold text-[var(--bleu-marine)]">Documents à préparer pour la banque</h2>
-        <div className="space-y-3">
-          {DOCUMENTS_ACCORD.map((doc) => (
-            <div key={doc.nom} className="flex items-start gap-3 rounded-lg bg-[var(--gris-fond)] px-4 py-3">
-              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 border-gray-300 text-[10px]">&nbsp;</span>
-              <div>
-                <p className="text-sm font-semibold text-[var(--bleu-marine)]">{doc.nom}</p>
-                <p className="text-xs text-gray-500">{doc.detail}</p>
-              </div>
-            </div>
-          ))}
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="font-semibold text-[var(--bleu-marine)]">Documents à préparer pour la banque</h2>
+          <span className="rounded-full bg-[var(--gris-clair)] px-3 py-1 text-xs font-semibold text-gray-600">
+            {docsCheckedCount} / {docsTotal}
+          </span>
         </div>
+        <div className="mb-4 h-2 overflow-hidden rounded-full bg-gray-200">
+          <div
+            className="h-full rounded-full bg-[var(--bleu-secondaire)] transition-all duration-300"
+            style={{ width: `${docsTotal > 0 ? (docsCheckedCount / docsTotal) * 100 : 0}%` }}
+          />
+        </div>
+        <div className="space-y-2">
+          {DOCUMENTS_ACCORD.map((doc, idx) => {
+            const isChecked = docsChecked[idx] ?? false;
+            return (
+              <button
+                key={doc.nom}
+                onClick={() => toggleDoc(idx)}
+                className={`flex w-full items-start gap-3 rounded-lg px-4 py-3 text-left transition-colors ${
+                  isChecked ? "bg-green-50" : "bg-[var(--gris-fond)] hover:bg-gray-100"
+                }`}
+              >
+                <span className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 transition-colors ${
+                  isChecked ? "border-green-500 bg-green-500 text-white" : "border-gray-300 bg-white"
+                }`}>
+                  {isChecked && (
+                    <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2 6l3 3 5-5" />
+                    </svg>
+                  )}
+                </span>
+                <div>
+                  <p className={`text-sm font-semibold ${isChecked ? "text-gray-400 line-through" : "text-[var(--bleu-marine)]"}`}>{doc.nom}</p>
+                  <p className="text-xs text-gray-500">{doc.detail}</p>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+        {docsCheckedCount === docsTotal && docsTotal > 0 && (
+          <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
+            Dossier complet — vous êtes prêt(e) pour le rendez-vous bancaire !
+          </div>
+        )}
       </div>
 
       {/* Conseil */}
