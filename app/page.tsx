@@ -60,7 +60,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a1628] via-[#0f1f3d] to-[#1a365d] py-20 md:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--bleu-nuit)] via-[var(--bleu-profond)] to-[var(--bleu-marine)] py-20 md:py-28">
         {/* Decorative blobs */}
         <div className="absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-[#c1272d] opacity-[0.04] blur-[100px]" />
         <div className="absolute -bottom-20 right-1/4 h-[400px] w-[400px] rounded-full bg-[#2563eb] opacity-[0.06] blur-[80px]" />

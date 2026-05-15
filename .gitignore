@@ -40,4 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# internal tooling
+.superpowers/
+screenshots/
+
+# sensitive business docs
+docs/*.pptx
+docs/pitch-deck.js
+docs/prompt-monetisation-dev.md
+docs/monetisation-report.html

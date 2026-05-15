@@ -68,7 +68,7 @@ export default function ProPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0a1628] via-[#0f1f3d] to-[#1a365d] py-20">
+      <section className="bg-gradient-to-br from-[var(--bleu-nuit)] via-[var(--bleu-profond)] to-[var(--bleu-marine)] py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <p className="mb-4 inline-block rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-xs font-semibold text-white/70">
             Espace Professionnels

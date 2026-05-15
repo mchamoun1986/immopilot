@@ -9,6 +9,10 @@
   --gris-fond: #f8fafc;
   --gris-border: #e2e8f0;
 
+  /* Hero gradients */
+  --bleu-nuit: #0a1628;
+  --bleu-profond: #0f1f3d;
+
   /* Legacy aliases */
   --rouge-francais: var(--rouge-fr);
   --bleu-secondaire: var(--bleu-action);
@@ -62,14 +66,4 @@ body {
   }
 }
 
-.input-standard {
-  border-radius: 0.75rem;
-  border: 1px solid var(--gris-border);
-  padding: 0.625rem 1rem;
-  font-size: 0.875rem;
-}
-.input-standard:focus {
-  border-color: var(--bleu-action);
-  outline: 2px solid var(--bleu-action);
-  outline-offset: 1px;
-}
+/* .input-standard removed — inputs use inline Tailwind classes */

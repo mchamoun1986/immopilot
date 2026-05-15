@@ -17,7 +17,7 @@ export function StepNav({ etapeCourante }: StepNavProps) {
       {next ? (
         <Link href={`/parcours/${next.slug}`} className="rounded-lg bg-[var(--bleu-secondaire)] px-6 py-2 text-sm font-semibold text-white hover:opacity-90">{next.titre} &rarr;</Link>
       ) : (
-        <span className="rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white">Parcours termine</span>
+        <span className="rounded-lg bg-[var(--vert-succes)] px-6 py-2 text-sm font-semibold text-white">Parcours terminé</span>
       )}
     </div>
   );

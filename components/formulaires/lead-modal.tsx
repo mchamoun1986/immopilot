@@ -40,10 +40,12 @@ export function LeadModal({
 
   const overlayRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
-  // Reset form when modal opens + focus trap
+  // Reset form when modal opens + focus trap + return focus on close
   useEffect(() => {
     if (isOpen) {
+      triggerRef.current = document.activeElement as HTMLElement;
       setEmail("");
       setNom("");
       setPrenom("");
@@ -59,6 +61,9 @@ export function LeadModal({
         const firstInput = dialogRef.current?.querySelector<HTMLElement>("input, button");
         firstInput?.focus();
       });
+    } else {
+      // Return focus to trigger element on close
+      requestAnimationFrame(() => triggerRef.current?.focus());
     }
   }, [isOpen]);
 
