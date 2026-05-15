@@ -28,17 +28,31 @@ export function TabsContainer({ tabs, defaultTab, children }: TabsContainerProps
     setActiveTab(tabId);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, idx: number) => {
+    let nextIdx = idx;
+    if (e.key === "ArrowRight") nextIdx = (idx + 1) % tabs.length;
+    else if (e.key === "ArrowLeft") nextIdx = (idx - 1 + tabs.length) % tabs.length;
+    else if (e.key === "Home") nextIdx = 0;
+    else if (e.key === "End") nextIdx = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    handleTabClick(tabs[nextIdx].id);
+    document.getElementById(`tab-${tabs[nextIdx].id}`)?.focus();
+  };
+
   return (
     <div>
       <div className="mb-4 flex gap-1 overflow-x-auto border-b border-[var(--gris-border)]" role="tablist">
-        {tabs.map((tab) => (
+        {tabs.map((tab, idx) => (
           <button
             key={tab.id}
             id={`tab-${tab.id}`}
             role="tab"
             aria-selected={activeTab === tab.id}
             aria-controls={`panel-${tab.id}`}
+            tabIndex={activeTab === tab.id ? 0 : -1}
             onClick={() => handleTabClick(tab.id)}
+            onKeyDown={(e) => handleKeyDown(e, idx)}
             className={`flex items-center gap-1.5 whitespace-nowrap border-b-2 px-4 py-2.5 text-sm font-medium transition-colors ${
               activeTab === tab.id
                 ? "border-[var(--bleu-action)] text-[var(--bleu-action)]"

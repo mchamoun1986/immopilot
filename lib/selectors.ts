@@ -47,8 +47,8 @@ export function getCompletedSteps(projet: ProjetImmobilier): EtapeNumber[] {
   if (projet.capacite_emprunt > 0 && projet.taux_endettement > 0) {
     completed.push(2);
   }
-  // 3. Premier feu vert bancaire (accord de principe = capacite validee)
-  if (projet.capacite_emprunt > 0) {
+  // 3. Premier feu vert bancaire — requires checklist progress on step 3
+  if (projet.capacite_emprunt > 0 && (projet.checklists?.[3]?.some(Boolean) ?? false)) {
     completed.push(3);
   }
   // 4. Rechercher et visiter
@@ -59,8 +59,8 @@ export function getCompletedSteps(projet: ProjetImmobilier): EtapeNumber[] {
   if (projet.dossiers.some((d) => d.surface > 0 && d.prix > 0)) {
     completed.push(5);
   }
-  // 6. Faire une offre
-  if (projet.dossiers.some((d) => d.offre !== null)) {
+  // 6. Faire une offre — requires offer with a montant set
+  if (projet.dossiers.some((d) => d.offre !== null && (d.offre.montant ?? 0) > 0)) {
     completed.push(6);
   }
   // 7. Signer l'avant-contrat

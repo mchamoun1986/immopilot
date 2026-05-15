@@ -92,9 +92,9 @@ export default function DashboardPage() {
             />
           ))}
           {alertes.length > 3 && (
-            <button className="text-sm text-[var(--bleu-action)] hover:underline">
-              Voir toutes les alertes ({alertes.length})
-            </button>
+            <p className="text-sm text-gray-500">
+              +{alertes.length - 3} autres alertes — consultez chaque étape pour les détails
+            </p>
           )}
         </div>
       )}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { StepLayout } from "@/components/parcours/step-layout";
 import { getTipsForEtape } from "@/lib/data/tips-par-etape";
 import { loadProjet, saveProjet, createEmptyProjet } from "@/lib/storage";
@@ -184,11 +184,16 @@ Date : ${today}`;
     setCopied(false);
   };
 
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (copyTimerRef.current) clearTimeout(copyTimerRef.current); }, []);
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(generated);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       // clipboard API not available
     }
@@ -307,6 +312,9 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
   const [niveau, setNiveau] = useState<string | null>(null);
   const [surface, setSurface] = useState(0);
   const [saved, setSaved] = useState(false);
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (saveTimerRef.current) clearTimeout(saveTimerRef.current); }, []);
 
   const selectedNiveau = NIVEAUX_RENOVATION.find((n) => n.id === niveau);
   const estimMin = selectedNiveau && surface > 0 ? selectedNiveau.min * surface : null;
@@ -320,7 +328,8 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
       localStorage.setItem("immopilot_travaux_estim", JSON.stringify({ niveau, surface, min: estimMin, max: estimMax, milieu }));
     } catch { /* quota exceeded */ }
     setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => setSaved(false), 2000);
   };
 
   return (

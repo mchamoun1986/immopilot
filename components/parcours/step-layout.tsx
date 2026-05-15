@@ -26,7 +26,6 @@ export interface StepLayoutProps {
   outils?: React.ReactNode;
   tips?: TipData[];
   checklist?: string[];
-  proCTA?: { titre: string; description: string; buttonText: string };
   children?: React.ReactNode;
 }
 
@@ -37,7 +36,7 @@ const TIP_STYLES: Record<TipData["type"], { border: string; bg: string; icon: st
   astuce: { border: "border-l-blue-500", bg: "bg-blue-50", icon: "💡" },
 };
 
-export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, children }: StepLayoutProps) {
+export function StepLayout({ etape, guide, outils, tips, checklist, children }: StepLayoutProps) {
   const router = useRouter();
   const [projet, setProjet] = useState<ProjetImmobilier | null>(null);
   const [checked, setChecked] = useState<boolean[]>([]);
@@ -128,19 +127,6 @@ export function StepLayout({ etape, guide, outils, tips, checklist, proCTA, chil
                   <div className="space-y-6">
                     {outils}
                     {children}
-                    {proCTA && (
-                      <div className="card-flat border-[var(--bleu-action)]">
-                        <div className="flex items-start justify-between gap-4">
-                          <div>
-                            <p className="font-semibold text-[var(--bleu-marine)]">{proCTA.titre}</p>
-                            <p className="mt-1 text-sm text-gray-600">{proCTA.description}</p>
-                          </div>
-                          <button className="flex-shrink-0 rounded-xl bg-[var(--bleu-action)] px-4 py-2 text-sm font-semibold text-white hover:opacity-90">
-                            {proCTA.buttonText}
-                          </button>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 )}
 
