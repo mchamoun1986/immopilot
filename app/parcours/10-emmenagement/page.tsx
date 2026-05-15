@@ -31,8 +31,8 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
     badgeColor: "bg-red-100 text-red-700",
     items: [
       "Souscrire / activer l'assurance habitation",
-      "Relever les compteurs (eau, electricite, gaz)",
-      "Changer les serrures (recommande)",
+      "Relever les compteurs (eau, électricité, gaz)",
+      "Changer les serrures (recommandé)",
     ],
   },
   {
@@ -40,10 +40,10 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
     badge: "30 j",
     badgeColor: "bg-orange-100 text-orange-700",
     items: [
-      "Declarer le changement d'adresse (service-public.fr)",
-      "Informer employeur, banque, impots, CAF, CPAM",
-      "Transferer ou souscrire abonnements (eau, elec, gaz, internet)",
-      "Souscrire assurance proprietaire non-occupant (si investissement futur)",
+      "Déclarer le changement d'adresse (service-public.fr)",
+      "Informer employeur, banque, impôts, CAF, CPAM",
+      "Transférer ou souscrire abonnements (eau, élec, gaz, internet)",
+      "Souscrire assurance propriétaire non-occupant (si investissement futur)",
     ],
   },
   {
@@ -51,19 +51,19 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
     badge: "90 j",
     badgeColor: "bg-amber-100 text-amber-700",
     items: [
-      "Declaration aux impots (formulaire H1 pour maison, H2 pour appartement)",
-      "Demande exoneration taxe fonciere (si neuf — conditionnelle, peut etre reduite par la commune)",
+      "Déclaration aux impôts (formulaire H1 pour maison, H2 pour appartement)",
+      "Demande exonération taxe foncière (si neuf — conditionnelle, peut être réduite par la commune)",
     ],
   },
   {
-    titre: "A conserver precieusement",
+    titre: "À conserver précieusement",
     badge: "Permanent",
     badgeColor: "bg-blue-100 text-blue-700",
     items: [
       "Acte de vente authentique",
       "Diagnostics techniques",
       "Factures de travaux (utile pour la plus-value future)",
-      "Garantie decennale (si construction < 10 ans)",
+      "Garantie décennale (si construction < 10 ans)",
     ],
   },
 ];
@@ -75,18 +75,18 @@ const ALL_POST_ACHAT_ITEMS = CHECKLIST_SECTIONS.flatMap((s) => s.items);
 
 const GARANTIES = [
   {
-    titre: "Vices caches",
+    titre: "Vices cachés",
     duree: "2 ans",
     detail:
-      "Action possible dans les 2 ans a compter de la DECOUVERTE du vice (pas de la vente). Documenter l'etat du bien avec photos avant emmenagement.",
+      "Action possible dans les 2 ans à compter de la DÉCOUVERTE du vice (pas de la vente). Documenter l'état du bien avec photos avant emménagement.",
     color: "border-orange-300 bg-orange-50",
     labelColor: "bg-orange-100 text-orange-700",
   },
   {
-    titre: "Garantie decennale",
+    titre: "Garantie décennale",
     duree: "10 ans",
     detail:
-      "10 ans sur le gros oeuvre (si construction ou extension). Demander l'attestation au vendeur.",
+      "10 ans sur le gros œuvre (si construction ou extension). Demander l'attestation au vendeur.",
     color: "border-blue-300 bg-blue-50",
     labelColor: "bg-blue-100 text-blue-700",
   },
@@ -94,15 +94,15 @@ const GARANTIES = [
     titre: "Garantie biennale",
     duree: "2 ans",
     detail:
-      "2 ans sur les equipements (chaudiere, volets, etc.). Couvre les elements dissociables du gros oeuvre.",
+      "2 ans sur les équipements (chaudière, volets, etc.). Couvre les éléments dissociables du gros œuvre.",
     color: "border-purple-300 bg-purple-50",
     labelColor: "bg-purple-100 text-purple-700",
   },
   {
-    titre: "Garantie de parfait achevement",
+    titre: "Garantie de parfait achèvement",
     duree: "1 an",
     detail:
-      "1 an — VEFA uniquement. Couvre toutes les malfacons signalees lors de la reception ou dans l'annee qui suit.",
+      "1 an — VEFA uniquement. Couvre toutes les malfaçons signalées lors de la réception ou dans l'année qui suit.",
     color: "border-green-300 bg-green-50",
     labelColor: "bg-green-100 text-green-700",
   },
@@ -114,9 +114,9 @@ const TIPS = getTipsForEtape(10);
 
 const CHECKLIST = [
   "J'ai souscrit l'assurance habitation",
-  "J'ai declare mon changement d'adresse",
-  "J'ai fait les demarches fiscales (H1/H2)",
-  "J'ai archive tous les documents importants",
+  "J'ai déclaré mon changement d'adresse",
+  "J'ai fait les démarches fiscales (H1/H2)",
+  "J'ai archivé tous les documents importants",
 ];
 
 // ─── Composant : Checklist post-achat ────────────────────────────────────────
@@ -193,7 +193,7 @@ function ChecklistPostAchat() {
                             ? "border-green-500 bg-green-500 text-white"
                             : "border-gray-300 bg-white"
                         }`}
-                        aria-label={isChecked ? "Demarquer" : "Marquer comme fait"}
+                        aria-label={isChecked ? "Démarquer" : "Marquer comme fait"}
                       >
                         {isChecked && (
                           <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
@@ -215,7 +215,7 @@ function ChecklistPostAchat() {
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Toutes les demarches post-achat sont completees !
+          Toutes les démarches post-achat sont complétées !
         </div>
       )}
     </div>
@@ -229,7 +229,7 @@ function GuideGaranties() {
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
       <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Garanties applicables</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Connaissez vos recours en cas de probleme apres l&apos;achat
+        Connaissez vos recours en cas de problème après l&apos;achat
       </p>
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -262,7 +262,7 @@ function GateLead() {
   return (
     <>
       <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Prochaines etapes pratiques</h2>
+        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Prochaines étapes pratiques</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="rounded-lg border border-[var(--gris-border)] bg-[var(--gris-clair)] p-3">
             <p className="mb-1 text-sm font-semibold text-[var(--bleu-marine)]">Assurance habitation</p>
@@ -277,15 +277,15 @@ function GateLead() {
             </button>
           </div>
           <div className="rounded-lg border border-[var(--gris-border)] bg-[var(--gris-clair)] p-3">
-            <p className="mb-1 text-sm font-semibold text-[var(--bleu-marine)]">Demenagement</p>
+            <p className="mb-1 text-sm font-semibold text-[var(--bleu-marine)]">Déménagement</p>
             <p className="mb-3 text-xs text-gray-500">
-              Obtenez des devis de demenageurs professionnels pres de chez vous.
+              Obtenez des devis de déménageurs professionnels près de chez vous.
             </p>
             <button
               className="w-full rounded-lg bg-[var(--bleu-secondaire)] py-2 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
               onClick={() => setShowDemenagement(true)}
             >
-              Trouver un demenageur
+              Trouver un déménageur
             </button>
           </div>
         </div>
@@ -297,7 +297,7 @@ function GateLead() {
         source="assurance"
         etape={10}
         titre="Comparez votre assurance habitation"
-        description="Recevez les meilleures offres d'assurance habitation adaptees a votre nouveau logement."
+        description="Recevez les meilleures offres d'assurance habitation adaptées à votre nouveau logement."
         showPhone={false}
         showConsent={true}
         onSubmit={handleLeadSubmit}
@@ -308,8 +308,8 @@ function GateLead() {
         onClose={() => setShowDemenagement(false)}
         source="demenagement"
         etape={10}
-        titre="Trouvez un demenageur"
-        description="Obtenez des devis de demenageurs professionnels pres de chez vous."
+        titre="Trouvez un déménageur"
+        description="Obtenez des devis de déménageurs professionnels près de chez vous."
         showPhone={false}
         showConsent={true}
         onSubmit={handleLeadSubmit}
@@ -325,10 +325,10 @@ function BannereFelicitations() {
     <div className="rounded-xl border-2 border-green-300 bg-green-50 p-6 text-center">
       <div className="mb-3 text-4xl">🏠</div>
       <h2 className="mb-2 text-xl font-bold text-[var(--bleu-marine)]">
-        Bravo ! Vous avez termine le parcours ImmoPilot.
+        Bravo ! Vous avez terminé le parcours ImmoPilot.
       </h2>
       <p className="mb-5 text-sm text-gray-600 max-w-lg mx-auto">
-        Vous avez maintenant toutes les cles — au propre comme au figure — pour reussir votre achat immobilier.
+        Vous avez maintenant toutes les clés — au propre comme au figuré — pour réussir votre achat immobilier.
       </p>
       <Link
         href="/parcours"
@@ -369,7 +369,7 @@ export default function EtapePostAchatPage() {
 
       {/* Timeline demenagement — source: lib/data/demenagement-checklist.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-4">
-        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Timeline demenagement</h2>
+        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Timeline déménagement</h2>
         <div className="space-y-2">
           {CHECKLIST_DEMENAGEMENT.map((a, i) => (
             <div key={i} className="flex items-start gap-3 rounded-lg bg-[var(--gris-fond)] px-3 py-2">
@@ -387,7 +387,7 @@ export default function EtapePostAchatPage() {
 
       {/* Declarations post-achat — source: lib/data/post-achat-declarations.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-4">
-        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Demarches administratives</h2>
+        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Démarches administratives</h2>
         <div className="space-y-2">
           {DECLARATIONS_POST_ACHAT.map((d, i) => (
             <div key={i} className="rounded-lg border border-[var(--gris-border)] p-3">
@@ -399,8 +399,8 @@ export default function EtapePostAchatPage() {
                 {d.obligatoire && <span className="flex-shrink-0 rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold text-red-700">Obligatoire</span>}
               </div>
               <div className="mt-2 flex items-center gap-3 text-xs text-gray-400">
-                <span>Delai : {d.delai}</span>
-                <span>Ou : {d.ou_faire}</span>
+                <span>Délai : {d.delai}</span>
+                <span>Où : {d.ou_faire}</span>
               </div>
             </div>
           ))}
@@ -409,16 +409,16 @@ export default function EtapePostAchatPage() {
 
       {/* Fiscalite et declarations — source: lib/data/fiscalite-immo.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-5">
-        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Fiscalite et declarations</h2>
+        <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Fiscalité et déclarations</h2>
         <p className="mb-4 text-xs text-gray-500">
-          Exonerations, deductions et dispositifs fiscaux immobiliers
+          Exonérations, déductions et dispositifs fiscaux immobiliers
         </p>
 
         {/* Taxe fonciere */}
         <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
-          <p className="text-sm font-semibold text-green-800">Taxe fonciere — exoneration logement neuf</p>
+          <p className="text-sm font-semibold text-green-800">Taxe foncière — exonération logement neuf</p>
           <p className="mt-1 text-xs text-green-700">
-            Exoneration de {TAXE_FONCIERE_INFO.exoneration_neuf_annees} ans pour les logements neufs (construction ou achat VEFA).
+            Exonération de {TAXE_FONCIERE_INFO.exoneration_neuf_annees} ans pour les logements neufs (construction ou achat VEFA).
           </p>
           <p className="mt-1 text-xs text-gray-500">
             Base : {TAXE_FONCIERE_INFO.base}. {TAXE_FONCIERE_INFO.note}
@@ -427,13 +427,13 @@ export default function EtapePostAchatPage() {
 
         {/* IFI */}
         <div className="mb-4 rounded-lg border border-[var(--gris-border)] bg-[var(--gris-clair)] px-4 py-3">
-          <p className="text-sm font-semibold text-[var(--bleu-marine)]">IFI (Impot sur la Fortune Immobiliere)</p>
+          <p className="text-sm font-semibold text-[var(--bleu-marine)]">IFI (Impôt sur la Fortune Immobilière)</p>
           <p className="mt-1 text-xs text-gray-600">
             Seuil : {new Intl.NumberFormat("fr-FR").format(IFI_INFO.seuil_euros)} EUR de patrimoine immobilier net.
             Assiette : {IFI_INFO.assiette}.
           </p>
           <p className="mt-1 text-xs text-gray-500">
-            Dettes deductibles : {IFI_INFO.dettes_deductibles.join(" ; ")}.
+            Dettes déductibles : {IFI_INFO.dettes_deductibles.join(" ; ")}.
           </p>
         </div>
 
@@ -477,8 +477,8 @@ export default function EtapePostAchatPage() {
       etape={10}
       guide={
         <p>
-          Felicitations, vous etes proprietaire ! Il reste quelques demarches administratives importantes
-          a effectuer dans les semaines qui suivent l&apos;achat pour etre en regle.
+          Félicitations, vous êtes propriétaire ! Il reste quelques démarches administratives importantes
+          à effectuer dans les semaines qui suivent l&apos;achat pour être en règle.
         </p>
       }
       outils={tools}

@@ -71,7 +71,10 @@ export default function EtapeProjetPage() {
               {(["celibataire", "couple", "famille"] as const).map((s) => (
                 <button
                   key={s}
-                  onClick={() => update("situation", s)}
+                  onClick={() => {
+                    update("situation", s);
+                    if (s === "celibataire") update("revenus_conjoint", null);
+                  }}
                   aria-pressed={projet.situation === s}
                   className={`rounded-lg border px-4 py-2 text-sm font-medium transition-colors ${
                     projet.situation === s

@@ -36,7 +36,6 @@ const jsonLd = {
       name: "ImmoPilot",
       url: "https://immopilot-rust.vercel.app",
       description: "Guide gratuit pour l'achat immobilier des primo-accédants en France.",
-      logo: "https://immopilot-rust.vercel.app/icon.png",
     },
     {
       "@type": "WebSite",

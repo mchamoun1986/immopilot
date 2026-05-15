@@ -44,10 +44,10 @@ const DPE_CLASSES: DpeInfo[] = SEUILS_DPE.map((s) => {
 const TIPS = getTipsForEtape(4);
 
 const CHECKLIST = [
-  "J'ai prepare ma checklist de visite",
-  "J'ai visite au moins un bien",
-  "J'ai cree un dossier pour chaque bien interessant",
-  "J'ai demande les documents necessaires",
+  "J'ai préparé ma checklist de visite",
+  "J'ai visité au moins un bien",
+  "J'ai créé un dossier pour chaque bien intéressant",
+  "J'ai demandé les documents nécessaires",
 ];
 
 // ─── Composant : Checklist de visite ─────────────────────────────────────────
@@ -117,7 +117,7 @@ function ChecklistVisite() {
                             ? "border-green-500 bg-green-500 text-white"
                             : "border-gray-300 bg-white"
                         }`}
-                        aria-label={isChecked ? "Demarquer" : "Marquer comme verifie"}
+                        aria-label={isChecked ? "Démarquer" : "Marquer comme vérifié"}
                       >
                         {isChecked && (
                           <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
@@ -151,9 +151,9 @@ function ChecklistVisite() {
 function GuideDPE() {
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Guide DPE — Etiquettes energetiques</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Guide DPE — Étiquettes énergétiques</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Diagnostic de Performance Energetique — obligatoire dans toute annonce immobiliere
+        Diagnostic de Performance Énergétique — obligatoire dans toute annonce immobilière
       </p>
 
       <div className="space-y-2">
@@ -194,8 +194,8 @@ function GuideDPE() {
       </div>
 
       <p className="mt-3 text-xs text-gray-500">
-        Source : reglementation RE2020 et loi Climat et Resilience 2021. Les classes F et G sont progressivement
-        interdites a la location. Un DPE mediocre impacte directement la valeur de revente.
+        Source : réglementation RE2020 et loi Climat et Résilience 2021. Les classes F et G sont progressivement
+        interdites à la location. Un DPE médiocre impacte directement la valeur de revente.
       </p>
     </div>
   );
@@ -233,7 +233,7 @@ export default function EtapeRecherchePage() {
       <div className="rounded-lg border border-[var(--bleu-secondaire)] bg-blue-50 p-4 flex items-center justify-between gap-4">
         <div>
           <p className="font-semibold text-[var(--bleu-marine)] text-sm">
-            Un bien vous interesse ?
+            Un bien vous intéresse ?
           </p>
           <p className="text-xs text-gray-600 mt-0.5">
             Créez un dossier pour centraliser toutes les infos, checklist et analyse financière.
@@ -243,7 +243,7 @@ export default function EtapeRecherchePage() {
           onClick={handleCreateDossier}
           className="flex-shrink-0 rounded-lg bg-[var(--bleu-secondaire)] px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
         >
-          Creer un dossier
+          Créer un dossier
         </button>
       </div>
 
@@ -257,9 +257,9 @@ export default function EtapeRecherchePage() {
       etape={4}
       guide={
         <p>
-          Vous connaissez votre budget et votre capacite. Il est temps de chercher le bien
-          ideal. Preparez vos visites avec notre checklist et creez un dossier pour chaque
-          bien qui vous interesse.
+          Vous connaissez votre budget et votre capacité. Il est temps de chercher le bien
+          idéal. Préparez vos visites avec notre checklist et créez un dossier pour chaque
+          bien qui vous intéresse.
         </p>
       }
       outils={tools}

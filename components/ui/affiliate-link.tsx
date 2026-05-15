@@ -16,14 +16,17 @@ export function AffiliateLink({ href, affiliateUrl, children, source, etape, cla
   const isAffiliate = affiliateUrl !== null;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!isAffiliate) return; // Let normal navigation happen
-    // Track click but let the browser handle navigation via href
-    trackAffiliateClick(affiliateUrl, source, etape);
+    if (!isAffiliate) return;
+    e.preventDefault();
+    // Track click and get real subId, then navigate with tracked URL
+    const subId = trackAffiliateClick(affiliateUrl, source, etape);
+    const trackedUrl = buildAffiliateUrl(affiliateUrl, subId);
+    window.open(trackedUrl, "_blank", "noopener,noreferrer");
   };
 
-  // Build the tracked URL at render time so href is always a real URL
+  // Display href with placeholder for right-click/copy — real subId injected on click
   const displayUrl = isAffiliate
-    ? buildAffiliateUrl(affiliateUrl, "click")
+    ? buildAffiliateUrl(affiliateUrl, "preview")
     : href;
 
   return (

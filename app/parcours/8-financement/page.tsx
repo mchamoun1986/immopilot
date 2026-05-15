@@ -32,7 +32,7 @@ const COMPARATEUR_KEY = "immopilot_comparateur_banques";
 const NEGOCIATION_KEY = "immopilot_negociation_checked";
 const DOCS_BANQUE_KEY = "immopilot_docs_banque_checked";
 
-// ─── Points de negociation ────────────────────────────────────────────────────
+// ─── Points de négociation ────────────────────────────────────────────────────
 
 interface PointNegociation {
   id: string;
@@ -44,30 +44,30 @@ const POINTS_NEGOCIATION: PointNegociation[] = [
   {
     id: "taux",
     titre: "Taux nominal",
-    detail: "Comparer au moins 3 banques — 0,1% de difference peut representer plusieurs milliers d'euros sur la duree.",
+    detail: "Comparer au moins 3 banques — 0,1% de différence peut représenter plusieurs milliers d'euros sur la durée.",
   },
   {
     id: "assurance",
-    titre: "Assurance emprunteur (delegation)",
+    titre: "Assurance emprunteur (délégation)",
     detail:
-      "La delegation d'assurance (loi Lemoine) permet de changer a tout moment, sans frais. Economie typique : 10 000 a 15 000 EUR sur la duree du pret.",
+      "La délégation d'assurance (loi Lemoine) permet de changer à tout moment, sans frais. Économie typique : 10 000 à 15 000 EUR sur la durée du prêt.",
   },
   {
     id: "frais",
     titre: "Frais de dossier",
-    detail: "Souvent supprimables ou fortement negocia bles, en particulier si vous avez plusieurs offres concurrentes.",
+    detail: "Souvent supprimables ou fortement négociables, en particulier si vous avez plusieurs offres concurrentes.",
   },
   {
     id: "ira",
-    titre: "IRA (Indemnites Remboursement Anticipe)",
+    titre: "IRA (Indemnités Remboursement Anticipé)",
     detail:
-      "Demandez la suppression ou le plafonnement. En cas de revente anticipee, cela peut vous economiser 2 000 a 5 000 EUR.",
+      "Demandez la suppression ou le plafonnement. En cas de revente anticipée, cela peut vous économiser 2 000 à 5 000 EUR.",
   },
   {
     id: "garantie",
-    titre: "Garantie : caution vs hypotheque",
+    titre: "Garantie : caution vs hypothèque",
     detail:
-      "Privilegier la caution (Credit Logement, CAMCA) plutot que l'hypotheque — moins chere et une partie vous est restituee a la fin du pret.",
+      "Privilégier la caution (Crédit Logement, CAMCA) plutôt que l'hypothèque — moins chère et une partie vous est restituée à la fin du prêt.",
   },
 ];
 
@@ -76,10 +76,10 @@ const POINTS_NEGOCIATION: PointNegociation[] = [
 const DOCS_BANQUE: string[] = [
   "3 derniers bulletins de salaire",
   "2 derniers avis d'imposition",
-  "3 derniers releves bancaires",
+  "3 derniers relevés bancaires",
   "Justificatif d'apport",
-  "Compromis de vente signe",
-  "Piece d'identite",
+  "Compromis de vente signé",
+  "Pièce d'identité",
   "Justificatif de domicile",
 ];
 
@@ -88,13 +88,13 @@ const DOCS_BANQUE: string[] = [
 const TIPS = getTipsForEtape(8);
 
 const CHECKLIST = [
-  "J'ai contacte au moins 3 banques",
-  "J'ai compare les offres (taux, assurance, frais)",
-  "J'ai negocie les IRA et frais de dossier",
-  "J'ai obtenu mon offre de pret",
+  "J'ai contacté au moins 3 banques",
+  "J'ai comparé les offres (taux, assurance, frais)",
+  "J'ai négocié les IRA et frais de dossier",
+  "J'ai obtenu mon offre de prêt",
 ];
 
-// ─── Composant : Comparateur simplifie ───────────────────────────────────────
+// ─── Composant : Comparateur simplifié ───────────────────────────────────────
 
 function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
   const capital = projet.capacite_emprunt > 0 ? projet.capacite_emprunt : projet.budget_max - projet.apport;
@@ -166,18 +166,18 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Comparateur simplifie</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Comparateur simplifié</h2>
       <p className="mb-1 text-xs text-gray-500">
-        Saisissez jusqu&apos;a 3 offres de banques pour les comparer instantanement
+        Saisissez jusqu&apos;à 3 offres de banques pour les comparer instantanément
       </p>
       {capital > 0 && (
         <p className="mb-4 text-xs text-gray-400">
-          Capital a emprunter : <strong className="text-[var(--bleu-marine)]">{fmt(capital)} EUR</strong> — Duree : <strong className="text-[var(--bleu-marine)]">{duree} ans</strong>
+          Capital à emprunter : <strong className="text-[var(--bleu-marine)]">{fmt(capital)} EUR</strong> — Durée : <strong className="text-[var(--bleu-marine)]">{duree} ans</strong>
         </p>
       )}
       {capital <= 0 && (
         <p className="mb-4 rounded bg-orange-50 border border-orange-200 px-3 py-2 text-xs text-orange-700">
-          Renseignez votre capacité d&apos;emprunt à l&apos;étape 2 pour un calcul précis. Les calculs ci-dessous utilisent vos donnees disponibles.
+          Renseignez votre capacité d&apos;emprunt à l&apos;étape 2 pour un calcul précis. Les calculs ci-dessous utilisent vos données disponibles.
         </p>
       )}
 
@@ -230,8 +230,8 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
                     className="w-full rounded border border-[var(--gris-border)] bg-white px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
                   >
                     <option value="">-- Choisir --</option>
-                    <option value="caution">Caution (Credit Logement)</option>
-                    <option value="hypotheque">Hypotheque</option>
+                    <option value="caution">Caution (Crédit Logement)</option>
+                    <option value="hypotheque">Hypothèque</option>
                   </select>
                 </div>
                 <div>
@@ -295,15 +295,15 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
               {res.valide && (
                 <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   <div className="rounded bg-white border border-gray-200 p-2 text-center">
-                    <p className="text-xs text-gray-500">Mensualite credit</p>
+                    <p className="text-xs text-gray-500">Mensualité crédit</p>
                     <p className="text-sm font-bold text-[var(--bleu-marine)]">{fmt(res.mensualiteCredit)} EUR</p>
                   </div>
                   <div className="rounded bg-white border border-gray-200 p-2 text-center">
-                    <p className="text-xs text-gray-500">Mensualite assurance</p>
+                    <p className="text-xs text-gray-500">Mensualité assurance</p>
                     <p className="text-sm font-bold text-[var(--bleu-marine)]">{fmt(res.mensualiteAssurance)} EUR</p>
                   </div>
                   <div className={`rounded border p-2 text-center ${isBest ? "border-green-300 bg-green-100" : "bg-white border-gray-200"}`}>
-                    <p className="text-xs text-gray-500">Mensualite totale</p>
+                    <p className="text-xs text-gray-500">Mensualité totale</p>
                     <p className={`text-sm font-bold ${isBest ? "text-green-800" : "text-[var(--bleu-marine)]"}`}>{fmt(res.mensualiteTotale)} EUR</p>
                   </div>
                   <div className={`rounded border p-2 text-center ${isBest ? "border-green-300 bg-green-100" : "bg-white border-gray-200"}`}>
@@ -318,13 +318,13 @@ function ComparateurBanques({ projet }: { projet: ProjetImmobilier }) {
       </div>
 
       <p className="mt-3 text-xs text-gray-400">
-        Calculs indicatifs sur la base d&apos;un amortissement constant. Le TAEG (Taux Annuel Effectif Global) peut differ selon les banques.
+        Calculs indicatifs sur la base d&apos;un amortissement constant. Le TAEG (Taux Annuel Effectif Global) peut différer selon les banques.
       </p>
     </div>
   );
 }
 
-// ─── Composant : Guide negociation ────────────────────────────────────────────
+// ─── Composant : Guide négociation ────────────────────────────────────────────
 
 function GuideNegociation() {
   const [checked, setChecked] = useState<Record<string, boolean>>({});
@@ -350,9 +350,9 @@ function GuideNegociation() {
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Guide negociation</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Guide négociation</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Cochez les points que vous avez negocies avec votre banque
+        Cochez les points que vous avez négociés avec votre banque
       </p>
 
       <div className="space-y-3">
@@ -375,7 +375,7 @@ function GuideNegociation() {
                       ? "border-green-500 bg-green-500 text-white"
                       : "border-gray-300 bg-white"
                   }`}
-                  aria-label={isNegocie ? "Marquer comme non negocie" : "Marquer comme negocie"}
+                  aria-label={isNegocie ? "Marquer comme non négocié" : "Marquer comme négocié"}
                 >
                   {isNegocie && (
                     <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
@@ -388,7 +388,7 @@ function GuideNegociation() {
                     <p className="text-sm font-semibold text-[var(--bleu-marine)]">{point.titre}</p>
                     {isNegocie && (
                       <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-700">
-                        Negocie
+                        Négocié
                       </span>
                     )}
                   </div>
@@ -402,7 +402,7 @@ function GuideNegociation() {
 
       <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2">
         <p className="text-xs text-blue-800">
-          <strong>{negocie} / {POINTS_NEGOCIATION.length}</strong> points negocies
+          <strong>{negocie} / {POINTS_NEGOCIATION.length}</strong> points négociés
         </p>
       </div>
     </div>
@@ -472,7 +472,7 @@ function ChecklistDossierBanque() {
                     ? "border-green-500 bg-green-500 text-white"
                     : "border-gray-300 bg-white"
                 }`}
-                aria-label={isChecked ? "Demarquer" : "Marquer comme prepare"}
+                aria-label={isChecked ? "Démarquer" : "Marquer comme préparé"}
               >
                 {isChecked && (
                   <svg className="h-3 w-3" fill="none" viewBox="0 0 12 12" stroke="currentColor" strokeWidth={2.5}>
@@ -490,7 +490,7 @@ function ChecklistDossierBanque() {
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Dossier complet — vous pouvez le deposer aupres de vos banques !
+          Dossier complet — vous pouvez le déposer auprès de vos banques !
         </div>
       )}
     </div>
@@ -511,16 +511,16 @@ function GateLeadCourtier() {
       <div className="rounded-lg border border-[var(--bleu-secondaire)] bg-white p-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="flex-1">
-            <p className="font-semibold text-[var(--bleu-marine)]">Etre mis en relation avec un courtier</p>
+            <p className="font-semibold text-[var(--bleu-marine)]">Être mis en relation avec un courtier</p>
             <p className="mt-1 text-sm text-gray-600">
-              Un courtier compare les banques pour vous et negocie le meilleur taux. Gratuit pour l&apos;emprunteur.
+              Un courtier compare les banques pour vous et négocie le meilleur taux. Gratuit pour l&apos;emprunteur.
             </p>
           </div>
           <button
             className="flex-shrink-0 rounded-lg bg-[var(--bleu-secondaire)] px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
             onClick={() => setShowModal(true)}
           >
-            Etre mis en relation
+            Être mis en relation
           </button>
         </div>
       </div>
@@ -531,7 +531,7 @@ function GateLeadCourtier() {
         source="courtier"
         etape={8}
         titre="Mise en relation avec un courtier"
-        description="Un courtier compare les banques pour vous et negocie le meilleur taux. Gratuit pour l'emprunteur."
+        description="Un courtier compare les banques pour vous et négocie le meilleur taux. Gratuit pour l'emprunteur."
         showPhone={true}
         showConsent={true}
         onSubmit={handleLeadSubmit}
@@ -583,14 +583,14 @@ export default function EtapeFinancementPage() {
           ))}
         </div>
 
-        <h3 className="mb-2 text-sm font-semibold text-[var(--bleu-marine)]">Economie potentielle par delegation</h3>
+        <h3 className="mb-2 text-sm font-semibold text-[var(--bleu-marine)]">Économie potentielle par délégation</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-[var(--gris-border)] text-left text-xs text-gray-500">
-                <th className="pb-2 pr-3">Age</th>
+                <th className="pb-2 pr-3">Âge</th>
                 <th className="pb-2 pr-3">Taux banque</th>
-                <th className="pb-2">Taux delegation</th>
+                <th className="pb-2">Taux délégation</th>
               </tr>
             </thead>
             <tbody>
@@ -616,8 +616,8 @@ export default function EtapeFinancementPage() {
       etape={8}
       guide={
         <p>
-          Vous avez signe le compromis. Vous avez generalement 45 a 60 jours pour obtenir votre pret.
-          C&apos;est le moment de faire jouer la concurrence entre les banques et de negocier chaque element du credit.
+          Vous avez signé le compromis. Vous avez généralement 45 à 60 jours pour obtenir votre prêt.
+          C&apos;est le moment de faire jouer la concurrence entre les banques et de négocier chaque élément du crédit.
         </p>
       }
       outils={tools}

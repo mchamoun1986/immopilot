@@ -115,7 +115,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.prix || ""}
-            onChange={(e) => onChange({ prix: Number(e.target.value) })}
+            onChange={(e) => onChange({ prix: parseFloat(e.target.value) || 0 })}
             placeholder="250000"
           />
         </FieldRow>
@@ -124,7 +124,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.surface || ""}
-            onChange={(e) => onChange({ surface: Number(e.target.value) })}
+            onChange={(e) => onChange({ surface: parseFloat(e.target.value) || 0 })}
             placeholder="55"
           />
         </FieldRow>
@@ -133,7 +133,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.pieces || ""}
-            onChange={(e) => onChange({ pieces: Number(e.target.value) })}
+            onChange={(e) => onChange({ pieces: parseInt(e.target.value) || 0 })}
             placeholder="3"
           />
         </FieldRow>
@@ -167,7 +167,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.annee_construction || ""}
-            onChange={(e) => onChange({ annee_construction: Number(e.target.value) })}
+            onChange={(e) => onChange({ annee_construction: parseInt(e.target.value) || 0 })}
             placeholder="1975"
           />
         </FieldRow>
@@ -239,7 +239,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.charges_copro || ""}
-            onChange={(e) => onChange({ charges_copro: Number(e.target.value) })}
+            onChange={(e) => onChange({ charges_copro: parseFloat(e.target.value) || 0 })}
             placeholder="200"
           />
         </FieldRow>
@@ -248,7 +248,7 @@ function SectionInfos({
             type="number"
             className={inputCls}
             value={dossier.taxe_fonciere || ""}
-            onChange={(e) => onChange({ taxe_fonciere: Number(e.target.value) })}
+            onChange={(e) => onChange({ taxe_fonciere: parseFloat(e.target.value) || 0 })}
             placeholder="1200"
           />
         </FieldRow>

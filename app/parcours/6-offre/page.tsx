@@ -21,10 +21,10 @@ function addDays(days: number): Date {
 const TIPS = getTipsForEtape(6);
 
 const CHECKLIST = [
-  "J'ai analyse le prix au m2 du bien",
-  "J'ai compare avec les prix du quartier",
-  "J'ai evalue les travaux eventuels",
-  "J'ai prepare mon offre d'achat",
+  "J'ai analysé le prix au m2 du bien",
+  "J'ai comparé avec les prix du quartier",
+  "J'ai évalué les travaux éventuels",
+  "J'ai préparé mon offre d'achat",
 ];
 
 // ─── Niveaux de renovation ────────────────────────────────────────────────────
@@ -40,22 +40,22 @@ interface NiveauRenovation {
 const NIVEAUX_RENOVATION: NiveauRenovation[] = [
   {
     id: "rafraichissement",
-    label: "Rafraichissement",
+    label: "Rafraîchissement",
     description: "Peinture, sol souple, petites retouches",
     min: 200,
     max: 500,
   },
   {
     id: "renovation_moyenne",
-    label: "Renovation moyenne",
+    label: "Rénovation moyenne",
     description: "Cuisine, salle de bain, parquet",
     min: 500,
     max: 1000,
   },
   {
     id: "renovation_lourde",
-    label: "Renovation lourde",
-    description: "Structure, electricite, plomberie",
+    label: "Rénovation lourde",
+    description: "Structure, électricité, plomberie",
     min: 1000,
     max: 1500,
   },
@@ -73,14 +73,14 @@ function AnalysePrix({ projet }: { projet: ProjetImmobilier }) {
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
       <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Analyse du prix</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Calculez le prix au m2 et comparez avec le marche local
+        Calculez le prix au m2 et comparez avec le marché local
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Prix demande */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="prix-demande">
-            Prix demande (EUR)
+            Prix demandé (EUR)
           </label>
           <div className="relative">
             <input
@@ -201,9 +201,9 @@ Date : ${today}`;
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Generateur de lettre d&apos;offre</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Générateur de lettre d&apos;offre</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Remplissez les champs pour generer un modele de lettre d&apos;offre d&apos;achat
+        Remplissez les champs pour générer un modèle de lettre d&apos;offre d&apos;achat
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -225,7 +225,7 @@ Date : ${today}`;
         {/* Prix propose */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="offre-prix">
-            Prix propose (EUR)
+            Prix proposé (EUR)
           </label>
           <div className="relative">
             <input
@@ -259,7 +259,7 @@ Date : ${today}`;
         {/* Delai validite */}
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="offre-delai">
-            Delai de validite (jours)
+            Délai de validité (jours)
           </label>
           <input
             id="offre-delai"
@@ -279,14 +279,14 @@ Date : ${today}`;
         disabled={!nom || !adresse || prix <= 0}
         className="mt-4 rounded-lg bg-[var(--bleu-secondaire)] px-5 py-2 text-sm font-semibold text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        Generer la lettre
+        Générer la lettre
       </button>
 
       {/* Generated letter */}
       {generated && (
         <div className="mt-4">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-xs font-semibold text-gray-600">Votre modele de lettre</p>
+            <p className="text-xs font-semibold text-gray-600">Votre modèle de lettre</p>
             <button
               onClick={handleCopy}
               className="rounded bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 hover:bg-gray-200"
@@ -298,7 +298,7 @@ Date : ${today}`;
             {generated}
           </pre>
           <p className="mt-2 text-xs text-gray-400">
-            Ce modele est fourni a titre indicatif. Faites-le relire par un professionnel avant envoi.
+            Ce modèle est fourni à titre indicatif. Faites-le relire par un professionnel avant envoi.
           </p>
         </div>
       )}
@@ -336,7 +336,7 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
       <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Estimateur de travaux</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Estimez l&apos;enveloppe travaux selon le niveau de renovation necessaire
+        Estimez l&apos;enveloppe travaux selon le niveau de rénovation nécessaire
       </p>
 
       {/* Niveaux */}
@@ -367,7 +367,7 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
       {/* Surface */}
       <div className="mb-4">
         <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="travaux-surface">
-          Surface a renover (m2)
+          Surface à rénover (m2)
         </label>
         <div className="relative max-w-xs">
           <input
@@ -399,7 +399,7 @@ function EstimateurTravaux({ projet, onUpdate }: { projet: ProjetImmobilier; onU
 
           <div className="flex items-center justify-between rounded-lg border border-orange-200 bg-orange-50 px-4 py-3">
             <div>
-              <p className="text-xs text-orange-700">Budget travaux moyen a prevoir</p>
+              <p className="text-xs text-orange-700">Budget travaux moyen à prévoir</p>
               <p className="text-lg font-bold text-orange-800">
                 {fmt(Math.round((estimMin + estimMax) / 2))} EUR
               </p>
@@ -435,9 +435,9 @@ function GateLead() {
       <div className="rounded-lg border border-[var(--bleu-secondaire)] bg-white p-5">
         <div className="flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
           <div className="flex-1">
-            <p className="font-semibold text-[var(--bleu-marine)]">Comparez avec les prix du marche</p>
+            <p className="font-semibold text-[var(--bleu-marine)]">Comparez avec les prix du marché</p>
             <p className="mt-1 text-sm text-gray-600">
-              Recevez une analyse comparative DVF pour votre commune : prix median, evolution sur 2 ans, fourchette par type de bien.
+              Recevez une analyse comparative DVF pour votre commune : prix médian, évolution sur 2 ans, fourchette par type de bien.
             </p>
           </div>
           <button
@@ -455,7 +455,7 @@ function GateLead() {
         source="analyse_prix"
         etape={6}
         titre="Analyse comparative des prix"
-        description="Recevez une analyse DVF pour votre commune : prix median, evolution sur 2 ans, fourchette par type de bien."
+        description="Recevez une analyse DVF pour votre commune : prix médian, évolution sur 2 ans, fourchette par type de bien."
         showPhone={false}
         showConsent={false}
         onSubmit={handleLeadSubmit}
@@ -501,7 +501,7 @@ export default function EtapeOffrePage() {
 
       {/* Marges de negociation — source: lib/data/negociation-tips.ts */}
       <div className="rounded-xl border border-[var(--gris-border)] bg-white p-4">
-        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Marges de negociation indicatives</h2>
+        <h2 className="mb-3 font-semibold text-[var(--bleu-marine)]">Marges de négociation indicatives</h2>
         <div className="space-y-2">
           {MARGES_NEGOCIATION.map((m, i) => (
             <div key={i} className="flex items-center justify-between rounded-lg bg-[var(--gris-fond)] px-3 py-2 text-sm">
@@ -513,7 +513,7 @@ export default function EtapeOffrePage() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-xs text-gray-400">Source: indices Notaires, analyses marche — indicatif</p>
+        <p className="mt-3 text-xs text-gray-400">Source: indices Notaires, analyses marché — indicatif</p>
       </div>
     </div>
   );
@@ -523,9 +523,9 @@ export default function EtapeOffrePage() {
       etape={6}
       guide={
         <p>
-          Vous avez trouve un bien qui vous plait ? Avant de faire une offre, analysez le
-          prix par rapport au marche et preparez votre strategie de negociation. Une offre
-          d&apos;achat ecrite n&apos;est pas juridiquement engageante — seul le compromis vous engage.
+          Vous avez trouvé un bien qui vous plaît ? Avant de faire une offre, analysez le
+          prix par rapport au marché et préparez votre stratégie de négociation. Une offre
+          d&apos;achat écrite n&apos;est pas juridiquement engageante — seul le compromis vous engage.
         </p>
       }
       outils={tools}
