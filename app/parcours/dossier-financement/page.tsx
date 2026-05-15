@@ -54,34 +54,46 @@ export default function DossierFinancementPage() {
     setProjet(p);
   }, [router]);
 
+  // Use the best dossier: prefer one with offre, then one with prix, then first
+  const dossierPrincipal: DossierBien | null = useMemo(() => {
+    if (!projet || projet.dossiers.length === 0) return null;
+    const withOffre = projet.dossiers.find((d) => d.offre !== null && (d.offre.montant ?? 0) > 0);
+    if (withOffre) return withOffre;
+    const withPrix = projet.dossiers.find((d) => d.prix > 0);
+    if (withPrix) return withPrix;
+    return projet.dossiers[0];
+  }, [projet]);
+
   const data = useMemo(() => {
     if (!projet) return null;
 
     const revenus = projet.revenus_net + (projet.revenus_conjoint ?? 0);
     const taux = 3.5;
     const duree = projet.duree_souhaitee || 20;
-    const montantEmprunt = Math.max(0, projet.budget_max - projet.apport);
+    // Use dossier prix when available, otherwise fallback to budget_max
+    const prixBien = (dossierPrincipal?.prix ?? 0) > 0 ? dossierPrincipal!.prix : projet.budget_max;
+    const montantEmprunt = Math.max(0, prixBien - projet.apport);
     const credit = calculerMensualite(montantEmprunt, taux, duree);
     const endettement = calculerEndettement(revenus, projet.charges_fixes, taux, duree);
-    const fraisNotaire = calculerFraisNotaire(projet.budget_max, "ancien");
+    const fraisNotaire = calculerFraisNotaire(prixBien, "ancien");
     const zone = findZoneByCodePostal(projet.code_postal ?? "") ?? "B1";
     const ptzResult = calculerPTZ({
       zone,
       revenu_fiscal: Math.round(revenus * 12 * 0.9),
       taille_foyer: projet.taille_foyer,
-      cout_operation: projet.budget_max,
+      cout_operation: prixBien,
     });
     const completedSteps = getCompletedSteps(projet);
     const alertes = buildProjectAlerts(projet);
-    const budgetTotal = projet.budget_max + fraisNotaire.total;
+    const budgetTotal = prixBien + fraisNotaire.total;
     const financementTotal = projet.apport + endettement.capacite_emprunt + (ptzResult.eligible ? ptzResult.montant : 0);
     const resteAVivre = revenus - credit.mensualite - projet.charges_fixes;
 
     return {
-      revenus, taux, duree, montantEmprunt, credit, endettement, fraisNotaire,
+      revenus, taux, duree, prixBien, montantEmprunt, credit, endettement, fraisNotaire,
       ptzResult, completedSteps, alertes, budgetTotal, financementTotal, resteAVivre,
     };
-  }, [projet]);
+  }, [projet, dossierPrincipal]);
 
   if (!projet || !data) {
     return (
@@ -91,7 +103,6 @@ export default function DossierFinancementPage() {
     );
   }
 
-  const dossierPrincipal: DossierBien | null = projet.dossiers[0] ?? null;
   const todayStr = formatDateLong(new Date());
   const isFinancable = data.financementTotal >= data.budgetTotal;
 
@@ -195,7 +206,7 @@ export default function DossierFinancementPage() {
 
       <h3 className="mb-2 text-sm font-bold text-gray-500 uppercase tracking-wide">Besoin total</h3>
       <div className="space-y-0 mb-3">
-        <Row label="Prix du bien" value={`${fmt(projet.budget_max)} EUR`} />
+        <Row label="Prix du bien" value={`${fmt(data.prixBien)} EUR`} />
         <Row label="Frais de notaire (ancien, est.)" value={`${fmt(data.fraisNotaire.total)} EUR`} />
       </div>
       <TotalRow label="TOTAL BESOIN" value={`${fmt(data.budgetTotal)} EUR`} variant="blue" />
