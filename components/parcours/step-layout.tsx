@@ -118,7 +118,12 @@ export function StepLayout({ etape, guide, outils, tips, checklist, children }: 
         </div>
       )}
 
-      <div className="flex gap-6">
+      {/* Mobile: summary bandeau above tabs */}
+      <div className="mb-4 lg:hidden">
+        {summary && <ProjectSidebar summary={summary} />}
+      </div>
+
+      <div className="flex flex-col gap-6 lg:flex-row">
         <div className="min-w-0 flex-1">
           <TabsContainer tabs={tabs} defaultTab="outils">
             {(activeTab) => (
@@ -252,8 +257,10 @@ export function StepLayout({ etape, guide, outils, tips, checklist, children }: 
           <StepNav etapeCourante={etape} />
         </div>
 
-        {/* Sidebar: renders mobile bandeau (<lg) and desktop sticky (lg+) internally */}
-        {summary && <ProjectSidebar summary={summary} />}
+        {/* Desktop sidebar only — mobile bandeau is above tabs */}
+        <aside className="hidden w-72 flex-shrink-0 lg:block">
+          {summary && <ProjectSidebar summary={summary} desktopOnly />}
+        </aside>
       </div>
     </div>
   );

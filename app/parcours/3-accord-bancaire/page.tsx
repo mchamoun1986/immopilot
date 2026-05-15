@@ -153,7 +153,7 @@ export default function AccordBancairePage() {
 
       {/* CTA courtier */}
       <div className="rounded-xl border border-[var(--bleu-secondaire)] bg-white p-5">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="font-semibold text-[var(--bleu-marine)]">Un courtier peut comparer 100+ banques pour vous</p>
             <p className="mt-1 text-sm text-gray-600">Service gratuit — un courtier partenaire vous rappelle sous 24h.</p>
@@ -169,7 +169,7 @@ export default function AccordBancairePage() {
 
       {/* Lien dossier financement */}
       <div className="card-hero">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-bold text-white">Dossier de financement</p>
             <p className="mt-1 text-xs text-blue-200/70">Générez un dossier complet à présenter à votre banque.</p>

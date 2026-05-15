@@ -7,69 +7,72 @@ import { VerdictBanner } from "@/components/ui/verdict-banner";
 
 interface ProjectSidebarProps {
   summary: ProjectSummary;
+  desktopOnly?: boolean;
 }
 
-export function ProjectSidebar({ summary }: ProjectSidebarProps) {
+export function ProjectSidebar({ summary, desktopOnly }: ProjectSidebarProps) {
   const [collapsed, setCollapsed] = useState(true);
 
   const verdictLabel = summary.verdict === "financable"
-    ? "Financable"
+    ? "Finançable"
     : summary.verdict === "depassement"
-      ? "Depassement"
+      ? "Dépassement"
       : "Incomplet";
 
   const items = [
     { label: "Budget", value: `${fmt(summary.budget)} EUR` },
-    { label: "Capacite", value: `${fmt(summary.capacite)} EUR` },
+    { label: "Capacité", value: `${fmt(summary.capacite)} EUR` },
     { label: "PTZ", value: summary.ptz > 0 ? `${fmt(summary.ptz)} EUR` : "\u2014" },
     { label: "Endettement", value: summary.endettement > 0 ? `${fmtPct(summary.endettement)}%` : "\u2014" },
     { label: "Dossiers", value: String(summary.nb_dossiers) },
   ];
 
+  // Desktop-only mode: render just the sticky content (wrapper is outside)
+  if (desktopOnly) {
+    return (
+      <div className="sticky top-24 space-y-3">
+        <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Résumé projet</h3>
+        {items.map((item) => (
+          <div key={item.label} className="flex justify-between text-sm">
+            <span className="text-gray-500">{item.label}</span>
+            <span className="font-semibold text-[var(--bleu-marine)]">{item.value}</span>
+          </div>
+        ))}
+        {summary.verdict !== "incomplet" && (
+          <VerdictBanner positive={summary.verdict === "financable"} label={verdictLabel} />
+        )}
+      </div>
+    );
+  }
+
+  // Mobile: collapsible bandeau
   return (
-    <>
-      {/* Desktop: sticky sidebar */}
-      <aside className="hidden w-72 flex-shrink-0 lg:block">
-        <div className="sticky top-24 space-y-3">
-          <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Resume projet</h3>
+    <div>
+      <button
+        onClick={() => setCollapsed(!collapsed)}
+        aria-expanded={!collapsed}
+        className="flex w-full items-center justify-between rounded-xl bg-[var(--gris-fond)] px-4 py-3 text-sm"
+      >
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <span><strong>{fmt(summary.budget)}</strong> budget</span>
+          <span><strong>{fmt(summary.capacite)}</strong> capacité</span>
+          {summary.ptz > 0 && <span><strong>{fmt(summary.ptz)}</strong> PTZ</span>}
+        </div>
+        <span className="ml-2 flex-shrink-0 text-gray-400">{collapsed ? "\u25BC" : "\u25B2"}</span>
+      </button>
+      {!collapsed && (
+        <div className="mt-2 space-y-2 rounded-xl bg-[var(--gris-fond)] px-4 py-3">
           {items.map((item) => (
             <div key={item.label} className="flex justify-between text-sm">
               <span className="text-gray-500">{item.label}</span>
-              <span className="font-semibold text-[var(--bleu-marine)]">{item.value}</span>
+              <span className="font-semibold">{item.value}</span>
             </div>
           ))}
           {summary.verdict !== "incomplet" && (
             <VerdictBanner positive={summary.verdict === "financable"} label={verdictLabel} />
           )}
         </div>
-      </aside>
-
-      {/* Mobile: collapsible bandeau */}
-      <div className="lg:hidden">
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="flex w-full items-center justify-between rounded-xl bg-[var(--gris-fond)] px-4 py-3 text-sm"
-        >
-          <div className="flex gap-4">
-            <span><strong>{fmt(summary.budget)}</strong> budget</span>
-            <span><strong>{fmt(summary.capacite)}</strong> capacite</span>
-          </div>
-          <span className="text-gray-400">{collapsed ? "\u25BC" : "\u25B2"}</span>
-        </button>
-        {!collapsed && (
-          <div className="mt-2 space-y-2 rounded-xl bg-[var(--gris-fond)] px-4 py-3">
-            {items.map((item) => (
-              <div key={item.label} className="flex justify-between text-sm">
-                <span className="text-gray-500">{item.label}</span>
-                <span className="font-semibold">{item.value}</span>
-              </div>
-            ))}
-            {summary.verdict !== "incomplet" && (
-              <VerdictBanner positive={summary.verdict === "financable"} label={verdictLabel} />
-            )}
-          </div>
-        )}
-      </div>
-    </>
+      )}
+    </div>
   );
 }
