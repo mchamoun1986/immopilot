@@ -30,7 +30,7 @@ export function Header() {
 
         {/* Mobile hamburger button */}
         <button
-          className="flex flex-col gap-1.5 p-1 md:hidden"
+          className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={menuOpen}
@@ -49,7 +49,7 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-1 hover:text-[var(--bleu-secondaire)]"
+                  className="block rounded-md px-2 py-3 hover:text-[var(--bleu-secondaire)]"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}

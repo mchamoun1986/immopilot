@@ -10,7 +10,7 @@ export function StepNav({ etapeCourante }: StepNavProps) {
   const prev = ETAPES.find((e) => e.numero === ((etapeCourante - 1) as EtapeNumber));
   const next = ETAPES.find((e) => e.numero === ((etapeCourante + 1) as EtapeNumber));
   return (
-    <div className="mt-8 flex justify-between">
+    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
       {prev ? (
         <Link href={`/parcours/${prev.slug}`} className="text-sm text-gray-500 hover:text-[var(--bleu-secondaire)]">&larr; {prev.titre}</Link>
       ) : <span />}

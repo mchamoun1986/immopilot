@@ -100,7 +100,7 @@ function SimulateurCredit({ projet, taux, duree, onTauxChange, onDureeChange }: 
       </div>
 
       {montant > 0 && (
-        <div className="mt-4 grid grid-cols-3 gap-3">
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <div className="rounded-lg bg-[var(--gris-clair)] p-3 text-center">
             <p className="text-xs text-gray-500">Mensualité</p>
             <p className="mt-1 text-lg font-bold text-[var(--bleu-marine)]">{fmt(result.mensualite)} EUR</p>
@@ -346,7 +346,7 @@ function EligibilitePTZ({ projet, onUpdate }: { projet: ProjetImmobilier; onUpda
           </div>
 
           {result.eligible ? (
-            <div className="mt-3 grid grid-cols-3 gap-3">
+            <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
                 <p className="text-xs text-gray-500">Montant PTZ</p>
                 <p className="font-bold text-green-700">{fmt(result.montant)} EUR</p>

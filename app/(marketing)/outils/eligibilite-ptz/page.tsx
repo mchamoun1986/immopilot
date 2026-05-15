@@ -157,7 +157,7 @@ export default function EligibilitePTZPage() {
                   Éligible PTZ
                 </span>
               </div>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div className="text-center">
                   <p className="text-xs text-gray-500">Montant PTZ estimé</p>
                   <p className="mt-1 text-2xl font-extrabold text-green-700">
@@ -204,7 +204,7 @@ export default function EligibilitePTZPage() {
 
         {/* Lead capture */}
         <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre éligibilité PTZ par email</p>
               <p className="mt-1 text-sm text-gray-600">Résultat détaillé avec montant, durée et conditions.</p>

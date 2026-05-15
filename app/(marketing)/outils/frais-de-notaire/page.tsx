@@ -150,7 +150,7 @@ export default function FraisNotairePage() {
 
             {/* Lead capture */}
             <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="font-semibold text-[var(--bleu-marine)]">Recevez le détail de vos frais par email</p>
                   <p className="mt-1 text-sm text-gray-600">Ventilation complète des frais de notaire envoyée par email.</p>

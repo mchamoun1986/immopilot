@@ -119,7 +119,7 @@ export default function SimulateurCreditPage() {
 
         {/* Results */}
         {hasResult && (
-          <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="rounded-lg bg-[var(--bleu-marine)] p-4 text-center text-white">
               <p className="text-xs opacity-80">Mensualité</p>
               <p className="mt-1 text-2xl font-extrabold">{fmt(result.mensualite)}</p>
@@ -145,7 +145,7 @@ export default function SimulateurCreditPage() {
         {/* Lead capture */}
         {hasResult && (
           <div className="mt-6 rounded-xl border border-[var(--bleu-secondaire)] bg-white p-4">
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-semibold text-[var(--bleu-marine)]">Recevez votre simulation détaillée</p>
                 <p className="mt-1 text-sm text-gray-600">Plan de financement personnalisé envoyé par email.</p>

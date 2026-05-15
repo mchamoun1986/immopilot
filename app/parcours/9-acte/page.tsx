@@ -141,8 +141,8 @@ function CalculateurFraisNotaire({ budgetInitial }: { budgetInitial: number }) {
       </div>
 
       {/* Breakdown */}
-      <div className="rounded-lg border border-[var(--gris-border)] overflow-hidden mb-4">
-        <table className="w-full text-sm">
+      <div className="rounded-lg border border-[var(--gris-border)] overflow-x-auto mb-4">
+        <table className="min-w-[360px] w-full text-sm">
           <thead>
             <tr className="bg-[var(--gris-clair)] border-b border-[var(--gris-border)]">
               <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600">Poste</th>

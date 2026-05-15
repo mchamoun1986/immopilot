@@ -146,7 +146,7 @@ export function LeadModal({
     >
       <div
         ref={dialogRef}
-        className="relative w-full max-w-md rounded-xl bg-white shadow-xl"
+        className="relative w-full max-w-md max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl bg-white shadow-xl"
         role="dialog"
         aria-modal="true"
         aria-labelledby="lead-modal-title"
@@ -163,7 +163,7 @@ export function LeadModal({
           </div>
           <button
             onClick={onClose}
-            className="flex-shrink-0 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded text-gray-400 hover:bg-gray-100 hover:text-gray-600"
             aria-label="Fermer"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -199,7 +199,7 @@ export function LeadModal({
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-4">
               {/* Prenom + Nom */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="lead-prenom">
                     Prénom <span className="text-red-500">*</span>
@@ -268,7 +268,7 @@ export function LeadModal({
               )}
 
               {/* Ville + Code postal */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="lead-ville">
                     Ville <span className="text-xs text-gray-400">(optionnel)</span>
