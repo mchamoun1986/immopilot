@@ -21,7 +21,7 @@ const ETAPES_COMMENT_CA_MARCHE = [
 ] as const;
 
 const KPIS = [
-  { valeur: "750 000", label: "Primo-accedants / an en France" },
+  { valeur: "750 000", label: "Primo-accédants / an en France" },
   { valeur: "10 étapes", label: "Parcours complet couvert" },
   { valeur: "12 catégories", label: "De professionnels concernés" },
   { valeur: "Lead qualifié", label: "Budget + zone + étape + consent" },

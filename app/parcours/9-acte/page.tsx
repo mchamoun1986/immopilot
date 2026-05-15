@@ -15,14 +15,14 @@ const JOUR_J_CHECK_KEY = "immopilot_jour_j_checked";
 // ─── Données checklist jour J ─────────────────────────────────────────────────
 
 const JOUR_J_ITEMS = [
-  "Piece d'identite en cours de validite",
+  "Pièce d'identité en cours de validité",
   "RIB pour le virement du solde",
-  "Attestation d'assurance habitation (obligatoire AVANT remise des cles)",
-  "Cheque de banque ou preuve de virement pour les frais de notaire",
+  "Attestation d'assurance habitation (obligatoire AVANT remise des clés)",
+  "Chèque de banque ou preuve de virement pour les frais de notaire",
   "Vérifier que tous les diagnostics sont annexés",
   "Vérifier les servitudes mentionnées",
   "Compter les jeux de clés remis",
-  "Relever les compteurs (eau, elec, gaz)",
+  "Relever les compteurs (eau, élec, gaz)",
 ];
 
 // ─── Données guide deroulement ────────────────────────────────────────────────
@@ -30,27 +30,27 @@ const JOUR_J_ITEMS = [
 const DEROULEMENT_ITEMS = [
   {
     titre: "Lecture de l'acte",
-    detail: "Le notaire lit l'acte integralement. Comptez 1h30 a 2h selon la complexite du dossier.",
+    detail: "Le notaire lit l'acte intégralement. Comptez 1h30 à 2h selon la complexité du dossier.",
   },
   {
-    titre: "Questions autorisees",
-    detail: "Vous pouvez poser des questions a tout moment. N'hesitez pas — le notaire est la pour ca.",
+    titre: "Questions autorisées",
+    detail: "Vous pouvez poser des questions à tout moment. N'hésitez pas — le notaire est là pour ça.",
   },
   {
     titre: "Signature",
-    detail: "Signature electronique ou manuscrite selon l'etude. Chaque page est paraphee, derniere page signee.",
+    detail: "Signature électronique ou manuscrite selon l'étude. Chaque page est paraphée, dernière page signée.",
   },
   {
-    titre: "Remise des cles",
-    detail: "Les cles vous sont remises immediatement apres la signature de l'acte.",
+    titre: "Remise des clés",
+    detail: "Les clés vous sont remises immédiatement après la signature de l'acte.",
   },
   {
     titre: "Versement du prix",
-    detail: "Le notaire verse le prix au vendeur sous 48h apres la signature.",
+    detail: "Le notaire verse le prix au vendeur sous 48h après la signature.",
   },
   {
-    titre: "Titre de propriete",
-    detail: "Vous recevrez le titre de propriete definitif sous 2 a 6 mois (delai de publication).",
+    titre: "Titre de propriété",
+    detail: "Vous recevrez le titre de propriété définitif sous 2 à 6 mois (délai de publication).",
   },
 ];
 
@@ -59,10 +59,10 @@ const DEROULEMENT_ITEMS = [
 const TIPS = getTipsForEtape(9);
 
 const CHECKLIST = [
-  "J'ai recu le decompte detaille des frais de notaire",
+  "J'ai reçu le décompte détaillé des frais de notaire",
   "J'ai souscrit l'assurance habitation",
-  "J'ai prepare tous les documents pour le jour J",
-  "J'ai releve les compteurs le jour de la signature",
+  "J'ai préparé tous les documents pour le jour J",
+  "J'ai relevé les compteurs le jour de la signature",
 ];
 
 // ─── Composant : Calculateur frais de notaire ─────────────────────────────────
@@ -251,7 +251,7 @@ function ChecklistJourJ() {
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Vous etes pret(e) pour le jour J !
+          Vous êtes prêt(e) pour le jour J !
         </div>
       )}
     </div>
@@ -263,7 +263,7 @@ function ChecklistJourJ() {
 function GuideDeroulement() {
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Deroulement de la signature</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Déroulement de la signature</h2>
       <p className="mb-4 text-xs text-gray-500">
         Ce qui se passe le jour de la signature chez le notaire
       </p>

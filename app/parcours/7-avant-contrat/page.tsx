@@ -37,28 +37,28 @@ interface ClauseSuspensive {
 const CLAUSES: ClauseSuspensive[] = [
   {
     id: "pret",
-    titre: "Clause suspensive d'obtention de pret",
+    titre: "Clause suspensive d'obtention de prêt",
     explication:
-      "Incluse par defaut si l'achat est finance par emprunt. Protege l'acheteur si le pret est refuse par la banque — vous recuperez votre depot de garantie integrale. Ne JAMAIS la supprimer sauf achat comptant.",
+      "Incluse par défaut si l'achat est financé par emprunt. Protège l'acheteur si le prêt est refusé par la banque — vous récupérez votre dépôt de garantie intégrale. Ne JAMAIS la supprimer sauf achat comptant.",
     obligatoire: true,
   },
   {
     id: "servitude",
-    titre: "Clause de decouverte de servitude",
+    titre: "Clause de découverte de servitude",
     explication:
-      "Permet de se retirer si une servitude (droit de passage, vue, etc.) non declaree est decouverte apres la signature. Utile pour les maisons et terrains.",
+      "Permet de se retirer si une servitude (droit de passage, vue, etc.) non déclarée est découverte après la signature. Utile pour les maisons et terrains.",
   },
   {
     id: "permis",
     titre: "Clause d'obtention du permis de construire",
     explication:
-      "Indispensable si vous prevoyez des travaux necessitant un permis de construire. Vous annulez si le permis est refuse.",
+      "Indispensable si vous prévoyez des travaux nécessitant un permis de construire. Vous annulez si le permis est refusé.",
   },
   {
     id: "vente_bien",
     titre: "Clause suspensive de vente d'un bien",
     explication:
-      "Si vous devez vendre votre bien actuel avant de pouvoir acheter. Permet d'annuler sans perdre le depot de garantie si votre bien ne se vend pas dans les delais.",
+      "Si vous devez vendre votre bien actuel avant de pouvoir acheter. Permet d'annuler sans perdre le dépôt de garantie si votre bien ne se vend pas dans les délais.",
   },
 ];
 
@@ -75,7 +75,7 @@ const DOCS_COMPROMIS: DocCategorie[] = [
   {
     titre: "Documents acheteur",
     items: [
-      "Piece d'identite (carte nationale / passeport)",
+      "Pièce d'identité (carte nationale / passeport)",
       "Justificatif de domicile (moins de 3 mois)",
       "Attestation de financement (banque ou courtier)",
     ],
@@ -83,7 +83,7 @@ const DOCS_COMPROMIS: DocCategorie[] = [
   {
     titre: "Documents vendeur",
     items: [
-      "Titre de propriete",
+      "Titre de propriété",
       "Diagnostics techniques obligatoires (DPE, amiante, plomb, etc.)",
       "PV d'AG (3 derniers, si copropriété)",
       "État daté des charges (si copropriété)",
@@ -191,7 +191,7 @@ function GuideClauses() {
   );
 }
 
-// ─── Composant : Calendrier des delais ───────────────────────────────────────
+// ─── Composant : Calendrier des délais ───────────────────────────────────────
 
 function CalendrierDelais() {
   const today = new Date();
@@ -221,19 +221,19 @@ function CalendrierDelais() {
       note: "Jour J",
     },
     {
-      label: "Fin delai de retractation",
+      label: "Fin délai de rétractation",
       date: dateRetractation,
       color: "bg-orange-500",
       note: "J+10 calendaires (loi SRU)",
     },
     {
-      label: "Date limite obtention pret",
+      label: "Date limite obtention prêt",
       date: dateLimitePret,
       color: "bg-amber-500",
       note: `J+${delaiPret} (ajustable)`,
     },
     {
-      label: "Date prevue acte authentique",
+      label: "Date prévue acte authentique",
       date: datePrevueActe,
       color: "bg-green-600",
       note: `J+${delaiActe} (ajustable)`,
@@ -242,9 +242,9 @@ function CalendrierDelais() {
 
   return (
     <div className="rounded-lg border border-[var(--gris-border)] bg-white p-4">
-      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Calendrier des delais</h2>
+      <h2 className="mb-1 font-semibold text-[var(--bleu-marine)]">Calendrier des délais</h2>
       <p className="mb-4 text-xs text-gray-500">
-        Entrez la date de signature pour calculer automatiquement toutes les echeances
+        Entrez la date de signature pour calculer automatiquement toutes les échéances
       </p>
 
       {/* Inputs */}
@@ -263,7 +263,7 @@ function CalendrierDelais() {
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="delai-pret">
-            Delai obtention pret (jours)
+            Délai obtention prêt (jours)
           </label>
           <input
             id="delai-pret"
@@ -274,11 +274,11 @@ function CalendrierDelais() {
             onChange={(e) => setDelaiPret(parseInt(e.target.value) || 45)}
             className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
           />
-          <p className="mt-0.5 text-xs text-gray-400">Generalement 45 a 60 jours</p>
+          <p className="mt-0.5 text-xs text-gray-400">Généralement 45 à 60 jours</p>
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium text-gray-600" htmlFor="delai-acte">
-            Delai acte authentique (jours)
+            Délai acte authentique (jours)
           </label>
           <input
             id="delai-acte"
@@ -289,7 +289,7 @@ function CalendrierDelais() {
             onChange={(e) => setDelaiActe(parseInt(e.target.value) || 90)}
             className="w-full rounded border border-[var(--gris-border)] px-3 py-1.5 text-sm focus:border-[var(--bleu-secondaire)] focus:outline-none"
           />
-          <p className="mt-0.5 text-xs text-gray-400">Generalement 90 a 120 jours</p>
+          <p className="mt-0.5 text-xs text-gray-400">Généralement 90 à 120 jours</p>
         </div>
       </div>
 
@@ -414,7 +414,7 @@ function ChecklistDocumentsCompromis() {
 
       {totalChecked === total && total > 0 && (
         <div className="mt-4 rounded-lg border border-green-300 bg-green-50 p-3 text-sm font-semibold text-green-800">
-          Tous les documents sont rassembles — vous etes pret(e) pour la signature !
+          Tous les documents sont rassemblés — vous êtes prêt(e) pour la signature !
         </div>
       )}
     </div>
