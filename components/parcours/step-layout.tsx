@@ -106,19 +106,19 @@ export function StepLayout({ etape, guide, outils, tips, checklist, children }: 
 
       {/* Bandeau intro */}
       {bandeau && (
-        <div className="mb-6 rounded-xl bg-[var(--gris-fond)] px-5 py-4">
+        <div className="mb-4 rounded-xl bg-[var(--gris-fond)] px-4 py-3 sm:px-5 sm:py-4">
           <p className="text-sm text-gray-700">
             Dans cette étape, vous allez <strong className="text-[var(--bleu-marine)]">{bandeau.objectif}</strong>.
           </p>
-          <div className="mt-2 flex flex-wrap gap-4 text-xs text-gray-500">
+          <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500">
             <span>Entrée : {bandeau.entree}</span>
-            <span className="text-gray-300">&rarr;</span>
+            <span className="hidden sm:inline text-gray-300">&rarr;</span>
             <span>Sortie : <strong className="text-[var(--bleu-marine)]">{bandeau.sortie}</strong></span>
           </div>
         </div>
       )}
 
-      {/* Mobile: summary bandeau above tabs */}
+      {/* Mobile: summary card above tabs */}
       <div className="mb-4 lg:hidden">
         {summary && <ProjectSidebar summary={summary} />}
       </div>

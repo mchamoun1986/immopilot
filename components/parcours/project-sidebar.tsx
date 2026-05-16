@@ -45,23 +45,32 @@ export function ProjectSidebar({ summary, desktopOnly }: ProjectSidebarProps) {
     );
   }
 
-  // Mobile: collapsible bandeau
+  // Mobile: collapsible summary card
   return (
-    <div>
+    <div className="rounded-xl border border-[var(--gris-border)] bg-white shadow-sm">
       <button
         onClick={() => setCollapsed(!collapsed)}
         aria-expanded={!collapsed}
-        className="flex w-full items-center justify-between rounded-xl bg-[var(--gris-fond)] px-4 py-3 text-sm"
+        className="flex w-full items-center justify-between px-4 py-3 text-sm"
       >
-        <div className="flex flex-wrap gap-x-4 gap-y-1">
-          <span><strong>{fmt(summary.budget)}</strong> budget</span>
-          <span><strong>{fmt(summary.capacite)}</strong> capacité</span>
-          {summary.ptz > 0 && <span><strong>{fmt(summary.ptz)}</strong> PTZ</span>}
+        <div className="flex items-center gap-3">
+          <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">Résumé</span>
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-xs">
+            <span className="font-bold text-[var(--bleu-marine)]">{fmt(summary.budget)} EUR</span>
+            <span className="text-gray-300">|</span>
+            <span className="font-semibold text-gray-600">{fmtPct(summary.endettement)}%</span>
+            {summary.ptz > 0 && (
+              <>
+                <span className="text-gray-300">|</span>
+                <span className="font-semibold text-green-600">PTZ {fmt(summary.ptz)}</span>
+              </>
+            )}
+          </div>
         </div>
-        <span className="ml-2 flex-shrink-0 text-gray-400">{collapsed ? "\u25BC" : "\u25B2"}</span>
+        <span className="ml-2 flex-shrink-0 text-gray-400 text-xs">{collapsed ? "\u25BC" : "\u25B2"}</span>
       </button>
       {!collapsed && (
-        <div className="mt-2 space-y-2 rounded-xl bg-[var(--gris-fond)] px-4 py-3">
+        <div className="space-y-2 border-t border-[var(--gris-border)] px-4 py-3">
           {items.map((item) => (
             <div key={item.label} className="flex justify-between text-sm">
               <span className="text-gray-500">{item.label}</span>
